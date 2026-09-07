@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية | دليل أرباحي المعتمد</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QM4Z5HXFJG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QM4Z5HXFJG');
+  </script>
+  <meta name="description" content="تعرف على سياسة الخصوصية وكيفية حماية بيانات زوار دليل منصات الربح المعتمدة والعملات الرقمية.">
+  <meta name="keywords" content="سياسة الخصوصية, حماية البيانات, دليل أرباحي">
+  <meta name="author" content="Your Brand">
+  <meta property="og:title" content="سياسة الخصوصية | دليل أرباحي المعتمد">
+  <meta property="og:description" content="تعرف على سياسة الخصوصية وكيفية حماية بيانات زوار دليل منصات الربح المعتمدة.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0088cc">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-color: #f4f7f9;
+      --card-bg: #ffffff;
+      --text-color: #2c3e50;
+      --text-muted: #6c757d;
+      --primary: #0088cc;
+      --accent: #27ae60;
+      --border-color: #e2e8f0;
+      --header-bg: #1e293b;
+      --header-text: #ffffff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
+      --tooltip-bg: #334155;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root[data-theme="auto"] {
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-color: #f8fafc;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+        --shadow: 0 4px 12px rgba(0,0,0,0.3);
+        --tooltip-bg: #0f172a;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --shadow: 0 4px 12px rgba(0,0,0,0.3);
+      --tooltip-bg: #0f172a;
+    }
+
+    :root[data-theme="light"] {
+      --bg-color: #f4f7f9;
+      --card-bg: #ffffff;
+      --text-color: #2c3e50;
+      --text-muted: #6c757d;
+      --border-color: #e2e8f0;
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
+      --tooltip-bg: #334155;
+    }
+
+    * { box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding-top: 80px;
+      direction: rtl;
+    }
+    body.lang-en { direction: ltr; }
+
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 4px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 1001;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 70px;
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .logo { font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+
+    /* السوشيال ميديا العائمة */
+    .floating-social-container {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 1005;
+      display: flex;
+      align-items: center;
+    }
+    .social-links-drawer {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-right: none;
+      padding: 10px;
+      border-radius: 0 10px 10px 0;
+      box-shadow: var(--shadow);
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .social-links-drawer.show { display: flex; }
+    .social-links-drawer a {
+      color: var(--text-color);
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .social-links-drawer a:hover { color: var(--primary); }
+
+    .social-toggle-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      width: 32px;
+      height: 45px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    }
+
+    .theme-toggle-btn, .lang-btn {
+      background: #334155;
+      color: #fff;
+      border: 1px solid #475569;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+
+    .legal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .legal-card h1 { color: var(--primary); font-size: 1.6rem; margin-top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+    .legal-card h2 { font-size: 1.2rem; margin-top: 25px; color: var(--text-color); }
+    .legal-card p, .legal-card li { font-size: 0.95rem; color: var(--text-muted); }
+    .legal-card ul { padding-right: 20px; }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* إشعار الكوكيز المعياري */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2000;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .cookie-banner p { margin: 0; font-size: 0.85rem; color: #94a3b8; flex: 1; }
+    .cookie-banner a { color: var(--primary); text-decoration: underline; }
+    .cookie-btns { display: flex; gap: 10px; }
+    .cookie-btn-accept { background: var(--accent); color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.85rem; }
+    .cookie-btn-reject { background: #334155; color: #fff; border: 1px solid #475569; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+
+    /* الشات وعناصر التحكم */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 25px; right: 20px;
+      background: var(--primary); color: white;
+      width: 45px; height: 45px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 999;
+    }
+    .chat-widget { position: fixed; bottom: 25px; left: 20px; z-index: 999; }
+    .chat-btn {
+      background: #0088cc; color: white;
+      width: 45px; height: 45px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); position: relative;
+    }
+    .chat-badge {
+      position: absolute; top: -2px; right: -2px;
+      background-color: #e74c3c; color: white; font-size: 0.68rem; font-weight: bold;
+      width: 18px; height: 18px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; border: 2px solid var(--card-bg);
+    }
+    .chat-box {
+      display: none; position: absolute; bottom: 60px; left: 0;
+      width: 260px; background: var(--card-bg); border: 1px solid var(--border-color);
+      border-radius: 10px; padding: 12px; box-shadow: var(--shadow);
+    }
+    .chat-box textarea { width: 100%; height: 60px; border-radius: 6px; border: 1px solid var(--border-color); padding: 6px; background: var(--bg-color); color: var(--text-color); margin: 6px 0; font-size: 0.8rem; }
+    .chat-box button { width: 100%; background: var(--accent); color: white; border: none; padding: 7px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+
+    footer {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 25px 20px 15px 20px;
+      margin-top: 40px;
+    }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
+    .footer-links a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 5px; font-size: 0.85rem; }
+    .footer-bottom { text-align: center; border-top: 1px solid #334155; margin-top: 15px; padding-top: 12px; font-size: 0.75rem; color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+
+  <!-- السوشيال ميديا العائمة مع زر السهم -->
+  <div class="floating-social-container">
+    <div class="social-links-drawer" id="socialDrawer">
+      <a href="https://www.youtube.com/@MajdFatihy" target="_blank"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> يوتيوب</a>
+      <a href="https://www.tiktok.com/@majdfatihy" target="_blank"><i class="fa-brands fa-tiktok"></i> تيك توك</a>
+      <a href="https://www.facebook.com/majdfatihy98" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i> فيسبوك</a>
+      <a href="https://magedfatihy.blogspot.com/" target="_blank"><i class="fa-solid fa-blog" style="color: #ff5722;"></i> مدونة</a>
+      <a href="https://eg.linkedin.com/in/majd-medical-procurement" target="_blank"><i class="fa-brands fa-linkedin" style="color: #0a66c2;"></i> لينكد إن</a>
+      <a href="https://x.com/majdfathy" target="_blank"><i class="fa-brands fa-x-twitter"></i> تويتر (X)</a>
+      <a href="https://in.pinterest.com/MajdFatihy/" target="_blank"><i class="fa-brands fa-pinterest" style="color: #e60023;"></i> بينترست</a>
+    </div>
+    <button class="social-toggle-btn" id="socialToggleBtn" onclick="toggleSocialDrawer()" aria-label="إظهار روابط التواصل">
+      <i class="fa-solid fa-chevron-left" id="socialToggleIcon"></i>
+    </button>
+  </div>
+
+  <header>
+    <a href="index.html" class="logo">
+      <i class="fa-solid fa-gem" aria-hidden="true"></i>
+      <span>دليل أرباحي المعتمد</span>
+    </a>
+    <div class="header-actions">
+      <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn">🌗 تلقائي</button>
+      <button class="lang-btn" onclick="toggleLanguage()" id="lang-toggle-btn">English</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-right"></i> العودة إلى الرئيسية</a>
+    
+    <div class="legal-card">
+      <h1>سياسة الخصوصية</h1>
+      <p>تتبنى منصتنا (دليل أرباحي المعتمد) سياسة صارمة للحفاظ على سرية وخصوصية بيانات زوارنا. توضح وثيقة سياسة الخصوصية هذه أنواع المعلومات التي يتم جمعها وكيفية استخدامها.</p>
+
+      <h2>ملفات تعريف الارتباط (Cookies) وشركاء الإعلانات</h2>
+      <p>نحن نستخدم ملفات تعريف الارتباط لتخزين المعلومات مثل تفضيلات الزوار والصفحات التي قام الزائر بالوصول إليها أو زيارتها. تُستخدم هذه المعلومات لتحسين تجربة المستخدمين من خلال تخصيص محتوى صفحة الويب بناءً على نوع متصفح الزوار أو معلومات أخرى.</p>
+      <ul>
+        <li>تستخدِم شركات الإعلانات الخارجية مثل Google AdSense ملفات تعريف الارتباط (DART) لعرض الإعلانات بناءً على زيارات المستخدمين لموقعنا ومواقع أخرى على الإنترنت.</li>
+        <li>يمكن للمستخدمين إلغاء استخدام ملفات تعريف الارتباط لشبكة Google الإعلانية عن طريق زيارة سياسة الخصوصية الخاصة بإعلانات Google وشبكة المحتوى.</li>
+      </ul>
+
+      <h2>حماية بيانات الزوار</h2>
+      <p>نحن لا نبيع أو نتاجر أو ننقل أي بيانات شخصية خاصة بالزوار إلى أي أطراف خارجية، باستثناء الشركات الموثوقة التي تساعدنا في تشغيل موقعنا الإلكتروني بشرط التزام تلك الأطراف بالحفاظ على سرية المعلومات.</p>
+    </div>
+  </div>
+
+  <!-- إشعار الكوكيز المعياري -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>نحن نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة الاستخدام، وتحليل المرور، وتخصيص الإعلانات. باخترايك "موافق" فإنك توافق على سياسة الخصوصية الخاصة بنا. <a href="privacy.html">المزيد من التفاصيل</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-btn-accept" onclick="acceptCookies()">موافق</button>
+      <button class="cookie-btn-reject" onclick="rejectCookies()">رفض</button>
+    </div>
+  </div>
+
+  <div class="scroll-to-top" id="scrollTopBtn" onclick="scrollToTop()">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <div class="chat-widget">
+    <div class="chat-box" id="chat-box">
+      <strong>أهلاً بك! 👋 كيف يمكننا مساعدتك اليوم؟</strong>
+      <textarea id="chat-msg" placeholder="اكتب استفسارك هنا..."></textarea>
+      <button onclick="sendChatMessage()">إرسال عبر تلجرام</button>
+    </div>
+    <div class="chat-btn" onclick="toggleChat()">
+      <span class="chat-badge" id="chat-badge">1</span>
+      <i class="fa-solid fa-comments"></i>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>عن المنصة</h4>
+        <p style="font-size: 0.8rem; color: #94a3b8;">دليل ومحرك جمع معتمد لجميع منصات الربح الموثوقة من الإنترنت مع إثباتات السحب الحصرية.</p>
+      </div>
+      <div class="footer-links">
+        <h4>الصفحات الأساسية</h4>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">شروط الاستخدام</a>
+        <a href="disclaimer.html">إخلاء المسؤولية</a>
+        <a href="index.html">الرئيسية</a>
+      </div>
+      <div>
+        <h4>تواصل معنا</h4>
+        <p style="font-size: 0.8rem; color: #94a3b8;"><i class="fa-solid fa-envelope"></i> fthymajd3701@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 جميع الحقوق محفوظة | Earn Directory Platform
+    </div>
+  </footer>
+
+  <script>
+    function toggleSocialDrawer() {
+      const drawer = document.getElementById("socialDrawer");
+      const icon = document.getElementById("socialToggleIcon");
+      drawer.classList.toggle("show");
+      const isOpen = drawer.classList.contains("show");
+      icon.className = isOpen ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left";
+    }
+
+    function toggleTheme() {
+      const root = document.documentElement;
+      const btn = document.getElementById("theme-btn");
+      let current = root.getAttribute("data-theme");
+      if(current === "auto" || !current) {
+        root.setAttribute("data-theme", "dark");
+        btn.innerText = "🌙 مظلم";
+      } else if(current === "dark") {
+        root.setAttribute("data-theme", "light");
+        btn.innerText = "☀️ فاتح";
+      } else {
+        root.setAttribute("data-theme", "auto");
+        btn.innerText = "🌗 تلقائي";
+      }
+    }
+
+    function toggleLanguage() {
+      alert("Language toggle template ready.");
+    }
+
+    function toggleChat() {
+      const box = document.getElementById("chat-box");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+      document.getElementById("chat-badge").style.display = "none";
+    }
+
+    function sendChatMessage() {
+      const msg = document.getElementById("chat-msg").value;
+      if(!msg) return;
+      window.open(`https://t.me/MajdEarn?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    window.onscroll = function() {
+      if (document.documentElement.scrollTop > 300) {
+        document.getElementById("scrollTopBtn").style.display = "flex";
+      } else {
+        document.getElementById("scrollTopBtn").style.display = "none";
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function acceptCookies() {
+      document.getElementById("cookieBanner").style.display = "none";
+      localStorage.setItem("cookiesAccepted", "true");
+    }
+
+    function rejectCookies() {
+      document.getElementById("cookieBanner").style.display = "none";
+      localStorage.setItem("cookiesAccepted", "false");
+    }
+
+    if(localStorage.getItem("cookiesAccepted")) {
+      document.getElementById("cookieBanner").style.display = "none";
+    }
+  </script>
+</body>
+</html>
