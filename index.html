@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>دليل منصات الربح المعتمدة والعملات الرقمية | Earn Directory</title>
-	<!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QM4Z5HXFJG"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-QM4Z5HXFJG');
 </script>
   <meta name="description" content="أفضل منصات الربح من الإنترنت، الصنابير، مشاهدة الإعلانات والمهام اليومية مع إثباتات الدفع وطرق السحب الموثوقة.">
@@ -108,9 +107,55 @@
     .logo { font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 8px; }
     .header-actions { display: flex; align-items: center; gap: 12px; }
 
-    .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
-    .social-links a { color: var(--header-text); font-size: 1rem; text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
-    .social-links a:hover { opacity: 1; color: var(--primary); }
+    /* السوشيال ميديا العائمة على اليسار في المنتصف مع زر سهم للإظهار والإخفاء */
+    .floating-social-container {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 1005;
+      display: flex;
+      align-items: center;
+    }
+    .social-links-drawer {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-right: none;
+      padding: 10px;
+      border-radius: 0 10px 10px 0;
+      box-shadow: var(--shadow);
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .social-links-drawer.show {
+      display: flex;
+    }
+    .social-links-drawer a {
+      color: var(--text-color);
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .social-links-drawer a:hover { color: var(--primary); }
+
+    .social-toggle-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      width: 32px;
+      height: 45px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    }
 
     .theme-toggle-btn, .lang-btn {
       background: #334155;
@@ -381,12 +426,12 @@
 
     .scroll-to-top {
       position: fixed;
-      bottom: 85px;
+      bottom: 25px;
       right: 20px;
       background: var(--primary);
       color: white;
-      width: 38px;
-      height: 38px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       display: none;
       align-items: center;
@@ -397,7 +442,7 @@
     }
     body.lang-en .scroll-to-top { right: auto; left: 20px; }
 
-    .chat-widget { position: fixed; bottom: 20px; left: 20px; z-index: 999; }
+    .chat-widget { position: fixed; bottom: 25px; left: 20px; z-index: 999; }
     body.lang-en .chat-widget { left: auto; right: 20px; }
     .chat-btn {
       background: #0088cc;
@@ -468,21 +513,31 @@
 
   <div id="scroll-progress"></div>
 
+  <!-- السوشيال ميديا العائمة على اليسار في المنتصف مع زر سهم للإظهار والإخفاء -->
+  <div class="floating-social-container">
+    <div class="social-links-drawer" id="socialDrawer">
+      <a href="https://www.youtube.com/@MajdFatihy" target="_blank" title="YouTube" aria-label="يوتيوب"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> يوتيوب</a>
+      <a href="https://www.tiktok.com/@majdfatihy" target="_blank" title="TikTok" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i> تيك توك</a>
+      <a href="https://www.facebook.com/majdfatihy98" target="_blank" title="Facebook" aria-label="فيسبوك"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i> فيسبوك</a>
+      <a href="https://magedfatihy.blogspot.com/" target="_blank" title="Blogger" aria-label="مدونة"><i class="fa-solid fa-blog" style="color: #ff5722;"></i> مدونة</a>
+      <a href="https://eg.linkedin.com/in/majd-medical-procurement" target="_blank" title="LinkedIn" aria-label="لينكد إن"><i class="fa-brands fa-linkedin" style="color: #0a66c2;"></i> لينكد إن</a>
+      <a href="https://x.com/majdfathy" target="_blank" title="X-Twitter" aria-label="تويتر (X)"><i class="fa-brands fa-x-twitter"></i> تويتر (X)</a>
+      <a href="https://in.pinterest.com/MajdFatihy/" target="_blank" title="Pinterest" aria-label="بينترست"><i class="fa-brands fa-pinterest" style="color: #e60023;"></i> بينترست</a>
+    </div>
+    <button class="social-toggle-btn" id="socialToggleBtn" onclick="toggleSocialDrawer()" aria-label="إظهار أو إخفاء روابط التواصل الاجتماعي">
+      <i class="fa-solid fa-chevron-left" id="socialToggleIcon"></i>
+    </button>
+  </div>
+
   <header>
     <div class="logo">
-      <i class="fa-solid fa-gem"></i>
-      <span data-key="site-title">دليل أرباحي المعتمد</span>
-    </div>
-
-    <div class="social-links">
-      <a href="https://www.youtube.com/@MajdFatihy" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://www.tiktok.com/@majdfatihy" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="https://www.facebook.com/majdfatihy98" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      <i class="fa-solid fa-gem" aria-hidden="true"></i>
+      <span data-key="site-title"> دليل أرباحي المعتمد</span>
     </div>
 
     <div class="header-actions">
-      <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn">🌗 تلقائي</button>
-      <button class="lang-btn" onclick="toggleLanguage()" id="lang-toggle-btn">English</button>
+      <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn" aria-label="تغيير المظهر">🌗 تلقائي</button>
+      <button class="lang-btn" onclick="toggleLanguage()" id="lang-toggle-btn" aria-label="تغيير اللغة">English</button>
     </div>
   </header>
 
@@ -490,80 +545,80 @@
 
     <div class="dashboard-summary">
       <div class="stat-card">
-        <i class="fa-solid fa-layer-group"></i>
-        <span data-key="stat-total">إجمالي المواقع</span>
-        <strong id="stat-count">0</strong>
+        <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+        <span data-key="stat-total"> إجمالي المواقع</span>
+        <strong id="stat-count"> 0</strong>
       </div>
       <div class="stat-card">
-        <i class="fa-solid fa-calendar-day"></i>
-        <span data-key="stat-daily">إجمالي الربح اليومي ~</span>
-        <strong id="stat-daily" class="price-value">~$0.0000</strong>
+        <i class="fa-solid fa-calendar-day" aria-hidden="true"></i>
+        <span data-key="stat-daily"> إجمالي الربح اليومي ~</span>
+        <strong id="stat-daily" class="price-value"> ~$0.0000</strong>
       </div>
       <div class="stat-card">
-        <i class="fa-solid fa-calendar-alt"></i>
-        <span data-key="stat-monthly">إجمالي الربح الشهري ~</span>
-        <strong id="stat-monthly" class="price-value">~$0.0000</strong>
+        <i class="fa-solid fa-calendar-alt" aria-hidden="true"></i>
+        <span data-key="stat-monthly"> إجمالي الربح الشهري ~</span>
+        <strong id="stat-monthly" class="price-value"> ~$0.0000</strong>
       </div>
       <div class="stat-card">
-        <i class="fa-solid fa-clock"></i>
-        <span data-key="stat-total-time">إجمالي الوقت اليومي ~</span>
-        <strong id="stat-time">~0 ساعة</strong>
+        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+        <span data-key="stat-total-time"> إجمالي الوقت اليومي ~</span>
+        <strong id="stat-time"> ~0 ساعة</strong>
       </div>
       <div class="stat-card">
-        <i class="fa-solid fa-trophy"></i>
-        <span data-key="stat-max">الأعلى ربحاً يومياً</span>
-        <strong id="stat-max-site">-</strong>
+        <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+        <span data-key="stat-max"> الأعلى ربحاً يومياً</span>
+        <strong id="stat-max-site"> -</strong>
       </div>
     </div>
 
     <div class="filter-section">
       <div class="filter-grid">
         <div class="filter-group">
-          <label data-key="filter-cat">الفئة:</label>
+          <label for="category-select" data-key="filter-cat"> الفئة:</label>
           <select id="category-select" onchange="applyFilters()">
-            <option value="all">كل الفئات</option>
-            <option value="faucet">صنابير (Faucets)</option>
-            <option value="ptc">إعلانات PTC</option>
-            <option value="tasks">مهام وفيديوهات</option>
-            <option value="surveys">استطلاعات رأي</option>
-            <option value="affiliate">أفيليت والتسويق (Affiliate)</option>
-            <option value="youtube">يوتيوب (YouTube)</option>
-            <option value="tiktok">تيك توك (TikTok)</option>
-            <option value="social">سوشيال ميديا (Social Media)</option>
+            <option value="all"> كل الفئات</option>
+            <option value="faucet"> صنابير (Faucets)</option>
+            <option value="ptc"> إعلانات PTC</option>
+            <option value="tasks"> مهام وفيديوهات</option>
+            <option value="surveys"> استطلاعات رأي</option>
+            <option value="affiliate"> أفيليت والتسويق (Affiliate)</option>
+            <option value="youtube"> يوتيوب (YouTube)</option>
+            <option value="tiktok"> تيك توك (TikTok)</option>
+            <option value="social"> سوشيال ميديا (Social Media)</option>
           </select>
         </div>
 
         <div class="filter-group">
-          <label data-key="filter-currency">عملة الربح:</label>
+          <label for="currency-select" data-key="filter-currency"> عملة الربح:</label>
           <select id="currency-select" onchange="applyFilters()">
-            <option value="all">جميع العملات</option>
-            <option value="USD">دولار أمريكي (USD)</option>
-            <option value="EUR">يورو (EUR)</option>
-            <option value="RUB">روبل روسي (RUB)</option>
-            <option value="EGP">جنيه مصري (EGP)</option>
-            <option value="BTC">Bitcoin (BTC)</option>
-            <option value="ETH">Ethereum (ETH)</option>
-            <option value="USDT">Tether (USDT)</option>
-            <option value="BNB">Binance Coin (BNB)</option>
-            <option value="SOL">Solana (SOL)</option>
-            <option value="XRP">Ripple (XRP)</option>
-            <option value="ADA">Cardano (ADA)</option>
-            <option value="DOGE">Dogecoin (DOGE)</option>
-            <option value="TRX">TRON (TRX)</option>
-            <option value="LTC">Litecoin (LTC)</option>
+            <option value="all"> جميع العملات</option>
+            <option value="USD"> دولار أمريكي (USD)</option>
+            <option value="EUR"> يورو (EUR)</option>
+            <option value="RUB"> روبل روسي (RUB)</option>
+            <option value="EGP"> جنيه مصري (EGP)</option>
+            <option value="BTC"> Bitcoin (BTC)</option>
+            <option value="ETH"> Ethereum (ETH)</option>
+            <option value="USDT"> Tether (USDT)</option>
+            <option value="BNB"> Binance Coin (BNB)</option>
+            <option value="SOL"> Solana (SOL)</option>
+            <option value="XRP"> Ripple (XRP)</option>
+            <option value="ADA"> Cardano (ADA)</option>
+            <option value="DOGE"> Dogecoin (DOGE)</option>
+            <option value="TRX"> TRON (TRX)</option>
+            <option value="LTC"> Litecoin (LTC)</option>
           </select>
         </div>
 
         <div class="filter-group">
-          <label data-key="filter-min-earn">الحد الأدنى للربح اليومي ($):</label>
+          <label for="earn-range-select" data-key="filter-min-earn"> الحد الأدنى للربح اليومي ($):</label>
           <select id="earn-range-select" onchange="applyFilters()">
-            <option value="0">الكل (بدون حد أدنى)</option>
-            <option value="0.0001">من $0.0001 فأكثر</option>
-            <option value="0.001">من $0.001 فأكثر</option>
-            <option value="0.01">من $0.01 فأكثر</option>
-            <option value="0.1">من $0.10 فأكثر</option>
-            <option value="0.5">من $0.50 فأكثر</option>
-            <option value="1.0">من $1.00 فأكثر</option>
+            <option value="0"> الكل (بدون حد أدنى)</option>
+            <option value="0.0001"> من $0.0001 فأكثر</option>
+            <option value="0.001"> من $0.001 فأكثر</option>
+            <option value="0.01"> من $0.01 فأكثر</option>
+            <option value="0.1"> من $0.10 فأكثر</option>
+            <option value="0.5"> من $0.50 فأكثر</option>
+            <option value="1.0"> من $1.00 فأكثر</option>
           </select>
         </div>
       </div>
@@ -574,37 +629,37 @@
 
   </div>
 
-  <div class="scroll-to-top" id="scrollTopBtn" onclick="scrollToTop()">
-    <i class="fa-solid fa-arrow-up"></i>
+  <div class="scroll-to-top" id="scrollTopBtn" onclick="scrollToTop()" aria-label="الرجوع إلى أعلى الصفحة">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </div>
 
   <div class="chat-widget">
     <div class="chat-box" id="chat-box">
-      <strong data-key="chat-welcome">أهلاً بك! 👋 كيف يمكننا مساعدتك اليوم؟</strong>
-      <textarea id="chat-msg" placeholder="اكتب استفسارك هنا..."></textarea>
-      <button onclick="sendChatMessage()" data-key="chat-send">إرسال عبر تلجرام</button>
+      <strong data-key="chat-welcome"> أهلاً بك! 👋 كيف يمكننا مساعدتك اليوم؟</strong>
+      <textarea id="chat-msg" placeholder="اكتب استفسارك هنا..." aria-label="نص الاستفسار"></textarea>
+      <button onclick="sendChatMessage()" data-key="chat-send"> إرسال عبر تلجرام</button>
     </div>
-    <div class="chat-btn" onclick="toggleChat()">
-      <span class="chat-badge" id="chat-badge">1</span>
-      <i class="fa-solid fa-comments"></i>
+    <div class="chat-btn" onclick="toggleChat()" aria-label="فتح أو إغلاق محادثة الدعم">
+      <span class="chat-badge" id="chat-badge"> 1</span>
+      <i class="fa-solid fa-comments" aria-hidden="true"></i>
     </div>
   </div>
 
   <footer>
     <div class="footer-grid">
       <div>
-        <h4 data-key="footer-about-title">عن المنصة</h4>
-        <p style="font-size: 0.8rem; color: #94a3b8;" data-key="footer-about-desc">دليل ومحرك جمع معتمد لجميع منصات الربح الموثوقة من الإنترنت مع إثباتات السحب الحصرية.</p>
+        <h4 data-key="footer-about-title"> عن المنصة</h4>
+        <p style="font-size: 0.8rem; color: #94a3b8;" data-key="footer-about-desc"> دليل ومحرك جمع معتمد لجميع منصات الربح الموثوقة من الإنترنت مع إثباتات السحب الحصرية.</p>
       </div>
       <div class="footer-links">
-        <h4 data-key="footer-pages-title">الصفحات الأساسية</h4>
-        <a href="#" data-key="link-privacy">سياسة الخصوصية</a>
-        <a href="#" data-key="link-terms">شروط الاستخدام</a>
-        <a href="#" data-key="link-disclaimer">إخلاء المسؤولية</a>
+        <h4 data-key="footer-pages-title"> الصفحات الأساسية</h4>
+        <a href="pags.html" data-key="link-privacy"> سياسة الخصوصية</a>
+        <a href="pags.html" data-key="link-terms"> شروط الاستخدام</a>
+        <a href="pags.html" data-key="link-disclaimer"> إخلاء المسؤولية</a>
       </div>
       <div>
-        <h4 data-key="footer-contact-title">تواصل معنا</h4>
-        <p style="font-size: 0.8rem; color: #94a3b8;"><i class="fa-solid fa-envelope"></i> fthymajd3701@gmail.com</p>
+        <h4 data-key="footer-contact-title"> تواصل معنا</h4>
+        <p style="font-size: 0.8rem; color: #94a3b8;"><i class="fa-solid fa-envelope" aria-hidden="true"></i> fthymajd3701@gmail.com</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -621,7 +676,7 @@
         isTrending: true,
         sites: [ 
 		 
-{id: 306,  name: "luckywatch", 
+{id: 1,  name: "luckywatch", 
       url: "https://luckywatch.pro/u/0zcas", 
       daily: 0.30, 
       currency: "USD", 
@@ -630,10 +685,10 @@
       timeMinutes: 40,
       minWithdraw: "$0.1",
       description: "تطبيق تلقائي لمشاهدة الفيديو والربح مع منصة لسطح المكتب والافضل تطبيق الهاتف لامكانية التشغيل التلقائي.",
-      paymentLinks: ["https://faucetpay.io/r/affiliatesignup", "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", "https://cwallet.com/referralweb/CAzXK2qr", "https://www.okx.com/join/MAJDWEB",], 
+      paymentLinks: ["https://faucetpay.io/r/affiliatesignup", "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", "https://cwallet.com/referralweb/CAzXK2qr", "https://www.okx.com/join/MAJDWEB"], 
       proof: "https://telegram.me/MajdEarn" 
     },
-{"id": 103,"name": "fomoearn",
+{"id": 2,"name": "fomoearn",
   "url": "https://fomoearn.com/r/NZvQDamq",
   "daily": 0.25,
   "currency": "USD",
@@ -649,9 +704,9 @@
     "https://cwallet.com/referralweb/CAzXK2qr",
     "https://www.okx.com/join/MAJDWEB"
   ],
-  "proof": "https://t.me/your_channel/3"
-},
- {"id": 105,"name": "viefaucet",
+  "proof": "https://t.me/your_channel/3"},
+
+ {"id": 4,"name": "viefaucet",
   "url": "https://viefaucet.com?r=653cd638e76a41ee3e179b5f",
   "daily": 0.20,
   "currency": "USD",
@@ -662,11 +717,10 @@
   "description": "اعمل عليه منذ 2023 تربح من مشاهدة الاعلانات والصنبور كل 4 دقائق اضافة الي الهدايا اليومية من خلال اكواد التيليجرام والتحديات ولا تنسي البونص اليومي لرفع قيمة ارباحك اليوميه الموقع يحقق اعلي من 20 سنت بكثير ولكن ذلك الافضل والثابت",
   "paymentLinks": [
    "https://faucetpay.io/r/affiliatesignup",
-    "https://cwallet.com/referralweb/CAzXK2qr",
-  ],
+    "https://cwallet.com/referralweb/CAzXK2qr"],
   "proof": "https://telegram.me/MajdEarn"
 },
-{id: 101,name: "SproutGigs", 
+{id: 5,name: "SproutGigs", 
             url: "https://sproutgigs.com/?a=6d09da18", 
             daily: 2, 
             currency: "USD", 
@@ -677,12 +731,13 @@
             description: "منصة رائدة للعمل الحر المصغر وتنفيذ المهام السريعة مقابل أرباح مرتفعة.",
             paymentLinks: [
               "https://litecoin.org", "https://paypal.com","https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link","https://faucetpay.io/r/affiliatesignup"], 
-            proof: "https://telegram.me/MajdEarn"},]},
+            proof: "https://telegram.me/MajdEarn"}]
+	    },
         {categoryKey: "ptc",
         categoryTitleAr: "منصات الإعلانات والصنابير",
         categoryTitleEn: "PTC & Faucet Sites",
         sites: [
-  {id: 1,name: "faucetpay", 
+  {id: 100,name: "faucetpay", 
             url: "https://faucetpay.io/r/affiliatesignup", 
             daily: 0.15, 
             currency: "USD", 
@@ -697,7 +752,7 @@
     "https://www.okx.com/join/MAJDWEB"], 
             proof: "https://t.me/MajdEarn" 
           },
-			{id: 1, name: "bestchange", 
+  {id: 101,name: "bestchange", 
             url: "https://www.bestchange.com/?p=96287", 
             daily: 1.0, 
             currency: "USD", 
@@ -707,12 +762,12 @@
             minWithdraw: "$1.00",
             description: "موقع ممتاز للربح من خلال الزيارات فقط كل زائر من 1 سنت لاعلي من 10 سنت وعند تكرار الزيارات تحسب عمولات + عمولات المعاملات علي الموقع.",
             paymentLinks: ["https://faucetpay.io/r/affiliatesignup",
-    "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link","https://bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1",
+    "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link","https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1",
     "https://cwallet.com/referralweb/CAzXK2qr",
-    "https://okx.com/join/MAJDWEB"], 
+    "https://www.okx.com/join/MAJDWEB"], 
             proof: "https://t.me/MajdEarn" 
           },
-  {id: 1,name: "earn-trump", 
+  {id: 102,name: "earn-trump", 
             url: "https://earn-trump.com/?r=04acb066b4aa", 
             daily: 0.30, 
             currency: "trump", 
@@ -721,10 +776,10 @@
             timeMinutes: 0.3,
             minWithdraw: "$0.00",
             description: "صنبور تعدين عملة ترامب كل 3 ثواني ",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
             proof: "https://t.me/MajdEarn" 
           },
-  {id: 1,name: "faucetpayz", 
+  {id: 103,name: "faucetpayz", 
             url: "https://faucetpayz.com/ref/MAJDFATIHY", 
             daily: 0.01, 
             currency: "USD", 
@@ -733,10 +788,10 @@
             timeMinutes: 15.0,
             minWithdraw: "$0.00550",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
             proof: "https://t.me/MajdEarn" 
           },
-  {id: 1,name: "kiddyearner", 
+  {id: 104,name: "kiddyearner", 
             url: "https://kiddyearner.com/?r=6a9478ea0b2fa33d32218670", 
             daily: 0.24, 
             currency: "USD", 
@@ -745,10 +800,10 @@
             timeMinutes: 15.0,
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
             proof: "https://t.me/MajdEarn" 
           },
-  {id: 1,name: "limefaucet", 
+  {id: 105,name: "limefaucet", 
             url: "https://limefaucet.com/ref/tvFBxk9c4n7Rpd6X", 
             daily: 0.015, 
             currency: "USD", 
@@ -757,10 +812,10 @@
             timeMinutes: 6.0,
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
             proof: "https://t.me/MajdEarn" 
           },
-  {id: 1,name: "btcadspace", 
+  {id: 106,name: "btcadspace", 
             url: "https://btcadspace.com/ref/majdfatihy", 
             daily: 0.0048, 
             currency: "USD", 
@@ -769,10 +824,10 @@
             timeMinutes: 6.0,
             minWithdraw: "$0.004",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
             proof: "https://t.me/MajdEarn" 
           },
-  	   {id: 1,name: "coinli", 
+  {id: 107,name: "coinli", 
             url: "https://coinli.net/i/16020", 
             daily: 0.03, 
             currency: "USD", 
@@ -781,10 +836,10 @@
             timeMinutes: 5.0,
             minWithdraw: "$0.01",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
             proof: "https://t.me/MajdEarn" 
           }, 
-  { id  : 6,name: "doge-faucet", 
+  { id: 108, name: "doge-faucet", 
             url: "https://beefaucet.org/doge-faucet/?r=fthymajd370@gmail.com", 
             daily: 0.015, 
             currency: "DOGE", 
@@ -793,10 +848,10 @@
             timeMinutes: 1,
             minWithdraw: "$0.00",
             description: "صنبور كل دقيقة والربح المذكور كل 12 ساعه والسحب فوري بدون حد ادني.",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
             proof: "https://t.me/MajdEarn" 
           },
-  { "id": 7, "name": "usdt-faucet",
+  { "id": 109, "name": "usdt-faucet",
     "url": "https://beefaucet.org/usdt-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.018,
     "currency": "USDT",
@@ -808,7 +863,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 8, "name": "trx-faucet",
+  { "id": 110, "name": "trx-faucet",
     "url": "https://beefaucet.org/trx-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.017,
     "currency": "TRX",
@@ -820,7 +875,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 9, "name": "xrp-faucet",
+  { "id": 111, "name": "xrp-faucet",
     "url": "https://beefaucet.org/xrp-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.015,
     "currency": "XRP",
@@ -832,7 +887,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 10, "name": "btc-faucet",
+  { "id": 112, "name": "btc-faucet",
     "url": "https://beefaucet.org/btc-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.000,
     "currency": "BTC",
@@ -844,7 +899,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 11, "name": "eth-faucet",
+  { "id": 113, "name": "eth-faucet",
     "url": "https://beefaucet.org/eth-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.018,
     "currency": "ETH",
@@ -856,7 +911,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 12, "name": "bnb-faucet",
+  { "id": 114, "name": "bnb-faucet",
     "url": "https://beefaucet.org/bnb-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.021,
     "currency": "BNB",
@@ -868,7 +923,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 13, "name": "sol-faucet",
+  { "id": 115, "name": "sol-faucet",
     "url": "https://beefaucet.org/sol-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.018,
     "currency": "SOL",
@@ -880,7 +935,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 14, "name": "usdc-faucet",
+  { "id": 116, "name": "usdc-faucet",
     "url": "https://beefaucet.org/usdc-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.018,
     "currency": "USDC",
@@ -892,7 +947,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 15, "name": "ton-faucet",
+  { "id": 117, "name": "ton-faucet",
     "url": "https://beefaucet.org/ton-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.015,
     "currency": "TON",
@@ -904,7 +959,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 16, "name": "bch-faucet",
+  { "id": 118, "name": "bch-faucet",
     "url": "https://beefaucet.org/bch-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.016,
     "currency": "BCH",
@@ -916,7 +971,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 17, "name": "ada-faucet",
+  { "id": 119, "name": "ada-faucet",
     "url": "https://beefaucet.org/ada-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.017,
     "currency": "ADA",
@@ -928,7 +983,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 18, "name": "ltc-faucet",
+  { "id": 120, "name": "ltc-faucet",
     "url": "https://beefaucet.org/ltc-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.018,
     "currency": "LTC",
@@ -940,7 +995,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 19, "name": "matic-faucet",
+  { "id": 121, "name": "matic-faucet",
     "url": "https://beefaucet.org/matic-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.015,
     "currency": "MATIC",
@@ -952,7 +1007,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 20, "name": "xmr-faucet",
+  { "id": 122, "name": "xmr-faucet",
     "url": "https://beefaucet.org/xmr-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.015,
     "currency": "XMR",
@@ -964,7 +1019,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 21, "name": "xlm-faucet",
+  { "id": 123, "name": "xlm-faucet",
     "url": "https://beefaucet.org/xlm-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.016,
     "currency": "XLM",
@@ -976,7 +1031,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 22, "name": "zec-faucet",
+  { "id": 124, "name": "zec-faucet",
     "url": "https://beefaucet.org/zec-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.022,
     "currency": "ZEC",
@@ -988,7 +1043,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 23, "name": "dash-faucet",
+  { "id": 125, "name": "dash-faucet",
     "url": "https://beefaucet.org/dash-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.025,
     "currency": "DASH",
@@ -1000,7 +1055,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 24, "name": "dgb-faucet",
+  { "id": 126, "name": "dgb-faucet",
     "url": "https://beefaucet.org/dgb-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.017,
     "currency": "DGB",
@@ -1012,7 +1067,7 @@
     "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
     "proof": "https://t.me/MajdEarn"
   },
-  { "id": 25, "name": "fey-faucet",
+  { "id": 127, "name": "fey-faucet",
     "url": "https://beefaucet.org/fey-faucet/?r=fthymajd370@gmail.com",
     "daily": 0.010,
     "currency": "FEY",
@@ -1031,7 +1086,7 @@
         categoryTitleAr: "🤝 قسم الأفيليت والتسويق للمواقع والمنصات",
         categoryTitleEn: "🤝 Affiliate & Trading Platforms",
         sites: [
-          {id: 301,name: "ExpertOption", 
+          {id: 200,name: "ExpertOption", 
             url: "https://expertoption.com", 
             daily: 0.00, 
             currency: "USD", 
@@ -1043,7 +1098,7 @@
             paymentLinks: ["https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", "https://visa.com"], 
             proof: "https://t.me/your_channel/301" 
           },
-          {id: 302,name: "Pocket Option", 
+          {id: 201,name: "Pocket Option", 
             url: "https://pocketoption.com", 
             daily: 0.00, 
             currency: "USD", 
@@ -1055,7 +1110,7 @@
             paymentLinks: ["https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link"], 
             proof: "https://t.me/your_channel/302" 
           },
-          {id: 303,name: "Olymp Trade", 
+          {id: 202,name: "Olymp Trade", 
             url: "https://olymptrade.com", 
             daily: 0.00, 
             currency: "USD", 
@@ -1067,7 +1122,7 @@
             paymentLinks: ["https://skrill.com", "https://visa.com"], 
             proof: "https://t.me/your_channel/303" 
           },
-          {id: 304,name: "Amazon Associates", 
+          {id: 203,name: "Amazon Associates", 
             url: "https://affiliate-program.amazon.com", 
             daily: 0.00, 
             currency: "USD", 
@@ -1079,7 +1134,7 @@
             paymentLinks: ["https://amazon.com", "https://paypal.com"], 
             proof: "https://t.me/your_channel/304" 
           },
-          {id: 305,name: "Noon Affiliate", 
+          {id: 204,name: "Noon Affiliate", 
             url: "https://noon.com", 
             daily: 0.00, 
             currency: "EGP", 
@@ -1097,7 +1152,7 @@
         categoryTitleAr: "🎟️ قسم الربح والتوفير من الكوبونات والخصومات",
         categoryTitleEn: "🎟️ Coupons & Cashback Earning",
         sites: [
-          {id: 401,name: "Letyshops", 
+          {id: 300,name: "Letyshops", 
             url: "https://letyshops.com", 
             daily: 0.00, 
             currency: "USD", 
@@ -1109,7 +1164,7 @@
             paymentLinks: ["https://paypal.com", "https://visa.com"], 
             proof: "https://t.me/your_channel/401" 
           },
-          {id: 402,name: "Aliexpress Deals", 
+          {id: 301,name: "Aliexpress Deals", 
             url: "https://aliexpress.com", 
             daily: 0.00, 
             currency: "USD", 
@@ -1156,7 +1211,7 @@
         categoryTitleEn: "👛 Recommended Crypto Wallets",
         isWalletSection: true,
         sites: [
-          {id: 201,name: "FaucetPay Wallet", 
+          {id: 400,name: "FaucetPay Wallet", 
             url: "https://faucetpay.io/r/affiliatesignup", 
             daily: 0, 
             currency: "BTC", 
@@ -1166,13 +1221,13 @@
             description: "محفظة وسيطة وتجميعية مصغرة لاستقبال العملات الرقمية من الصنابير مجاناً."
           },
 		  
-  {id: 202, name: "Binance", url:
+  {id: 400, name: "Binance", url:
   "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", daily: 0, currency: "USDT", category: "exchange", startDate: "2017-07-14", timeMinutes: 0, description: "منصة عالمية لتداول العملات الرقمية والعقود الآجلة وشراء الكريبتو."},
-  {id: 203, name: "Bybit", url: 
+  {id: 401, name: "Bybit", url: 
 "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", daily: 0, currency: "USDT", category: "exchange", startDate: "2018-03-01", timeMinutes: 0, description: "منصة تداول وتخزين العملات الرقمية وتوفر أدوات متقدمة لتداول المشتقات."},
-  {id: 204, name: "Cwallet", url:
+  {id: 402, name: "Cwallet", url:
   "https://cwallet.com/referralweb/CAzXK2qr", daily: 0, currency: "USDT", category: "wallet", startDate: "2021-01-01", timeMinutes: 1, description: "محفظة رقمية متعددة الشبكات تدعم أدوات التوزيع المجاني والبونص."},
-  {id: 205, name: "OKX", url:
+  {id: 403, name: "OKX", url:
   "https://www.okx.com/join/MAJDWEB", daily: 0, currency: "USDT", category: "exchange", startDate: "2017-05-01", timeMinutes: 0, description: "منصة عالمية رائدة لتداول العملات الرقمية وخدمات الـ Web3."}
 
         ]
@@ -1231,6 +1286,20 @@
       setupScrollEvents();
       preventCopyEvents();
     };
+
+    function toggleSocialDrawer() {
+      const drawer = document.getElementById("socialDrawer");
+      const icon = document.getElementById("socialToggleIcon");
+      drawer.classList.toggle("show");
+      
+      // التبديل بين اتجاه السهم بناءً على حالة الفتح والإغلاق ومع دعم اللغتين (RTL و LTR)
+      const isOpen = drawer.classList.contains("show");
+      if (currentLang === "ar") {
+        icon.className = isOpen ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left";
+      } else {
+        icon.className = isOpen ? "fa-solid fa-chevron-left" : "fa-solid fa-chevron-right";
+      }
+    }
 
     function getSiteAgeText(startDateStr) {
       const start = new Date(startDateStr);
@@ -1318,13 +1387,13 @@
                   <img class="site-icon" src="${siteIconUrl}" alt="${site.name}" onerror="this.src='https://via.placeholder.com/32'">
                   <h3 class="card-title no-copy">${site.name}</h3>
                   <div class="info-icon-wrapper">
-                    <i class="fa-solid fa-circle-info"></i>
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
                     <div class="tooltip-text">${site.description}</div>
                   </div>
                 </div>
 
                 <div class="site-meta-tags">
-                  <span class="meta-tag"><i class="fa-solid fa-business-time"></i> ${ageText}</span>
+                  <span class="meta-tag"><i class="fa-solid fa-business-time" aria-hidden="true"></i> ${ageText}</span>
                 </div>
 
                 <div class="card-actions" style="margin-top: auto;">
@@ -1343,14 +1412,14 @@
 
               visibleLinks.forEach(pUrl => {
                 const pIcon = `https://www.google.com/s2/favicons?domain=${pUrl}&sz=64`;
-                paymentIconsHTML += `<a href="${pUrl}" target="_blank" title="طريقة السحب"><img class="method-icon" src="${pIcon}" alt="method" onerror="this.src='https://via.placeholder.com/32'"></a>`;
+                paymentIconsHTML += `<a href="${pUrl}" target="_blank" title="طريقة السحب" aria-label="طريقة السحب"><img class="method-icon" src="${pIcon}" alt="method" onerror="this.src='https://via.placeholder.com/32'"></a>`;
               });
 
               if (hiddenLinks.length > 0) {
                 let hiddenIconsString = "";
                 hiddenLinks.forEach(pUrl => {
                   const pIcon = `https://www.google.com/s2/favicons?domain=${pUrl}&sz=64`;
-                  hiddenIconsString += `<a href="${pUrl}" target="_blank"><img class="method-icon" src="${pIcon}" alt="method" style="width:20px;height:20px;"></a>`;
+                  hiddenIconsString += `<a href="${pUrl}" target="_blank" aria-label="طريقة سحب إضافية"><img class="method-icon" src="${pIcon}" alt="method" style="width:20px;height:20px;"></a>`;
                 });
 
                 paymentIconsHTML += `
@@ -1368,14 +1437,14 @@
                   <img class="site-icon" src="${siteIconUrl}" alt="${site.name}" onerror="this.src='https://via.placeholder.com/32'">
                   <h3 class="card-title no-copy">${site.name}</h3>
                   <div class="info-icon-wrapper">
-                    <i class="fa-solid fa-circle-info"></i>
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
                     <div class="tooltip-text">${site.description}</div>
                   </div>
                 </div>
 
                 <div class="site-meta-tags">
-                  <span class="meta-tag"><i class="fa-solid fa-business-time"></i> ${ageText}</span>
-                  <span class="meta-tag"><i class="fa-regular fa-clock"></i> ${timeText}</span>
+                  <span class="meta-tag"><i class="fa-solid fa-business-time" aria-hidden="true"></i> ${ageText}</span>
+                  <span class="meta-tag"><i class="fa-regular fa-clock" aria-hidden="true"></i> ${timeText}</span>
                 </div>
 
                 <div class="earnings-info">
@@ -1393,7 +1462,7 @@
 
                 <div class="card-actions">
                   <a href="${site.proof}" target="_blank" class="btn-proof">
-                    <i class="fa-brands fa-telegram"></i> ${currentLang === 'ar' ? 'إثبات الدفع عبر تلجرام' : 'Telegram Proof'}
+                    <i class="fa-brands fa-telegram" aria-hidden="true"></i> ${currentLang === 'ar' ? 'إثبات الدفع عبر تلجرام' : 'Telegram Proof'}
                   </a>
                   <a href="${site.url}" target="_blank" class="btn-visit ${isVisited ? 'visited' : ''}" onclick="markAsVisited(${site.id}, this)">
                     ${currentLang === 'ar' ? 'زيارة الموقع' : 'Visit Site'}
@@ -1500,6 +1569,16 @@
           el.innerText = translations[currentLang][key];
         }
       });
+
+      // ضبط اتجاه السهم عند تبديل اللغة إذا كان القائمة مفتوحة أو مغلقة
+      const drawer = document.getElementById("socialDrawer");
+      const icon = document.getElementById("socialToggleIcon");
+      const isOpen = drawer.classList.contains("show");
+      if (currentLang === "ar") {
+        icon.className = isOpen ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left";
+      } else {
+        icon.className = isOpen ? "fa-solid fa-chevron-left" : "fa-solid fa-chevron-right";
+      }
 
       renderAllSections();
       calculateAndAnimateStats();
