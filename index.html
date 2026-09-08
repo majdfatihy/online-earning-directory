@@ -496,6 +496,39 @@
     }
     .btn-visit.visited { background: var(--visited-color) !important; }
 
+    /* عرض المزيد / إخفاء عند زيادة الكروت عن 10 في القسم */
+    .extra-cards { display: none; }
+    .extra-cards.show { display: contents; }
+
+    .toggle-more-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      border: 2px dashed var(--border-color);
+      background: var(--bg-color);
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 0.8rem;
+      min-height: 100%;
+      user-select: none;
+      transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    }
+    .toggle-more-card:hover {
+      background: rgba(0, 136, 204, 0.08);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .toggle-more-card .toggle-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .toggle-more-card i { font-size: 1.4rem; transition: transform 0.3s ease; }
+    .toggle-more-card.expanded i { transform: rotate(180deg); }
+
     .scroll-to-top {
       position: fixed;
       bottom: 25px;
@@ -1395,6 +1428,7 @@
 
     window.onload = function() {
       renderAllSections();
+      setupShowMoreCards();
       calculateAndAnimateStats();
       setupScrollEvents();
       preventCopyEvents();
@@ -1595,6 +1629,52 @@
       preventCopyEvents();
     }
 
+    function setupShowMoreCards() {
+      const threshold = 10;
+      document.querySelectorAll(".cards-grid").forEach(grid => {
+        const cards = Array.from(grid.children).filter(el => el.classList.contains("card"));
+        if (cards.length <= threshold) return;
+
+        const extraCards = cards.slice(threshold);
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "extra-cards";
+        extraCards.forEach(card => wrapper.appendChild(card));
+
+        const toggleBtn = document.createElement("div");
+        toggleBtn.className = "card toggle-more-card";
+        const labelMore = currentLang === "ar"
+          ? `عرض ${extraCards.length} موقع إضافي`
+          : `Show ${extraCards.length} more`;
+        const labelLess = currentLang === "ar" ? "إخفاء المواقع الإضافية" : "Show less";
+        toggleBtn.innerHTML = `
+          <div class="toggle-inner">
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            <span class="toggle-label">${labelMore}</span>
+          </div>
+        `;
+        toggleBtn.setAttribute("role", "button");
+        toggleBtn.setAttribute("tabindex", "0");
+        toggleBtn.setAttribute("aria-expanded", "false");
+        toggleBtn.dataset.labelMore = labelMore;
+        toggleBtn.dataset.labelLess = labelLess;
+
+        const toggle = () => {
+          const expanded = wrapper.classList.toggle("show");
+          toggleBtn.classList.toggle("expanded", expanded);
+          toggleBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+          toggleBtn.querySelector(".toggle-label").textContent = expanded ? labelLess : labelMore;
+        };
+        toggleBtn.addEventListener("click", toggle);
+        toggleBtn.addEventListener("keydown", e => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+        });
+
+        grid.appendChild(toggleBtn);
+        grid.appendChild(wrapper);
+      });
+    }
+
     function getHostname(url) {
       try {
         return new URL(url).hostname.replace(/^www\./, "");
@@ -1624,8 +1704,9 @@
       const category = document.getElementById("category-select").value.toLowerCase();
       const currency = document.getElementById("currency-select").value.toLowerCase();
       const minEarn = parseFloat(document.getElementById("earn-range-select").value) || 0;
+      const isFiltering = category !== "all" || currency !== "all" || minEarn > 0;
 
-      const cards = document.querySelectorAll(".card");
+      const cards = document.querySelectorAll(".card:not(.toggle-more-card)");
       cards.forEach(card => {
         const cat = (card.getAttribute("data-cat") || "").toLowerCase();
         const curr = (card.getAttribute("data-currency") || "").toLowerCase();
@@ -1639,6 +1720,28 @@
           card.style.display = "flex";
         } else {
           card.style.display = "none";
+        }
+      });
+
+      // لما فلتر شغال، افتح تلقائيًا أي قسم "عرض المزيد" عشان النتائج المطابقة الموجودة جوه ماتفضلش مخفية
+      document.querySelectorAll(".toggle-more-card").forEach(btn => {
+        const wrapper = btn.nextElementSibling;
+        if (!wrapper || !wrapper.classList.contains("extra-cards")) return;
+
+        if (isFiltering) {
+          const wasAlreadyShown = wrapper.classList.contains("show");
+          wrapper.classList.add("show");
+          btn.style.display = "none";
+          if (!wasAlreadyShown) wrapper.dataset.autoExpanded = "true";
+        } else {
+          btn.style.display = "flex";
+          if (wrapper.dataset.autoExpanded === "true") {
+            wrapper.classList.remove("show");
+            btn.classList.remove("expanded");
+            btn.setAttribute("aria-expanded", "false");
+            btn.querySelector(".toggle-label").textContent = btn.dataset.labelMore;
+            delete wrapper.dataset.autoExpanded;
+          }
         }
       });
     }
@@ -1704,6 +1807,7 @@
       }
 
       renderAllSections();
+      setupShowMoreCards();
       calculateAndAnimateStats();
       applyFilters();
     }
@@ -1721,7 +1825,7 @@
     function sendChatMessage() {
       const msg = document.getElementById("chat-msg").value;
       if (!msg) return;
-      window.open(`https://t.me/MajdFatihy?text=${encodeURIComponent(msg)}`, '_blank');
+      window.open(`https://t.me/YOUR_TELEGRAM_USERNAME?text=${encodeURIComponent(msg)}`, '_blank');
     }
   </script>
 </body>
