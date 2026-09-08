@@ -4,14 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>دليل منصات الربح المعتمدة والعملات الرقمية | Earn Directory</title>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QM4Z5HXFJG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QM4Z5HXFJG');
-</script>
+  <!-- Google tag (gtag.js) — يتم تحميله بعد أول تفاعل من الزائر أو بعد تحميل الصفحة بقليل، بدل حجب المسار الحرج (يقلل PageSpeed: Reduce unused JS / Long main-thread tasks) -->
+  <script>
+    (function(){
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'G-QM4Z5HXFJG', {send_page_view:false});
+      var loaded = false;
+      function loadGA(){
+        if (loaded) return; loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QM4Z5HXFJG';
+        document.head.appendChild(s);
+        gtag('event', 'page_view');
+        ['scroll','click','keydown','touchstart','mousemove'].forEach(function(evt){
+          window.removeEventListener(evt, loadGA);
+        });
+      }
+      ['scroll','click','keydown','touchstart','mousemove'].forEach(function(evt){
+        window.addEventListener(evt, loadGA, {once:true, passive:true});
+      });
+      window.addEventListener('load', function(){ setTimeout(loadGA, 3500); });
+    })();
+  </script>
   <meta name="description" content="أفضل منصات الربح من الإنترنت، الصنابير، مشاهدة الإعلانات والمهام اليومية مع إثباتات الدفع وطرق السحب الموثوقة.">
   <meta name="keywords" content="ربح من الانترنت, صنابير, PTC, FaucetPay, Payeer, استطلاعات, عملات رقمية">
   <meta name="author" content="Your Brand">
@@ -38,12 +55,10 @@
   <!-- TODO: لو عندك ملف favicon.ico حقيقي في جذر المستودع هيشتغل تلقائي، لو مش موجود ضيفه -->
   <link rel="icon" href="favicon.ico">
 
-  <!-- FontAwesome Icons: preload بدل تحميل blocking عشان PageSpeed -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- تم الاستغناء نهائياً عن مكتبة FontAwesome (كانت تحمّل ~280KB خطوط لاستخدام 20 أيقونة فقط، وكانت السبب الرئيسي في مشاكل CLS و"Reduce unused CSS" في تقرير PageSpeed). الأيقونات الآن SVG مضمّنة داخل الصفحة (Sprite) بدون أي طلب شبكة خارجي. -->
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://www.google.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
 
 
   <script type="application/ld+json">
@@ -102,9 +117,56 @@
       --border-color: #e2e8f0;
       --shadow: 0 4px 12px rgba(0,0,0,0.05);
       --tooltip-bg: #334155;
+      --glass-bg: rgba(255,255,255,0.55);
     }
 
+    :root, :root[data-theme="auto"], :root[data-theme="dark"] {
+      --glass-bg: rgba(30,41,59,0.45);
+    }
+    @media (prefers-color-scheme: light) {
+      :root[data-theme="auto"] { --glass-bg: rgba(255,255,255,0.55); }
+    }
+
+    /* ثيم مريح للعين: ألوان دافئة، تباين أهدأ من الأسود الكامل، وخط أكبر قليلاً لراحة القارئين ذوي ضعف البصر */
+    :root[data-theme="comfort"] {
+      --bg-color: #f6ecd9;
+      --card-bg: #fbf4e6;
+      --text-color: #3b2c1e;
+      --text-muted: #6e5a44;
+      --primary: #a15c2f;
+      --accent: #4c7a3f;
+      --visited-color: #7c4a9e;
+      --border-color: #e6d6b3;
+      --header-bg: #4a3826;
+      --header-text: #fbf4e6;
+      --shadow: 0 4px 12px rgba(74,56,38,0.12);
+      --tooltip-bg: #4a3826;
+      --glass-bg: rgba(251,244,230,0.6);
+    }
+    :root[data-theme="comfort"] body { font-size: 1.06rem; line-height: 1.75; letter-spacing: 0.01em; }
+    :root[data-theme="comfort"] .card-title { font-size: 1.02rem !important; }
+    :root[data-theme="comfort"] .btn-visit-half, :root[data-theme="comfort"] .btn-explain-half { font-size: 0.86rem; }
+
     * { box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
+
+    /* نظام الأيقونات: SVG مضمّن (Sprite) بدل خطوط أيقونات خارجية — بدون أي طلب شبكة، حجم ثابت دائماً فلا يوجد أي احتمال لإزاحة المحتوى (CLS) */
+    svg.icon {
+      width: 1em;
+      height: 1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: -0.15em;
+      flex-shrink: 0;
+      overflow: visible;
+    }
+    svg.icon.icon-filled { fill: currentColor; stroke: none; }
     html, body {
       max-width: 100%;
       overflow-x: hidden;
@@ -114,7 +176,7 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
-      padding-top: 80px;
+      padding-top: 70px;
       direction: rtl;
     }
     body.lang-en { direction: ltr; }
@@ -155,52 +217,57 @@
       display: flex;
       align-items: center;
     }
+    /* أيقونات فقط بدون نص، بخلفية زجاجية (Blur) تظهر عند التمرير/النقر بدل الخلفية الصلبة */
     .social-links-drawer {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-right: none;
-      border-radius: 0 12px 12px 0;
-      box-shadow: var(--shadow);
+      background: transparent;
+      border: none;
+      box-shadow: none;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
       max-width: 0;
       padding: 0;
       opacity: 0;
       overflow: hidden;
-      white-space: nowrap;
       transition: max-width 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
     }
     .social-links-drawer.show {
-      max-width: 220px;
-      padding: 10px;
+      max-width: 70px;
+      padding: 12px 8px;
       opacity: 1;
     }
-    .social-links-drawer a {
-      color: var(--text-color);
-      font-size: 0.95rem;
-      text-decoration: none;
+    .social-icon-btn {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 50%;
+      color: var(--social-color, var(--primary));
+      background: var(--glass-bg);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      box-shadow: var(--shadow);
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      transition: color 0.2s, background 0.2s, transform 0.2s;
+      justify-content: center;
+      font-size: 1.15rem;
+      text-decoration: none;
+      transition: transform 0.25s ease, backdrop-filter 0.25s ease, box-shadow 0.25s ease;
     }
-    .social-links-drawer a:hover {
-      color: var(--primary);
-      background: rgba(0, 136, 204, 0.08);
-      transform: translateX(4px);
+    .social-icon-btn:hover, .social-icon-btn:focus-visible, .social-icon-btn:active {
+      transform: scale(1.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.28);
     }
-    body.lang-en .social-links-drawer a:hover { transform: translateX(-4px); }
 
+    /* سهم إظهار/إخفاء جذاب بتوهج نابض بدل الشكل الثابت */
     .social-toggle-btn {
-      background: linear-gradient(135deg, var(--accent), #1f9d57);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #fff;
       border: none;
-      width: 32px;
-      height: 45px;
-      border-radius: 0 8px 8px 0;
+      width: 34px;
+      height: 48px;
+      border-radius: 0 14px 14px 0;
       cursor: pointer;
       font-size: 1rem;
       display: flex;
@@ -208,15 +275,16 @@
       justify-content: center;
       box-shadow: 2px 0 8px rgba(0,0,0,0.25);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
-      animation: social-toggle-attention 1.8s ease-in-out 2;
+      animation: social-toggle-glow 2.4s ease-in-out infinite;
     }
-    .social-toggle-btn:hover { transform: scale(1.08); box-shadow: 3px 0 12px rgba(0,0,0,0.3); }
+    .social-toggle-btn:hover { transform: scale(1.1); }
     .social-toggle-btn:active { transform: scale(0.95); }
-    .social-toggle-btn i { transition: transform 0.3s ease; }
+    .social-toggle-btn svg { transition: transform 0.35s ease; }
+    .social-toggle-btn.open svg { transform: rotate(180deg); }
 
-    @keyframes social-toggle-attention {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
+    @keyframes social-toggle-glow {
+      0%, 100% { box-shadow: 2px 0 8px rgba(0,0,0,0.25), 0 0 0 0 rgba(0,136,204,0.35); }
+      50% { box-shadow: 2px 0 8px rgba(0,0,0,0.25), 0 0 0 9px rgba(0,136,204,0); }
     }
 
     .theme-toggle-btn, .lang-btn {
@@ -245,7 +313,7 @@
       text-align: center;
       box-shadow: var(--shadow);
     }
-    .stat-card i { font-size: 1.3rem; color: var(--primary); margin-bottom: 4px; }
+    .stat-card svg.icon { width: 1.3rem; height: 1.3rem; color: var(--primary); margin-bottom: 4px; }
     .stat-card span { font-size: 0.78rem; color: var(--text-muted); display: block; }
     .stat-card strong { font-size: 1.1rem; color: var(--text-color); margin-top: 2px; display: block; }
     .stat-card strong a { color: var(--primary); text-decoration: none; }
@@ -550,10 +618,10 @@
     .chat-widget { position: fixed; bottom: 25px; left: 20px; z-index: 999; }
     body.lang-en .chat-widget { left: auto; right: 20px; }
     .chat-btn {
-      background: #0088cc;
+      background: linear-gradient(135deg, #0088cc, #06b6d4);
       color: white;
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -562,7 +630,36 @@
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       position: relative;
+      border: none;
+      padding: 0;
     }
+    .chat-btn:hover { transform: scale(1.06); }
+    .robot-icon { width: 30px; height: 30px; color: #fff; }
+    .robot-wave-arm { animation: robot-wave 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: 100% 100%; }
+    @keyframes robot-wave {
+      0%, 100% { transform: rotate(0deg); }
+      20% { transform: rotate(-22deg); }
+      40% { transform: rotate(0deg); }
+      60% { transform: rotate(-14deg); }
+    }
+    .chat-send-options { display: flex; gap: 8px; margin-top: 2px; }
+    .chat-send-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      padding: 8px 6px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .chat-send-btn:hover { filter: brightness(1.08); }
+    .chat-send-telegram { background: #0088cc; }
+    .chat-send-whatsapp { background: #25d366; }
 
     .chat-badge {
       position: absolute;
@@ -601,7 +698,114 @@
       box-shadow: var(--shadow);
     }
     .chat-box textarea { width: 100%; height: 60px; border-radius: 6px; border: 1px solid var(--border-color); padding: 6px; background: var(--bg-color); color: var(--text-color); margin: 6px 0; font-size: 0.8rem; }
-    .chat-box button { width: 100%; background: var(--accent); color: white; border: none; padding: 7px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+
+    /* الشريط الإعلاني المتحرك أسفل الهيدر */
+    .marquee-bar {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      padding: 8px 0;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 42px;
+      padding-inline-start: 100%;
+      animation: marquee-scroll 45s linear infinite;
+      will-change: transform;
+    }
+    .marquee-bar:hover .marquee-track, .marquee-bar:focus-within .marquee-track { animation-play-state: paused; }
+    .marquee-track a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .marquee-track img { width: 16px; height: 16px; border-radius: 3px; flex-shrink: 0; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* زر زيارة الموقع مقسوم لنصفين: زيارة + شرح يوتيوب */
+    .visit-actions { display: flex; gap: 6px; }
+    .btn-visit-half, .btn-explain-half {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: white;
+      text-align: center;
+      padding: 7px 4px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.78rem;
+    }
+    .btn-visit-half { background: var(--accent); }
+    .btn-visit-half.visited { background: var(--visited-color); }
+    .btn-explain-half { background: #ff0000; }
+
+    /* زر عائم لطريقة حفظ الموقع للعودة إليه لاحقاً */
+    .save-site-btn {
+      position: fixed;
+      bottom: 90px;
+      left: 20px;
+      z-index: 998;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 1.1rem;
+    }
+    .save-site-btn:hover { transform: scale(1.08); }
+    body.lang-en .save-site-btn { left: auto; right: 20px; }
+
+    .save-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.55);
+      z-index: 1100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .save-modal-overlay.show { display: flex; }
+    .save-modal {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border-radius: 14px;
+      padding: 22px 20px;
+      max-width: 360px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+    .save-modal h3 { margin: 0 0 12px 0; font-size: 1.05rem; padding-inline-end: 20px; }
+    .save-modal ol { margin: 0; padding-inline-start: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; line-height: 1.5; }
+    .save-modal-close {
+      position: absolute;
+      top: 10px;
+      inset-inline-end: 12px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
 
     footer {
       background: var(--header-bg);
@@ -632,6 +836,9 @@
       .cards-grid { gap: 8px; }
       .card { padding: 10px 8px; }
       .chat-box { width: min(260px, calc(100vw - 40px)); }
+      .marquee-track a { font-size: 0.75rem; }
+      .save-site-btn { bottom: 82px; width: 40px; height: 40px; }
+      .btn-visit-half, .btn-explain-half { font-size: 0.7rem; padding: 6px 3px; }
     }
   </style>
 </head>
@@ -647,25 +854,54 @@
 
   <div id="scroll-progress"></div>
 
-  <!-- السوشيال ميديا العائمة على اليسار في المنتصف مع زر سهم للإظهار والإخفاء -->
+  <!-- مكتبة أيقونات SVG مضمّنة (بديل FontAwesome) — لا تُنزّل أي ملفات خارجية ولا تسبب أي إزاحة CLS -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="i-youtube" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M16.6 5.8a4.6 4.6 0 0 1-3.8-4h-3.3v13.4a2.7 2.7 0 1 1-2-2.6v-3.3a6 6 0 1 0 5.3 6V9.9a7.9 7.9 0 0 0 3.8 1V7.6a4.6 4.6 0 0 1-.1-1.8Z"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></symbol>
+    <symbol id="i-blog" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M3 3v3a15 15 0 0 1 15 15h3A18 18 0 0 0 3 3Zm0 7v3a5 5 0 0 1 5 5h3a8 8 0 0 0-8-8Zm2 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5.5V9H8Zm-1.2-11.3a1.4 1.4 0 1 1 0-2.9 1.4 1.4 0 0 1 0 2.9ZM19 19h-2.5v-5c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6V19H10.5V9H13v1.4h.1a2.7 2.7 0 0 1 2.5-1.4c2.6 0 3.1 1.7 3.1 4Z"/></symbol>
+    <symbol id="i-x-twitter" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.9 2h3.3l-7.2 8.2L23.5 22h-6.6l-5.2-6.8L5.7 22H2.4l7.7-8.8L1 2h6.8l4.7 6.2Zm-1.2 18h1.8L7.3 3.9H5.4Z"/></symbol>
+    <symbol id="i-pinterest" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2a10 10 0 0 0-3.6 19.3c0-.8 0-1.7.2-2.6l1.4-6s-.4-.7-.4-1.8c0-1.7 1-3 2.2-3 1 0 1.5.8 1.5 1.7 0 1-.7 2.6-1 4-.3 1.2.6 2.2 1.8 2.2 2.1 0 3.7-2.3 3.7-5.5 0-2.9-2-4.9-5-4.9-3.4 0-5.4 2.6-5.4 5.2 0 1 .4 2.1.9 2.7a.4.4 0 0 1 .1.4l-.3 1.4c-.1.2-.2.3-.4.2-1.5-.7-2.4-2.9-2.4-4.6 0-3.8 2.7-7.2 7.9-7.2 4.1 0 7.4 3 7.4 6.9 0 4.1-2.5 7.4-6.1 7.4a3.1 3.1 0 0 1-2.7-1.4l-.7 2.8c-.3 1-1 2.4-1.4 3.1A10 10 0 1 0 12 2Z"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.3-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 12.5l-5-1.6c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.7.2 1.3 1.3Z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.1-.3.2-.6 0-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5.2-.4v-.4c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s1 2.4 1.1 2.6c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.2-.5-.3Z"/></symbol>
+    <symbol id="i-gem" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6 3h12l4 6-10 12L2 9Zm1.7 2 6.3 3.5L8.9 5Zm3.8 4L12 5.5 9.5 9Zm1.6 0 2.4-3.5L15.1 9ZM17.7 5l-2.6 4L21 9Zm2.5 6h-5.3l4 8Zm-6.7 0H10.5L12 19.5Zm-7.7 0-1.3 0 4 8Z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></symbol>
+    <symbol id="i-calendar-day" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15" r="1.5" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-calendar-range" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M7 15h2M11 15h2M15 15h2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0Z"/><path d="M8 5H5a3 3 0 0 0 3 5M16 5h3a3 3 0 0 1-3 5M9 20h6M12 15v5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-comments" viewBox="0 0 24 24"><path d="M21 12a7 7 0 0 1-7 7H8l-5 3 1.5-4.5A7 7 0 1 1 21 12Z"/></symbol>
+    <symbol id="i-envelope" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6.5 8 6 8-6"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6 2h12a1 1 0 0 1 1 1v19l-7-4-7 4V3a1 1 0 0 1 1-1Z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </svg>
+
+  <!-- السوشيال ميديا العائمة على اليسار في المنتصف: أيقونات فقط بخلفية زجاجية، مع سهم جذاب للإظهار والإخفاء -->
   <div class="floating-social-container">
     <div class="social-links-drawer" id="socialDrawer">
-      <a href="https://www.youtube.com/@MajdFatihy" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="يوتيوب"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> يوتيوب</a>
-      <a href="https://www.tiktok.com/@majdfatihy" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i> تيك توك</a>
-      <a href="https://www.facebook.com/majdfatihy98" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="فيسبوك"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i> فيسبوك</a>
-      <a href="https://magedfatihy.blogspot.com/" target="_blank" rel="noopener noreferrer" title="Blogger" aria-label="مدونة"><i class="fa-solid fa-blog" style="color: #ff5722;"></i> مدونة</a>
-      <a href="https://eg.linkedin.com/in/majd-medical-procurement" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="لينكد إن"><i class="fa-brands fa-linkedin" style="color: #0a66c2;"></i> لينكد إن</a>
-      <a href="https://x.com/majdfathy" target="_blank" rel="noopener noreferrer" title="X-Twitter" aria-label="تويتر (X)"><i class="fa-brands fa-x-twitter"></i> تويتر (X)</a>
-      <a href="https://in.pinterest.com/MajdFatihy/" target="_blank" rel="noopener noreferrer" title="Pinterest" aria-label="بينترست"><i class="fa-brands fa-pinterest" style="color: #e60023;"></i> بينترست</a>
+      <a href="https://www.youtube.com/@MajdFatihy" target="_blank" rel="noopener noreferrer" class="social-icon-btn" style="--social-color:#ff0000" title="YouTube" aria-label="يوتيوب"><svg class="icon" width="20" height="20"><use href="#i-youtube"></use></svg></a>
+      <a href="https://www.tiktok.com/@majdfatihy" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="TikTok" aria-label="تيك توك"><svg class="icon" width="20" height="20"><use href="#i-tiktok"></use></svg></a>
+      <a href="https://www.facebook.com/majdfatihy98" target="_blank" rel="noopener noreferrer" class="social-icon-btn" style="--social-color:#1877f2" title="Facebook" aria-label="فيسبوك"><svg class="icon" width="20" height="20"><use href="#i-facebook"></use></svg></a>
+      <a href="https://magedfatihy.blogspot.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" style="--social-color:#ff5722" title="Blogger" aria-label="مدونة"><svg class="icon" width="20" height="20"><use href="#i-blog"></use></svg></a>
+      <a href="https://eg.linkedin.com/in/majd-medical-procurement" target="_blank" rel="noopener noreferrer" class="social-icon-btn" style="--social-color:#0a66c2" title="LinkedIn" aria-label="لينكد إن"><svg class="icon" width="20" height="20"><use href="#i-linkedin"></use></svg></a>
+      <a href="https://x.com/majdfathy" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="X-Twitter" aria-label="تويتر (X)"><svg class="icon" width="20" height="20"><use href="#i-x-twitter"></use></svg></a>
+      <a href="https://in.pinterest.com/MajdFatihy/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" style="--social-color:#e60023" title="Pinterest" aria-label="بينترست"><svg class="icon" width="20" height="20"><use href="#i-pinterest"></use></svg></a>
     </div>
-    <button class="social-toggle-btn" id="socialToggleBtn" onclick="toggleSocialDrawer()" aria-label="إظهار أو إخفاء روابط التواصل الاجتماعي">
-      <i class="fa-solid fa-chevron-left" id="socialToggleIcon"></i>
+    <button class="social-toggle-btn" id="socialToggleBtn" onclick="toggleSocialDrawer()" aria-label="إظهار أو إخفاء روابط التواصل الاجتماعي" aria-expanded="false">
+      <svg class="icon" id="socialToggleIcon" width="18" height="18"><use href="#i-chevron"></use></svg>
     </button>
   </div>
 
   <header>
     <div class="logo">
-      <i class="fa-solid fa-gem" aria-hidden="true"></i>
+      <svg class="icon icon-filled" width="20" height="20" aria-hidden="true"><use href="#i-gem"></use></svg>
       <span data-key="site-title"> دليل أرباحي المعتمد</span>
     </div>
 
@@ -675,31 +911,36 @@
     </div>
   </header>
 
+  <!-- شريط إعلاني متحرك أسفل الهيدر: رسالة ترحيب/إعلان قابلة للتعديل بسهولة (marqueeMessages بالأسفل) + أهم المواقع بأيقوناتها -->
+  <div class="marquee-bar" id="marqueeBar" role="marquee" aria-label="إعلانات وروابط سريعة">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
   <div class="container">
 
     <div class="dashboard-summary">
       <div class="stat-card">
-        <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+        <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-layers"></use></svg>
         <span data-key="stat-total"> إجمالي المواقع</span>
         <strong id="stat-count"> 0</strong>
       </div>
       <div class="stat-card">
-        <i class="fa-solid fa-calendar-day" aria-hidden="true"></i>
+        <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-calendar-day"></use></svg>
         <span data-key="stat-daily"> إجمالي الربح اليومي ~</span>
         <strong id="stat-daily" class="price-value"> ~$0.0000</strong>
       </div>
       <div class="stat-card">
-        <i class="fa-solid fa-calendar-alt" aria-hidden="true"></i>
+        <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-calendar-range"></use></svg>
         <span data-key="stat-monthly"> إجمالي الربح الشهري ~</span>
         <strong id="stat-monthly" class="price-value"> ~$0.0000</strong>
       </div>
       <div class="stat-card">
-        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+        <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-clock"></use></svg>
         <span data-key="stat-total-time"> إجمالي الوقت اليومي ~</span>
         <strong id="stat-time"> ~0 ساعة</strong>
       </div>
       <div class="stat-card">
-        <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+        <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-trophy"></use></svg>
         <span data-key="stat-max"> الأعلى ربحاً يومياً</span>
         <strong id="stat-max-site"> -</strong>
       </div>
@@ -776,19 +1017,57 @@
   </div>
 
   <div class="scroll-to-top" id="scrollTopBtn" onclick="scrollToTop()" aria-label="الرجوع إلى أعلى الصفحة">
-    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    <svg class="icon" width="18" height="18" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+  </div>
+
+  <!-- زر عائم لطريقة حفظ الموقع للعودة إليه لاحقاً من الكمبيوتر أو الهاتف -->
+  <button class="save-site-btn" id="saveSiteBtn" onclick="openSaveModal()" aria-label="طريقة حفظ الموقع للعودة إليه">
+    <svg class="icon icon-filled" width="18" height="18" aria-hidden="true"><use href="#i-bookmark"></use></svg>
+  </button>
+
+  <div class="save-modal-overlay" id="saveModalOverlay" onclick="closeSaveModal(event)">
+    <div class="save-modal" role="dialog" aria-modal="true" aria-labelledby="saveModalTitle">
+      <button class="save-modal-close" onclick="closeSaveModal()" aria-label="إغلاق">
+        <svg class="icon" width="18" height="18"><use href="#i-close"></use></svg>
+      </button>
+      <h3 id="saveModalTitle"></h3>
+      <div id="saveModalBody"></div>
+    </div>
   </div>
 
   <div class="chat-widget">
     <div class="chat-box" id="chat-box">
       <strong data-key="chat-welcome"> أهلاً بك! 👋 كيف يمكننا مساعدتك اليوم؟</strong>
-      <textarea id="chat-msg" placeholder="اكتب استفسارك هنا..." aria-label="نص الاستفسار"></textarea>
-      <button onclick="sendChatMessage()" data-key="chat-send"> إرسال عبر تلجرام</button>
+      <textarea id="chat-msg" placeholder="اكتب رسالتك هنا (اختياري)..." aria-label="نص الاستفسار"></textarea>
+      <div class="chat-send-options">
+        <button class="chat-send-btn chat-send-telegram" onclick="sendTelegramMessage()">
+          <svg class="icon icon-filled" width="14" height="14"><use href="#i-telegram"></use></svg>
+          <span data-key="chat-send-tg">تيليجرام</span>
+        </button>
+        <button class="chat-send-btn chat-send-whatsapp" onclick="sendWhatsAppMessage()">
+          <svg class="icon icon-filled" width="14" height="14"><use href="#i-whatsapp"></use></svg>
+          <span data-key="chat-send-wa">واتساب</span>
+        </button>
+      </div>
     </div>
-    <div class="chat-btn" onclick="toggleChat()" aria-label="فتح أو إغلاق محادثة الدعم">
+    <button class="chat-btn" onclick="toggleChat()" aria-label="فتح أو إغلاق محادثة الدعم">
       <span class="chat-badge" id="chat-badge"> 1</span>
-      <i class="fa-solid fa-comments" aria-hidden="true"></i>
-    </div>
+      <svg class="robot-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+        <line x1="32" y1="6" x2="32" y2="13" stroke-linecap="round"/>
+        <circle cx="32" cy="4" r="2.6" fill="currentColor" stroke="none"/>
+        <rect x="15" y="13" width="34" height="24" rx="8" fill="currentColor" fill-opacity="0.18"/>
+        <circle cx="25" cy="25" r="3" fill="currentColor" stroke="none"/>
+        <circle cx="39" cy="25" r="3" fill="currentColor" stroke="none"/>
+        <path d="M23 32c5 4 13 4 18 0" stroke-linecap="round"/>
+        <rect x="19" y="39" width="26" height="17" rx="6" fill="currentColor" fill-opacity="0.18"/>
+        <line x1="19" y1="45" x2="10" y2="52" stroke-linecap="round"/>
+        <circle cx="9" cy="53" r="2.4" fill="currentColor" stroke="none"/>
+        <g class="robot-wave-arm">
+          <line x1="45" y1="45" x2="55" y2="34" stroke-linecap="round"/>
+          <circle cx="56" cy="32" r="2.6" fill="currentColor" stroke="none"/>
+        </g>
+      </svg>
+    </button>
   </div>
 
   <footer>
@@ -805,7 +1084,11 @@
       </div>
       <div>
         <h4 data-key="footer-contact-title"> تواصل معنا</h4>
-        <p style="font-size: 0.8rem; color: #94a3b8;"><i class="fa-solid fa-envelope" aria-hidden="true"></i> fthymajd3701@gmail.com</p>
+        <p style="font-size: 0.8rem; color: #94a3b8;">
+          <a href="mailto:fthymajd3701@gmail.com?subject=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%A7%D9%84%D9%85%D9%88%D9%82%D8%B9&body=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D9%84%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D9%85%D9%88%D9%82%D8%B9%D9%83%D9%85%3A%0D%0Ahttps%3A%2F%2Fmajdfatihy.github.io%2Fonline-earning-directory%2F" style="color:#94a3b8; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">
+            <svg class="icon" width="14" height="14" aria-hidden="true"><use href="#i-envelope"></use></svg> fthymajd3701@gmail.com
+          </a>
+        </p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -868,7 +1151,7 @@
 },
 {id: 5,name: "SproutGigs", 
             url: "https://sproutgigs.com/?a=6d09da18", 
-            daily: 2, 
+            daily: 1, 
             currency: "USD", 
             category: "tasks", 
             startDate: "2020-01-17", 
@@ -1392,7 +1675,8 @@
         "filter-currency": "عملة الربح:",
         "filter-min-earn": "الحد الأدنى للربح اليومي ($):",
         "chat-welcome": "أهلاً بك! 👋 كيف يمكننا مساعدتك اليوم؟",
-        "chat-send": "إرسال عبر تلجرام",
+        "chat-send-tg": "تيليجرام",
+        "chat-send-wa": "واتساب",
         "footer-about-title": "عن المنصة",
         "footer-about-desc": "دليل ومحرك جمع معتمد لجميع منصات الربح الموثوقة من الإنترنت مع إثباتات السحب الحصرية.",
         "footer-pages-title": "الصفحات الأساسية",
@@ -1412,7 +1696,8 @@
         "filter-currency": "Currency:",
         "filter-min-earn": "Min Daily Profit ($):",
         "chat-welcome": "Welcome! 👋 How can we help you today?",
-        "chat-send": "Send via Telegram",
+        "chat-send-tg": "Telegram",
+        "chat-send-wa": "WhatsApp",
         "footer-about-title": "About Platform",
         "footer-about-desc": "A verified directory aggregating trusted online earning platforms with exclusive payment proofs.",
         "footer-pages-title": "Main Pages",
@@ -1425,27 +1710,90 @@
 
     let currentLang = "ar";
     let themeState = "auto";
+    const SITE_URL = "https://majdfatihy.github.io/online-earning-directory/";
+
+    // رسائل الشريط المتحرك: أضف عنصر هنا وسيظهر تلقائياً بالشريط أسفل الهيدر (نص + رابط + أيقونة)
+    const marqueeMessages = [
+      { icon: "i-bell", text: { ar: "أهلاً بك في دليل أرباحي المعتمد 👋 تابع قناة إثباتات الدفع على تيليجرام", en: "Welcome to Verified Earn Directory 👋 Follow our payment-proof Telegram channel" }, url: "https://t.me/MajdEarn" }
+    ];
 
     window.onload = function() {
       renderAllSections();
-      setupShowMoreCards();
       calculateAndAnimateStats();
+      buildMarquee();
       setupScrollEvents();
       preventCopyEvents();
     };
 
     function toggleSocialDrawer() {
       const drawer = document.getElementById("socialDrawer");
-      const icon = document.getElementById("socialToggleIcon");
-      drawer.classList.toggle("show");
-      
-      // التبديل بين اتجاه السهم بناءً على حالة الفتح والإغلاق ومع دعم اللغتين (RTL و LTR)
-      const isOpen = drawer.classList.contains("show");
-      if (currentLang === "ar") {
-        icon.className = isOpen ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left";
+      const btn = document.getElementById("socialToggleBtn");
+      const isOpen = drawer.classList.toggle("show");
+      btn.classList.toggle("open", isOpen);
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    function buildMarquee() {
+      const track = document.getElementById("marqueeTrack");
+      if (!track) return;
+      let items = marqueeMessages.map(m => `<a href="${m.url}" target="_blank" rel="noopener noreferrer"><svg class="icon" width="16" height="16" aria-hidden="true"><use href="#${m.icon}"></use></svg>${m.text[currentLang]}</a>`);
+
+      dataset.forEach(category => {
+        if (!category.isTrending) return;
+        category.sites.forEach(site => {
+          const iconUrl = `https://www.google.com/s2/favicons?domain=${site.url}&sz=32`;
+          items.push(`<a href="${site.url}" target="_blank" rel="noopener noreferrer"><img src="${iconUrl}" alt="" width="16" height="16" loading="lazy" decoding="async">${site.name}</a>`);
+        });
+      });
+
+      track.innerHTML = items.join("") + items.join(""); // تكرار القائمة لضمان حركة متصلة بدون فراغ
+    }
+
+    function sendTelegramMessage() {
+      const msg = (document.getElementById("chat-msg").value || "").trim();
+      const greeting = currentLang === "ar" ? "مرحباً، لدي استفسار بخصوص الموقع:" : "Hello, I have a question about the site:";
+      const text = (msg ? msg + "\n\n" : greeting + "\n") + SITE_URL;
+      window.open(`https://t.me/MajdFatihy?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function sendWhatsAppMessage() {
+      const msg = (document.getElementById("chat-msg").value || "").trim();
+      const greeting = currentLang === "ar" ? "مرحباً، لدي استفسار بخصوص الموقع:" : "Hello, I have a question about the site:";
+      const text = (msg ? msg + "\n\n" : greeting + "\n") + SITE_URL;
+      window.open(`https://wa.me/201066732514?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function openSaveModal() {
+      const isAr = currentLang === "ar";
+      const ua = navigator.userAgent || "";
+      const isIOS = /iPhone|iPad|iPod/.test(ua);
+      const isAndroid = /Android/.test(ua);
+      const isMac = /Macintosh/.test(ua) && !isIOS;
+      let steps;
+
+      if (isIOS) {
+        steps = isAr
+          ? ["افتح قائمة المشاركة (المربّع مع السهم لأعلى) أسفل الشاشة", "اختر «إضافة إلى الشاشة الرئيسية»", "اضغط «إضافة» لتظهر أيقونة الموقع على شاشة هاتفك مباشرة"]
+          : ["Open the Share menu (square with an arrow) at the bottom", "Choose 'Add to Home Screen'", "Tap 'Add' — the site icon will appear on your phone"];
+      } else if (isAndroid) {
+        steps = isAr
+          ? ["اضغط على أيقونة القائمة (⋮) أعلى المتصفح", "اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق»", "أكّد الإضافة لتظهر أيقونة الموقع على هاتفك"]
+          : ["Tap the menu icon (⋮) in your browser", "Choose 'Add to Home screen' or 'Install app'", "Confirm — the site icon will appear on your phone"];
       } else {
-        icon.className = isOpen ? "fa-solid fa-chevron-left" : "fa-solid fa-chevron-right";
+        const shortcut = isMac ? "Cmd + D" : "Ctrl + D";
+        steps = isAr
+          ? [`اضغط ${shortcut} لإضافة الموقع للمفضلة مباشرة`, "أو اضغط على أيقونة النجمة ⭐ في شريط العنوان", "ستجد الموقع لاحقاً في قائمة المفضلة (Bookmarks) للعودة إليه بسهولة"]
+          : [`Press ${shortcut} to bookmark this page`, "Or click the ⭐ star icon in the address bar", "You'll find it later in your Bookmarks to return anytime"];
       }
+
+      document.getElementById("saveModalTitle").textContent = isAr ? "احفظ الموقع للعودة إليه بسهولة" : "Save this site for easy access";
+      document.getElementById("saveModalBody").innerHTML = "<ol>" + steps.map(s => `<li>${s}</li>`).join("") + "</ol>";
+      document.getElementById("saveModalOverlay").classList.add("show");
+    }
+
+    function closeSaveModal(e) {
+      if (e && e.target && e.target.id !== "saveModalOverlay") return;
+      document.getElementById("saveModalOverlay").classList.remove("show");
     }
 
     function getSiteAgeText(startDateStr) {
@@ -1502,98 +1850,91 @@
       document.getElementById("stat-max-site").innerHTML = `<a href="${maxSiteUrl}" target="_blank" rel="noopener noreferrer">${maxSiteName} (<span class="price-value">~$${maxDaily.toFixed(2)}</span>)</a>`;
     }
 
-    function renderAllSections() {
-      const container = document.getElementById("dynamic-sections");
-      container.innerHTML = "";
+    // بيانات المواقع "الإضافية" (بعد أول 10 بكل قسم) تُخزَّن هنا ولا تُبنى في الصفحة (DOM) إلا عند الحاجة فعلاً
+    // (يحل مشكلة PageSpeed: Optimize DOM size — كان إجمالي العناصر 1,518 بسبب بناء كل الكروت دفعة واحدة حتى المخفي منها)
+    let categoryExtraSites = {};
+    const CARDS_THRESHOLD = 10;
 
-      const visitedSites = JSON.parse(localStorage.getItem("visitedSites") || "[]");
+    function buildCardHTML(site, isWalletSection, visitedSites) {
+      const siteIconUrl = `https://www.google.com/s2/favicons?domain=${site.url}&sz=64`;
+      const isVisited = visitedSites.includes(site.id);
+      const ageText = getSiteAgeText(site.startDate);
+      const ytSearchUrl = `https://www.youtube.com/@MajdFatihy/search?query=${encodeURIComponent(site.name)}`;
+      const watchLabel = currentLang === 'ar' ? 'الشرح' : 'Watch Guide';
 
-      dataset.forEach(category => {
-        const titleText = currentLang === "ar" ? category.categoryTitleAr : category.categoryTitleEn;
-
-        let sectionHTML = `
-          <div class="category-block" data-category="${category.categoryKey}">
-            <div class="section-header">
-              <h2>${titleText}</h2>
-              ${category.isTrending ? '<span class="badge-trending">Trending</span>' : ''}
-            </div>
-            <div class="cards-grid">
-        `;
-
-        category.sites.forEach(site => {
-          const siteIconUrl = `https://www.google.com/s2/favicons?domain=${site.url}&sz=64`;
-          const isVisited = visitedSites.includes(site.id);
-          const monthly = (site.daily * 30).toFixed(2);
-          const ageText = getSiteAgeText(site.startDate);
-          const timeText = formatMinutes(site.timeMinutes || 15);
-
-          if (category.isWalletSection) {
-            sectionHTML += `
+      if (isWalletSection) {
+        const visitLabel = currentLang === 'ar' ? 'فتح محفظة' : 'Open Wallet';
+        return `
               <div class="card" data-id="${site.id}" data-cat="${site.category}" data-currency="${site.currency}" data-daily="${site.daily}">
                 <div class="card-top">
                   <img class="site-icon" src="${siteIconUrl}" alt="${site.name}" width="22" height="22" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/32'">
                   <h3 class="card-title no-copy"><a href="${site.url}" target="_blank" rel="noopener noreferrer" onclick="markAsVisited(${site.id}, this)">${site.name}</a></h3>
                   <div class="info-icon-wrapper">
-                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <svg class="icon" width="15" height="15" aria-hidden="true"><use href="#i-info"></use></svg>
                     <div class="tooltip-text">${site.description}</div>
                   </div>
                 </div>
 
                 <div class="site-meta-tags">
-                  <span class="meta-tag"><i class="fa-solid fa-business-time" aria-hidden="true"></i> ${ageText}</span>
+                  <span class="meta-tag"><svg class="icon" width="12" height="12" aria-hidden="true"><use href="#i-briefcase"></use></svg> ${ageText}</span>
                 </div>
 
                 <div class="card-actions" style="margin-top: auto;">
-                  <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="btn-visit ${isVisited ? 'visited' : ''}" onclick="markAsVisited(${site.id}, this)">
-                    ${currentLang === 'ar' ? 'فتح محفظة لاستلام الارباح' : 'Open Wallet'}
-                  </a>
+                  <div class="visit-actions">
+                    <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="btn-visit-half ${isVisited ? 'visited' : ''}" onclick="markAsVisited(${site.id}, this)">${visitLabel}</a>
+                    <a href="${ytSearchUrl}" target="_blank" rel="noopener noreferrer" class="btn-explain-half"><svg class="icon icon-filled" width="13" height="13"><use href="#i-youtube"></use></svg> ${watchLabel}</a>
+                  </div>
                 </div>
               </div>
             `;
-          } else {
-            let paymentIconsHTML = "";
-            if (site.paymentLinks && site.paymentLinks.length > 0) {
-              const maxVisible = 5;
-              const visibleLinks = site.paymentLinks.slice(0, maxVisible);
-              const hiddenLinks = site.paymentLinks.slice(maxVisible);
+      }
 
-              visibleLinks.forEach(pUrl => {
-                const pIcon = `https://www.google.com/s2/favicons?domain=${pUrl}&sz=64`;
-                const pName = getHostname(pUrl);
-                paymentIconsHTML += `<a href="${pUrl}" target="_blank" rel="noopener noreferrer" title="طريقة السحب: ${pName}" aria-label="طريقة السحب: ${pName}"><img class="method-icon" src="${pIcon}" alt="${pName}" width="22" height="22" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/32'"></a>`;
-              });
+      const monthly = (site.daily * 30).toFixed(2);
+      const timeText = formatMinutes(site.timeMinutes || 15);
 
-              if (hiddenLinks.length > 0) {
-                let hiddenIconsString = "";
-                hiddenLinks.forEach(pUrl => {
-                  const pIcon = `https://www.google.com/s2/favicons?domain=${pUrl}&sz=64`;
-                  const pName = getHostname(pUrl);
-                  hiddenIconsString += `<a href="${pUrl}" target="_blank" rel="noopener noreferrer" aria-label="طريقة سحب إضافية: ${pName}"><img class="method-icon" src="${pIcon}" alt="${pName}" width="20" height="20" loading="lazy" decoding="async" style="width:20px;height:20px;"></a>`;
-                });
+      let paymentIconsHTML = "";
+      if (site.paymentLinks && site.paymentLinks.length > 0) {
+        const maxVisible = 5;
+        const visibleLinks = site.paymentLinks.slice(0, maxVisible);
+        const hiddenLinks = site.paymentLinks.slice(maxVisible);
 
-                paymentIconsHTML += `
+        visibleLinks.forEach(pUrl => {
+          const pIcon = `https://www.google.com/s2/favicons?domain=${pUrl}&sz=64`;
+          const pName = getHostname(pUrl);
+          paymentIconsHTML += `<a href="${pUrl}" target="_blank" rel="noopener noreferrer" title="طريقة السحب: ${pName}" aria-label="طريقة السحب: ${pName}"><img class="method-icon" src="${pIcon}" alt="${pName}" width="22" height="22" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/32'"></a>`;
+        });
+
+        if (hiddenLinks.length > 0) {
+          let hiddenIconsString = "";
+          hiddenLinks.forEach(pUrl => {
+            const pIcon = `https://www.google.com/s2/favicons?domain=${pUrl}&sz=64`;
+            const pName = getHostname(pUrl);
+            hiddenIconsString += `<a href="${pUrl}" target="_blank" rel="noopener noreferrer" aria-label="طريقة سحب إضافية: ${pName}"><img class="method-icon" src="${pIcon}" alt="${pName}" width="20" height="20" loading="lazy" decoding="async" style="width:20px;height:20px;"></a>`;
+          });
+
+          paymentIconsHTML += `
                   <div class="more-methods-badge">
                     +${hiddenLinks.length}
                     <div class="more-methods-tooltip">${hiddenIconsString}</div>
                   </div>
                 `;
-              }
-            }
+        }
+      }
 
-            sectionHTML += `
+      return `
               <div class="card" data-id="${site.id}" data-cat="${site.category}" data-currency="${site.currency}" data-daily="${site.daily}">
                 <div class="card-top">
                   <img class="site-icon" src="${siteIconUrl}" alt="${site.name}" width="22" height="22" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/32'">
                   <h3 class="card-title no-copy"><a href="${site.url}" target="_blank" rel="noopener noreferrer" onclick="markAsVisited(${site.id}, this)">${site.name}</a></h3>
                   <div class="info-icon-wrapper">
-                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <svg class="icon" width="15" height="15" aria-hidden="true"><use href="#i-info"></use></svg>
                     <div class="tooltip-text">${site.description}</div>
                   </div>
                 </div>
 
                 <div class="site-meta-tags">
-                  <span class="meta-tag"><i class="fa-solid fa-business-time" aria-hidden="true"></i> ${ageText}</span>
-                  <span class="meta-tag"><i class="fa-regular fa-clock" aria-hidden="true"></i> ${timeText}</span>
+                  <span class="meta-tag"><svg class="icon" width="12" height="12" aria-hidden="true"><use href="#i-briefcase"></use></svg> ${ageText}</span>
+                  <span class="meta-tag"><svg class="icon" width="12" height="12" aria-hidden="true"><use href="#i-clock"></use></svg> ${timeText}</span>
                 </div>
 
                 <div class="earnings-info">
@@ -1611,68 +1952,90 @@
 
                 <div class="card-actions">
                   <a href="${site.proof}" target="_blank" rel="noopener noreferrer" class="btn-proof">
-                    <i class="fa-brands fa-telegram" aria-hidden="true"></i> ${currentLang === 'ar' ? 'إثبات الدفع عبر تلجرام' : 'Telegram Proof'}
+                    <svg class="icon icon-filled" width="13" height="13" aria-hidden="true"><use href="#i-telegram"></use></svg> ${currentLang === 'ar' ? 'إثبات الدفع عبر تلجرام' : 'Telegram Proof'}
                   </a>
-                  <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="btn-visit ${isVisited ? 'visited' : ''}" onclick="markAsVisited(${site.id}, this)">
-                    ${currentLang === 'ar' ? 'زيارة الموقع' : 'Visit Site'}
-                  </a>
+                  <div class="visit-actions">
+                    <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="btn-visit-half ${isVisited ? 'visited' : ''}" onclick="markAsVisited(${site.id}, this)">${currentLang === 'ar' ? 'زيارة الموقع' : 'Visit Site'}</a>
+                    <a href="${ytSearchUrl}" target="_blank" rel="noopener noreferrer" class="btn-explain-half"><svg class="icon icon-filled" width="13" height="13"><use href="#i-youtube"></use></svg> ${watchLabel}</a>
+                  </div>
                 </div>
               </div>
             `;
-          }
+    }
+
+    function renderAllSections() {
+      const container = document.getElementById("dynamic-sections");
+      container.innerHTML = "";
+      categoryExtraSites = {};
+
+      const visitedSites = JSON.parse(localStorage.getItem("visitedSites") || "[]");
+
+      dataset.forEach((category, catIndex) => {
+        const titleText = currentLang === "ar" ? category.categoryTitleAr : category.categoryTitleEn;
+
+        let sectionHTML = `
+          <div class="category-block" data-category="${category.categoryKey}">
+            <div class="section-header">
+              <h2>${titleText}</h2>
+              ${category.isTrending ? '<span class="badge-trending">Trending</span>' : ''}
+            </div>
+            <div class="cards-grid" data-cat-index="${catIndex}">
+        `;
+
+        const visibleSites = category.sites.slice(0, CARDS_THRESHOLD);
+        const extraSites = category.sites.slice(CARDS_THRESHOLD);
+
+        visibleSites.forEach(site => {
+          sectionHTML += buildCardHTML(site, category.isWalletSection, visitedSites);
         });
+
+        if (extraSites.length > 0) {
+          const labelMore = currentLang === "ar" ? `عرض ${extraSites.length} موقع إضافي` : `Show ${extraSites.length} more`;
+          const labelLess = currentLang === "ar" ? "إخفاء المواقع الإضافية" : "Show less";
+          sectionHTML += `
+              <div class="card toggle-more-card" data-cat-index="${catIndex}" data-label-more="${labelMore}" data-label-less="${labelLess}"
+                   onclick="toggleExtraCards(${catIndex})" role="button" tabindex="0"
+                   onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleExtraCards(${catIndex});}" aria-expanded="false">
+                <div class="toggle-inner">
+                  <svg class="icon" width="18" height="18" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+                  <span class="toggle-label">${labelMore}</span>
+                </div>
+              </div>
+              <div class="extra-cards" data-cat-index="${catIndex}" data-rendered="false"></div>
+          `;
+          categoryExtraSites[catIndex] = { sites: extraSites, isWalletSection: !!category.isWalletSection };
+        }
 
         sectionHTML += `</div></div>`;
         container.innerHTML += sectionHTML;
       });
-      
+
       preventCopyEvents();
     }
 
-    function setupShowMoreCards() {
-      const threshold = 10;
-      document.querySelectorAll(".cards-grid").forEach(grid => {
-        const cards = Array.from(grid.children).filter(el => el.classList.contains("card"));
-        if (cards.length <= threshold) return;
+    // يبني كروت المواقع "الإضافية" فقط عند أول طلب فعلي لها (نقر أو فلترة) بدل بنائها كلها من البداية
+    function ensureExtraRendered(catIndex) {
+      const wrapper = document.querySelector(`.extra-cards[data-cat-index="${catIndex}"]`);
+      if (wrapper && wrapper.dataset.rendered !== "true") {
+        const data = categoryExtraSites[catIndex];
+        if (data) {
+          const visitedSites = JSON.parse(localStorage.getItem("visitedSites") || "[]");
+          wrapper.innerHTML = data.sites.map(s => buildCardHTML(s, data.isWalletSection, visitedSites)).join("");
+          wrapper.dataset.rendered = "true";
+          preventCopyEvents();
+        }
+      }
+      return wrapper;
+    }
 
-        const extraCards = cards.slice(threshold);
-
-        const wrapper = document.createElement("div");
-        wrapper.className = "extra-cards";
-        extraCards.forEach(card => wrapper.appendChild(card));
-
-        const toggleBtn = document.createElement("div");
-        toggleBtn.className = "card toggle-more-card";
-        const labelMore = currentLang === "ar"
-          ? `عرض ${extraCards.length} موقع إضافي`
-          : `Show ${extraCards.length} more`;
-        const labelLess = currentLang === "ar" ? "إخفاء المواقع الإضافية" : "Show less";
-        toggleBtn.innerHTML = `
-          <div class="toggle-inner">
-            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-            <span class="toggle-label">${labelMore}</span>
-          </div>
-        `;
-        toggleBtn.setAttribute("role", "button");
-        toggleBtn.setAttribute("tabindex", "0");
-        toggleBtn.setAttribute("aria-expanded", "false");
-        toggleBtn.dataset.labelMore = labelMore;
-        toggleBtn.dataset.labelLess = labelLess;
-
-        const toggle = () => {
-          const expanded = wrapper.classList.toggle("show");
-          toggleBtn.classList.toggle("expanded", expanded);
-          toggleBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
-          toggleBtn.querySelector(".toggle-label").textContent = expanded ? labelLess : labelMore;
-        };
-        toggleBtn.addEventListener("click", toggle);
-        toggleBtn.addEventListener("keydown", e => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
-        });
-
-        grid.appendChild(toggleBtn);
-        grid.appendChild(wrapper);
-      });
+    function toggleExtraCards(catIndex) {
+      const wrapper = ensureExtraRendered(catIndex);
+      const btn = document.querySelector(`.toggle-more-card[data-cat-index="${catIndex}"]`);
+      if (!wrapper || !btn) return;
+      const expanded = wrapper.classList.toggle("show");
+      btn.classList.toggle("expanded", expanded);
+      btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+      btn.querySelector(".toggle-label").textContent = expanded ? btn.dataset.labelLess : btn.dataset.labelMore;
     }
 
     function getHostname(url) {
@@ -1706,6 +2069,13 @@
       const minEarn = parseFloat(document.getElementById("earn-range-select").value) || 0;
       const isFiltering = category !== "all" || currency !== "all" || minEarn > 0;
 
+      // عند تفعيل أي فلتر، ابنِ الكروت "الإضافية" أولاً (إن لم تكن مبنية بعد) حتى تشملها نتائج البحث
+      if (isFiltering) {
+        document.querySelectorAll(".extra-cards").forEach(wrapper => {
+          ensureExtraRendered(wrapper.dataset.catIndex);
+        });
+      }
+
       const cards = document.querySelectorAll(".card:not(.toggle-more-card)");
       cards.forEach(card => {
         const cat = (card.getAttribute("data-cat") || "").toLowerCase();
@@ -1725,8 +2095,8 @@
 
       // لما فلتر شغال، افتح تلقائيًا أي قسم "عرض المزيد" عشان النتائج المطابقة الموجودة جوه ماتفضلش مخفية
       document.querySelectorAll(".toggle-more-card").forEach(btn => {
-        const wrapper = btn.nextElementSibling;
-        if (!wrapper || !wrapper.classList.contains("extra-cards")) return;
+        const wrapper = document.querySelector(`.extra-cards[data-cat-index="${btn.dataset.catIndex}"]`);
+        if (!wrapper) return;
 
         if (isFiltering) {
           const wasAlreadyShown = wrapper.classList.contains("show");
@@ -1746,22 +2116,22 @@
       });
     }
 
+    // دورة الثيمات: تلقائي > مظلم > فاتح > مريح للعين > تلقائي...
+    const themeLabels = {
+      auto:    { ar: "🌗 تلقائي", en: "🌗 Auto" },
+      dark:    { ar: "🌙 مظلم", en: "🌙 Dark" },
+      light:   { ar: "☀️ فاتح", en: "☀️ Light" },
+      comfort: { ar: "📖 مريح للعين", en: "📖 Eye Comfort" }
+    };
+    const themeOrder = ["auto", "dark", "light", "comfort"];
+
     function toggleTheme() {
       const root = document.documentElement;
       const btn = document.getElementById("theme-btn");
-      if (themeState === "auto") {
-        themeState = "dark";
-        root.setAttribute("data-theme", "dark");
-        btn.innerText = "🌙 مظلم";
-      } else if (themeState === "dark") {
-        themeState = "light";
-        root.setAttribute("data-theme", "light");
-        btn.innerText = "☀️ فاتح";
-      } else {
-        themeState = "auto";
-        root.setAttribute("data-theme", "auto");
-        btn.innerText = "🌗 تلقائي";
-      }
+      const nextIndex = (themeOrder.indexOf(themeState) + 1) % themeOrder.length;
+      themeState = themeOrder[nextIndex];
+      root.setAttribute("data-theme", themeState);
+      btn.innerText = themeLabels[themeState][currentLang];
     }
 
     function setupScrollEvents() {
@@ -1796,19 +2166,11 @@
         }
       });
 
-      // ضبط اتجاه السهم عند تبديل اللغة إذا كان القائمة مفتوحة أو مغلقة
-      const drawer = document.getElementById("socialDrawer");
-      const icon = document.getElementById("socialToggleIcon");
-      const isOpen = drawer.classList.contains("show");
-      if (currentLang === "ar") {
-        icon.className = isOpen ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left";
-      } else {
-        icon.className = isOpen ? "fa-solid fa-chevron-left" : "fa-solid fa-chevron-right";
-      }
+      document.getElementById("theme-btn").innerText = themeLabels[themeState][currentLang];
 
       renderAllSections();
-      setupShowMoreCards();
       calculateAndAnimateStats();
+      buildMarquee();
       applyFilters();
     }
 
@@ -1822,11 +2184,6 @@
       }
     }
 
-    function sendChatMessage() {
-      const msg = document.getElementById("chat-msg").value;
-      if (!msg) return;
-      window.open(`https://t.me/YOUR_TELEGRAM_USERNAME?text=${encodeURIComponent(msg)}`, '_blank');
-    }
   </script>
 </body>
 </html>
