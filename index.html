@@ -72,6 +72,10 @@
     }
 
     * { box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
     body {
       font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg-color);
@@ -104,8 +108,9 @@
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
-    .logo { font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 8px; }
-    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .logo { font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .logo span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .header-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 
     /* السوشيال ميديا العائمة على اليسار في المنتصف مع زر سهم للإظهار والإخفاء */
     .floating-social-container {
@@ -267,6 +272,7 @@
     .info-icon-wrapper .tooltip-text {
       visibility: hidden;
       width: 180px;
+      max-width: calc(100vw - 32px);
       background-color: var(--tooltip-bg);
       color: #fff;
       text-align: center;
@@ -313,9 +319,12 @@
       margin: 0 !important; 
       padding: 0 !important;
       width: auto !important;
-      flex: 0 0 auto !important;
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
       text-align: center !important;
-      white-space: nowrap !important;
+      white-space: normal !important;
+      overflow-wrap: break-word !important;
+      word-break: break-word !important;
     }
 
     .no-copy {
@@ -351,7 +360,7 @@
     .more-methods-tooltip {
       visibility: hidden;
       width: max-content;
-      max-width: 200px;
+      max-width: min(200px, calc(100vw - 32px));
       background-color: var(--tooltip-bg);
       color: #fff;
       text-align: center;
@@ -507,6 +516,17 @@
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
     .footer-links a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 5px; font-size: 0.85rem; }
     .footer-bottom { text-align: center; border-top: 1px solid #334155; margin-top: 15px; padding-top: 12px; font-size: 0.75rem; color: #94a3b8; }
+
+    @media (max-width: 480px) {
+      header { padding: 0 10px; }
+      .logo { font-size: 1rem; gap: 6px; }
+      .logo span { max-width: 38vw; }
+      .header-actions { gap: 6px; }
+      .theme-toggle-btn, .lang-btn { padding: 5px 7px; font-size: 0.72rem; }
+      .cards-grid { gap: 8px; }
+      .card { padding: 10px 8px; }
+      .chat-box { width: min(260px, calc(100vw - 40px)); }
+    }
   </style>
 </head>
 <body>
@@ -648,7 +668,7 @@
   <footer>
     <div class="footer-grid">
       <div>
-        <h4 data-key="footer-about-title"> عن المنصة</h4>
+        <h4 data-key="footer-about-title">عن المنصة</h4>
         <p style="font-size: 0.8rem; color: #94a3b8;" data-key="footer-about-desc"> دليل ومحرك جمع معتمد لجميع منصات الربح الموثوقة من الإنترنت مع إثباتات السحب الحصرية.</p>
       </div>
       <div class="footer-links">
@@ -685,7 +705,7 @@
       timeMinutes: 40,
       minWithdraw: "$0.1",
       description: "تطبيق تلقائي لمشاهدة الفيديو والربح مع منصة لسطح المكتب والافضل تطبيق الهاتف لامكانية التشغيل التلقائي.",
-      paymentLinks: ["https://faucetpay.io/r/affiliatesignup", "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", "https://cwallet.com/referralweb/CAzXK2qr", "https://www.okx.com/join/MAJDWEB"], 
+      paymentLinks: ["https://faucetpay.io/r/affiliatesignup", "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", "https://cwallet.com/referralweb/CAzXK2qr", "https://www.okx.com/join/MAJDWEB",], 
       proof: "https://telegram.me/MajdEarn" 
     },
 {"id": 2,"name": "fomoearn",
@@ -717,7 +737,7 @@
   "description": "اعمل عليه منذ 2023 تربح من مشاهدة الاعلانات والصنبور كل 4 دقائق اضافة الي الهدايا اليومية من خلال اكواد التيليجرام والتحديات ولا تنسي البونص اليومي لرفع قيمة ارباحك اليوميه الموقع يحقق اعلي من 20 سنت بكثير ولكن ذلك الافضل والثابت",
   "paymentLinks": [
    "https://faucetpay.io/r/affiliatesignup",
-    "https://cwallet.com/referralweb/CAzXK2qr"],
+    "https://cwallet.com/referralweb/CAzXK2qr",],
   "proof": "https://telegram.me/MajdEarn"
 },
 {id: 5,name: "SproutGigs", 
@@ -731,7 +751,7 @@
             description: "منصة رائدة للعمل الحر المصغر وتنفيذ المهام السريعة مقابل أرباح مرتفعة.",
             paymentLinks: [
               "https://litecoin.org", "https://paypal.com","https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link","https://faucetpay.io/r/affiliatesignup"], 
-            proof: "https://telegram.me/MajdEarn"}]
+            proof: "https://telegram.me/MajdEarn"},]
 	    },
         {categoryKey: "ptc",
         categoryTitleAr: "منصات الإعلانات والصنابير",
@@ -776,7 +796,7 @@
             timeMinutes: 0.3,
             minWithdraw: "$0.00",
             description: "صنبور تعدين عملة ترامب كل 3 ثواني ",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 103,name: "faucetpayz", 
@@ -788,7 +808,7 @@
             timeMinutes: 15.0,
             minWithdraw: "$0.00550",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 104,name: "kiddyearner", 
@@ -800,7 +820,7 @@
             timeMinutes: 15.0,
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 105,name: "limefaucet", 
@@ -812,7 +832,7 @@
             timeMinutes: 6.0,
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 106,name: "btcadspace", 
@@ -824,7 +844,7 @@
             timeMinutes: 6.0,
             minWithdraw: "$0.004",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 107,name: "coinli", 
@@ -836,7 +856,7 @@
             timeMinutes: 5.0,
             minWithdraw: "$0.01",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
             proof: "https://t.me/MajdEarn" 
           }, 
   { id: 108, name: "doge-faucet", 
@@ -848,7 +868,7 @@
             timeMinutes: 1,
             minWithdraw: "$0.00",
             description: "صنبور كل دقيقة والربح المذكور كل 12 ساعه والسحب فوري بدون حد ادني.",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup"], 
+            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
             proof: "https://t.me/MajdEarn" 
           },
   { "id": 109, "name": "usdt-faucet",
@@ -860,7 +880,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور USDT كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup",],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 110, "name": "trx-faucet",
@@ -1087,7 +1107,7 @@
         categoryTitleEn: "🤝 Affiliate & Trading Platforms",
         sites: [
           {id: 200,name: "ExpertOption", 
-            url: "https://expertoption-track.com/119223252", 
+            url: "https://expertoption.com", 
             daily: 0.00, 
             currency: "USD", 
             category: "affiliate", 
