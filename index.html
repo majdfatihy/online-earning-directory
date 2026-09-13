@@ -699,37 +699,6 @@
     }
     .chat-box textarea { width: 100%; height: 60px; border-radius: 6px; border: 1px solid var(--border-color); padding: 6px; background: var(--bg-color); color: var(--text-color); margin: 6px 0; font-size: 0.8rem; }
 
-    /* الشريط الإعلاني المتحرك أسفل الهيدر */
-    .marquee-bar {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      padding: 8px 0;
-      white-space: nowrap;
-    }
-    .marquee-track {
-      display: inline-flex;
-      gap: 42px;
-      padding-inline-start: 100%;
-      animation: marquee-scroll 45s linear infinite;
-      will-change: transform;
-    }
-    .marquee-bar:hover .marquee-track, .marquee-bar:focus-within .marquee-track { animation-play-state: paused; }
-    .marquee-track a {
-      color: #fff;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-    .marquee-track img { width: 16px; height: 16px; border-radius: 3px; flex-shrink: 0; }
-    @keyframes marquee-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-100%); }
-    }
-
     /* زر زيارة الموقع مقسوم لنصفين: زيارة + شرح يوتيوب */
     .visit-actions { display: flex; gap: 6px; }
     .btn-visit-half, .btn-explain-half {
@@ -836,7 +805,6 @@
       .cards-grid { gap: 8px; }
       .card { padding: 10px 8px; }
       .chat-box { width: min(260px, calc(100vw - 40px)); }
-      .marquee-track a { font-size: 0.75rem; }
       .save-site-btn { bottom: 82px; width: 40px; height: 40px; }
       .btn-visit-half, .btn-explain-half { font-size: 0.7rem; padding: 6px 3px; }
     }
@@ -910,13 +878,6 @@
       <button class="lang-btn" onclick="toggleLanguage()" id="lang-toggle-btn" aria-label="تغيير اللغة">English</button>
     </div>
   </header>
-
-  <!-- شريط إعلاني متحرك أسفل الهيدر: رسالة ترحيب/إعلان قابلة للتعديل بسهولة (marqueeMessages بالأسفل) + أهم المواقع بأيقوناتها -->
-  <div class="marquee-bar" id="marqueeBar" role="marquee" aria-label="إعلانات وروابط سريعة">
-    <div class="marquee-track" id="marqueeTrack">
-	
-	</div>
-  </div>
 
   <div class="container">
 
@@ -1150,15 +1111,9 @@
     let themeState = "auto";
     const SITE_URL = "https://majdfatihy.github.io/online-earning-directory/";
 
-    // رسائل الشريط المتحرك: أضف عنصر هنا وسيظهر تلقائياً بالشريط أسفل الهيدر (نص + رابط + أيقونة)
-    const marqueeMessages = [
-      { icon: "i-bell", text: { ar: "أهلاً بك في دليل أرباحي المعتمد 👋 تابع قناة إثباتات الدفع على تيليجرام", en: "Welcome to Verified Earn Directory 👋 Follow our payment-proof Telegram channel" }, url: "https://t.me/MajdEarn" }
-    ];
-
     window.onload = function() {
       renderAllSections();
       calculateAndAnimateStats();
-      buildMarquee();
       setupScrollEvents();
       preventCopyEvents();
     };
@@ -1169,22 +1124,6 @@
       const isOpen = drawer.classList.toggle("show");
       btn.classList.toggle("open", isOpen);
       btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    }
-
-    function buildMarquee() {
-      const track = document.getElementById("marqueeTrack");
-      if (!track) return;
-      let items = marqueeMessages.map(m => `<a href="${m.url}" target="_blank" rel="noopener noreferrer"><svg class="icon" width="16" height="16" aria-hidden="true"><use href="#${m.icon}"></use></svg>${m.text[currentLang]}</a>`);
-
-      dataset.forEach(category => {
-        if (!category.isTrending) return;
-        category.sites.forEach(site => {
-          const iconUrl = `https://www.google.com/s2/favicons?domain=${site.url}&sz=32`;
-          items.push(`<a href="${site.url}" target="_blank" rel="noopener noreferrer"><img src="${iconUrl}" alt="" width="16" height="16" loading="lazy" decoding="async">${site.name}</a>`);
-        });
-      });
-
-      track.innerHTML = items.join("") + items.join(""); // تكرار القائمة لضمان حركة متصلة بدون فراغ
     }
 
     function sendTelegramMessage() {
@@ -1608,7 +1547,6 @@
 
       renderAllSections();
       calculateAndAnimateStats();
-      buildMarquee();
       applyFilters();
     }
 
