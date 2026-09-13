@@ -24,7 +24,7 @@
       timeMinutes: 40,
       minWithdraw: "$0.1",
       description: "تطبيق تلقائي لمشاهدة الفيديو والربح مع منصة لسطح المكتب والافضل تطبيق الهاتف لامكانية التشغيل التلقائي.",
-      paymentLinks: ["https://faucetpay.io/r/affiliatesignup", "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", "https://cwallet.com/referralweb/CAzXK2qr", "https://www.okx.com/join/MAJDWEB",], 
+      paymentLinks: ["faucetpay", "binance", "bybit", "cwallet", "okx",], 
       proof: "https://telegram.me/MajdEarn" 
     },
 {"id": 2,"name": "fomoearn",
@@ -37,11 +37,11 @@
   "minWithdraw": "$0.00",
   "description": "تطبيق تلقائي لمشاهدة الفيديو والربح مع منصة لسطح المكتب والافضل تطبيق الهاتف لامكانية التشغيل التلقائي اسرع من لاكي واتش ويفضل العمل علي الاثنان معا.",
   "paymentLinks": [
-    "https://paypal.com",
-    "https://faucetpay.io/r/affiliatesignup",
-    "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link","https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1",
-    "https://cwallet.com/referralweb/CAzXK2qr",
-    "https://www.okx.com/join/MAJDWEB"],
+    "paypal",
+    "faucetpay",
+    "binance","bybit",
+    "cwallet",
+    "okx"],
   "proof": "https://t.me/your_channel/3"},
 
  {"id": 4,"name": "viefaucet",
@@ -54,8 +54,8 @@
   "minWithdraw": "$0.005",
   "description": "اعمل عليه منذ 2023 تربح من مشاهدة الاعلانات والصنبور كل 4 دقائق اضافة الي الهدايا اليومية من خلال اكواد التيليجرام والتحديات ولا تنسي البونص اليومي لرفع قيمة ارباحك اليوميه الموقع يحقق اعلي من 20 سنت بكثير ولكن ذلك الافضل والثابت",
   "paymentLinks": [
-   "https://faucetpay.io/r/affiliatesignup",
-    "https://cwallet.com/referralweb/CAzXK2qr",],
+   "faucetpay",
+    "cwallet",],
   "proof": "https://telegram.me/MajdEarn"
 },
 {id: 5,name: "SproutGigs", 
@@ -68,7 +68,7 @@
             minWithdraw: "$5.00",
             description: "منصة رائدة للعمل الحر المصغر وتنفيذ المهام السريعة مقابل أرباح مرتفعة.",
             paymentLinks: [
-              "https://litecoin.org", "https://paypal.com","https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link","https://faucetpay.io/r/affiliatesignup"], 
+              "litecoin", "paypal","binance","faucetpay"], 
             proof: "https://telegram.me/MajdEarn"},
 	
 {"id": 6,name: "Food Fight", 
@@ -80,7 +80,7 @@
     timeMinutes: 20,
     minWithdraw: "$0.05",
     description: "لعبة تصويب السكاكين نحو الطعام الممتعة لجمع نقاط Bling وتحويلها مباشرة إلى بيتكوين أو إيثريوم.",
-    paymentLinks: ["https://coinbase.com", "https://paypal.com"],
+    paymentLinks: ["coinbase", "paypal"],
     proof: "https://telegram.me/MajdEarn"},
   		
 	]},
@@ -97,10 +97,10 @@
             timeMinutes: 15,
             minWithdraw: "$0.00",
             description: "موقع ومحفظة في نفس الوقت وضعت لك الافضل ربحا وثبات عليه وهي اعلانات PTC المضمونة وهناك طرق اخري للربح من عليه.",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",
-    "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link","https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1",
-    "https://cwallet.com/referralweb/CAzXK2qr",
-    "https://www.okx.com/join/MAJDWEB"], 
+            paymentLinks: ["faucetpay",
+    "binance","bybit",
+    "cwallet",
+    "okx"], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 101,name: "bestchange", 
@@ -112,10 +112,10 @@
             timeMinutes: 1,
             minWithdraw: "$1.00",
             description: "موقع ممتاز للربح من خلال الزيارات فقط كل زائر من 1 سنت لاعلي من 10 سنت وعند تكرار الزيارات تحسب عمولات + عمولات المعاملات علي الموقع.",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",
-    "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link","https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1",
-    "https://cwallet.com/referralweb/CAzXK2qr",
-    "https://www.okx.com/join/MAJDWEB"], 
+            paymentLinks: ["faucetpay",
+    "binance","bybit",
+    "cwallet",
+    "okx"], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 102,name: "earn-trump", 
@@ -127,7 +127,7 @@
             timeMinutes: 0.3,
             minWithdraw: "$0.00",
             description: "صنبور تعدين عملة ترامب كل 3 ثواني ",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["faucetpay",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 103,name: "faucetpayz", 
@@ -139,7 +139,7 @@
             timeMinutes: 15.0,
             minWithdraw: "$0.00550",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["faucetpay",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 104,name: "kiddyearner", 
@@ -151,7 +151,7 @@
             timeMinutes: 15.0,
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["faucetpay",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 105,name: "limefaucet", 
@@ -163,7 +163,7 @@
             timeMinutes: 6.0,
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["faucetpay",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 106,name: "btcadspace", 
@@ -175,7 +175,7 @@
             timeMinutes: 6.0,
             minWithdraw: "$0.004",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["faucetpay",], 
             proof: "https://t.me/MajdEarn" 
           },
   {id: 107,name: "coinli", 
@@ -187,7 +187,7 @@
             timeMinutes: 5.0,
             minWithdraw: "$0.01",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["faucetpay",], 
             proof: "https://t.me/MajdEarn" 
           }, 
   { id: 108, name: "doge-faucet", 
@@ -199,7 +199,7 @@
             timeMinutes: 1,
             minWithdraw: "$0.00",
             description: "صنبور كل دقيقة والربح المذكور كل 12 ساعه والسحب فوري بدون حد ادني.",
-            paymentLinks: ["https://faucetpay.io/r/affiliatesignup",], 
+            paymentLinks: ["faucetpay",], 
             proof: "https://t.me/MajdEarn" 
           },
   { "id": 109, "name": "usdt-faucet",
@@ -211,7 +211,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور USDT كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup",],
+    "paymentLinks": ["faucetpay",],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 110, "name": "trx-faucet",
@@ -223,7 +223,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور TRX كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 111, "name": "xrp-faucet",
@@ -235,7 +235,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور XRP كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 112, "name": "btc-faucet",
@@ -247,7 +247,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور BTC كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 113, "name": "eth-faucet",
@@ -259,7 +259,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور ETH كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 114, "name": "bnb-faucet",
@@ -271,7 +271,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور BNB كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 115, "name": "sol-faucet",
@@ -283,7 +283,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور SOL كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 116, "name": "usdc-faucet",
@@ -295,7 +295,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور USDC كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 117, "name": "ton-faucet",
@@ -307,7 +307,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور TON كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 118, "name": "bch-faucet",
@@ -319,7 +319,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور BCH كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 119, "name": "ada-faucet",
@@ -331,7 +331,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور ADA كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 120, "name": "ltc-faucet",
@@ -343,7 +343,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور LTC كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 121, "name": "matic-faucet",
@@ -355,7 +355,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور MATIC كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 122, "name": "xmr-faucet",
@@ -367,7 +367,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور XMR كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 123, "name": "xlm-faucet",
@@ -379,7 +379,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور XLM كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 124, "name": "zec-faucet",
@@ -391,7 +391,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور ZEC كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 125, "name": "dash-faucet",
@@ -403,7 +403,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور DASH كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 126, "name": "dgb-faucet",
@@ -415,7 +415,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور DGB كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   },
   { "id": 127, "name": "fey-faucet",
@@ -427,7 +427,7 @@
     "timeMinutes": 1,
     "minWithdraw": "$0.00",
     "description": "صنبور FEY كل دقيقة والسحب فوري على FaucetPay بدون حد ادني.",
-    "paymentLinks": ["https://faucetpay.io/r/affiliatesignup"],
+    "paymentLinks": ["faucetpay"],
     "proof": "https://t.me/MajdEarn"
   }
 
@@ -440,15 +440,15 @@
 				url: "https://bln.gg/KQJ-PT9-BFK",
 				daily: 0.10,
 				currency: "USD",
-				category: "game",
+				category: "games",
 				startDate: "2020-01-13",
 				timeMinutes: 1,
 				minWithdraw: "$00.03",
 				description: "برنامج أفيليت منصات التداول والخيارات لتسويق الخدمات وجذب العملاء.",
 				paymentLinks: [
-				"https://www.paypal.com",
-				"https://www.coinbase.com",
-				"https://www.walletofsatoshi.com"
+				"paypal",
+				"coinbase",
+				"walletofsatoshi"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -456,15 +456,15 @@
 				url: "https://bln.gg/2QM-498-XSK",
 				daily: 0.10,
 				currency: "USD",
-				category: "game",
+				category: "games",
 				startDate: "2020-01-13",
 				timeMinutes: 1,
 				minWithdraw: "$00.03",
 				description: "تطبيق Ethereum Blast للربح اليومي مع سحب فوري.",
 				paymentLinks: [
-				"https://www.paypal.com",
-				"https://www.coinbase.com",
-				"https://www.walletofsatoshi.com"
+				"paypal",
+				"coinbase",
+				"walletofsatoshi"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -472,15 +472,15 @@
 				url: "https://bln.gg/Y7F-W7W-MJQ",
 				daily: 0.10,
 				currency: "USD",
-				category: "game",
+				category: "games",
 				startDate: "2020-01-13",
 				timeMinutes: 1,
 				minWithdraw: "$00.03",
 				description: "تطبيق Dungeon Bitcoin Blast للربح اليومي مع سحب فوري.",
 				paymentLinks: [
-				"https://www.paypal.com",
-				"https://www.coinbase.com",
-				"https://www.walletofsatoshi.com"
+				"paypal",
+				"coinbase",
+				"walletofsatoshi"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -488,15 +488,15 @@
 				url: "https://bln.gg/DRW-GG9-0BX",
 				daily: 0.10,
 				currency: "USD",
-				category: "game",
+				category: "games",
 				startDate: "2020-01-13",
 				timeMinutes: 1,
 				minWithdraw: "$00.03",
 				description: "تطبيق Sweet Bitcoin للربح اليومي مع سحب فوري.",
 				paymentLinks: [
-				"https://www.paypal.com",
-				"https://www.coinbase.com",
-				"https://www.walletofsatoshi.com"
+				"paypal",
+				"coinbase",
+				"walletofsatoshi"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -504,15 +504,15 @@
 				url: "https://bln.gg/3GM-29W-BK5",
 				daily: 0.10,
 				currency: "USD",
-				category: "game",
+				category: "games",
 				startDate: "2020-01-13",
 				timeMinutes: 1,
 				minWithdraw: "$00.03",
 				description: "تطبيق Bitcoin Pop للربح اليومي مع سحب فوري.",
 				paymentLinks: [
-				"https://www.paypal.com",
-				"https://www.coinbase.com",
-				"https://www.walletofsatoshi.com"
+				"paypal",
+				"coinbase",
+				"walletofsatoshi"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -520,15 +520,15 @@
 				url: "https://bln.gg/SD9-5XZ-H2A",
 				daily: 0.10,
 				currency: "USD",
-				category: "game",
+				category: "games",
 				startDate: "2020-01-13",
 				timeMinutes: 1,
 				minWithdraw: "$00.03",
 				description: "تطبيق Bitcoin Blocks للربح اليومي مع سحب فوري.",
 				paymentLinks: [
-				"https://www.paypal.com",
-				"https://www.coinbase.com",
-				"https://www.walletofsatoshi.com"
+				"paypal",
+				"coinbase",
+				"walletofsatoshi"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -536,15 +536,15 @@
 				url: "https://bln.gg/TE9-E10-EV0",
 				daily: 0.10,
 				currency: "USD",
-				category: "game",
+				category: "games",
 				startDate: "2020-01-13",
 				timeMinutes: 1,
 				minWithdraw: "$00.03",
 				description: "تطبيق Bitcoin Blast للربح اليومي مع سحب فوري.",
 				paymentLinks: [
-				"https://www.paypal.com",
-				"https://www.coinbase.com",
-				"https://www.walletofsatoshi.com"
+				"paypal",
+				"coinbase",
+				"walletofsatoshi"
 				],
 				proof: "https://t.me/your_channel/301"
 			}
@@ -563,10 +563,10 @@
             timeMinutes: 1,
             minWithdraw: "$10.00",
             description: "برنامج أفيليت منصات التداول والخيارات لتسويق الخدمات وجذب العملاء.",
-               paymentLinks: ["https://faucetpay.io/r/affiliatesignup", "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", "https://cwallet.com/referralweb/CAzXK2qr", "https://www.okx.com/join/MAJDWEB",], 
+               paymentLinks: ["faucetpay", "binance", "bybit", "cwallet", "okx",], 
 				proof: "https://telegram.me/MajdEarn" 
           },
-		  {id: 200,name: "headway", 
+		  {id: 205,name: "headway", 
             url: "https://headway.partners/promo/bonus-150/?hwp=b161ef", 
             daily: 0.00, 
             currency: "USD", 
@@ -575,7 +575,7 @@
             timeMinutes: 1,
             minWithdraw: "$1.00",
             description: "برنامج أفيليت منصات التداول والخيارات لتسويق الخدمات وجذب العملاء.",
-               paymentLinks: ["https://faucetpay.io/r/affiliatesignup", "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", "https://cwallet.com/referralweb/CAzXK2qr", "https://www.okx.com/join/MAJDWEB",], 
+               paymentLinks: ["faucetpay", "binance", "bybit", "cwallet", "okx",], 
 				proof: "https://telegram.me/MajdEarn" 
           },
           {id: 201,name: "Pocket Option", 
@@ -587,7 +587,7 @@
             timeMinutes: 1,
             minWithdraw: "$10.00",
             description: "تسويق بالعمولة لمنصة تداول شهيرة مع نسب أرباح عالية.",
-            paymentLinks: ["https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link"], 
+            paymentLinks: ["binance"], 
             proof: "https://t.me/your_channel/302" 
           },
           {id: 202,name: "Olymp Trade", 
@@ -599,7 +599,7 @@
             timeMinutes: 1,
             minWithdraw: "$10.00",
             description: "برنامج شركاء أوليمب تريد لتحقيق عمولات مستمرة من المتداولين.",
-            paymentLinks: ["https://skrill.com", "https://visa.com"], 
+            paymentLinks: ["skrill", "visa"], 
             proof: "https://t.me/your_channel/303" 
           },
           {id: 203,name: "Amazon Associates", 
@@ -611,7 +611,7 @@
             timeMinutes: 1,
             minWithdraw: "$10.00",
             description: "أكبر برنامج تسويق بالعمولة لبيع المنتجات والسلع عبر أمازون.",
-            paymentLinks: ["https://amazon.com", "https://paypal.com"], 
+            paymentLinks: ["amazon", "paypal"], 
             proof: "https://t.me/your_channel/304" 
           },
           {id: 204,name: "Noon Affiliate", 
@@ -623,7 +623,7 @@
             timeMinutes: 1,
             minWithdraw: "$100.00",
             description: "برنامج نون للتسويق بالعمولة في المنطقة العربية ومنتجات المتجر.",
-            paymentLinks: ["https://noon.com", "https://vodafone.com"], 
+            paymentLinks: ["noon", "vodafone"], 
             proof: "https://t.me/your_channel/305" 
           },
 		  { "id": 701, "name": "RedotPay",
@@ -637,7 +637,7 @@
 				minWithdraw: "$00.00",
 				description: "بطاقة فيزا وافتراضية للتدفقات المالية والعملات الرقمية.",
 				paymentLinks: [
-				"https://url.hk/i/ar/rs8k8"
+				"redotpay"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -652,7 +652,7 @@
 				minWithdraw: "$00.00",
 				description: "تطبيق للحصول على فيزا افتراضية للشراء والتسوق عبر الإنترنت.",
 				paymentLinks: [
-				"https://getrizon.sng.link/Eshdf/1cro/dfwn?ref=XAAUEUQ&_forward_params=2"
+				"rizon"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -667,7 +667,7 @@
 				minWithdraw: "$00.00",
 				description: "منصة للاستثمار والتداول في البورصة وصناديق الاستثمار.",
 				paymentLinks: [
-				"https://thndr.app"
+				"thndr"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -682,7 +682,7 @@
 				minWithdraw: "$10.00",
 				description: "منصة تخزين سحابي توفر مساحات مجانية وبرامج إحالة للربح كل مستخدم رينج 12 الي 25 سنت علي حسب الدولة.",
 				paymentLinks: [
-				"https://www.terabox.com"
+				"terabox"
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -697,7 +697,7 @@
 				minWithdraw: "$00.00",
 				description: "حساب بنكي أمريكي وبطاقة فيزا لاستلام الأموال وتحويلها دولياً.",
 				paymentLinks: [
-				"https://grey.co"
+				"grey"
 				],
 				proof: "https://t.me/your_channel/301"
 			}
@@ -716,7 +716,7 @@
             timeMinutes: 1,
             minWithdraw: "$5.00",
             description: "موقع كاش باك وتوفير واسترداد أموال عند التسوق من المتاجر الكبرى.",
-            paymentLinks: ["https://paypal.com", "https://visa.com"], 
+            paymentLinks: ["paypal", "visa"], 
             proof: "https://t.me/your_channel/401" 
           },
           {id: 301,name: "Aliexpress Deals", 
@@ -728,7 +728,7 @@
             timeMinutes: 1,
             minWithdraw: "$10.00",
             description: "برنامج الكوبونات والعروض الترويجية لمنتجات علي إكسبريس.",
-            paymentLinks: ["https://visa.com"], 
+            paymentLinks: ["visa"], 
             proof: "https://t.me/your_channel/402" 
           }
         ]
@@ -746,9 +746,9 @@
             timeMinutes: 1,
             minWithdraw: "$0.00",
             description: "منصة تعليمية ضخمة لشراء كورسات وتطوير مهارات البرمجة والتسويق.",
-            paymentLinks: ["https://paypal.com", "https://visa.com"]
+            paymentLinks: ["paypal", "visa"]
           },
-		  {id: 501,name: "nzmly Courses", 
+		  {id: 503,name: "nzmly Courses", 
             url: "https://nzmly.to/BFsJhgjs", 
             daily: 0, 
             currency: "EGP", 
@@ -758,16 +758,16 @@
             minWithdraw: "$2.00",
             description: "منصة تعليمية ضخمة لشراء كورسات وتطوير مهارات البرمجة والتسويق.",
            paymentLinks: [
-  "https://www.instapay.eg",
-  "https://visa.com",
-  "https://mastercard.com",
-  "https://stripe.com",
-  "https://vodafone.com.eg",
-  "https://orange.eg",
-  "https://etisalat.eg",
-  "https://we.eg",
-  "https://fawry.com",
-  "https://paypal.com",]
+  "instapay",
+  "visa",
+  "mastercard",
+  "stripe",
+  "vodafone_eg",
+  "orange_eg",
+  "etisalat_eg",
+  "we_eg",
+  "fawry",
+  "paypal",]
           },
           {id: 502,name: "Fiverr Services", 
             url: "https://fiverr.com", 
@@ -778,7 +778,7 @@
             timeMinutes: 1,
             minWithdraw: "$10.00",
             description: "شراء وبيع الخدمات المصغرة الاحترافية لدعم وتطوير مشاريعك.",
-            paymentLinks: ["https://paypal.com", "https://payoneer.com"]
+            paymentLinks: ["paypal", "payoneer"]
           }
         ]
       },
@@ -797,7 +797,7 @@
             description: "محفظة وسيطة وتجميعية مصغرة لاستقبال العملات الرقمية من الصنابير مجاناً."
           },
 		  
-  {id: 400, name: "Binance", url:
+  {id: 404, name: "Binance", url:
   "https://www.binance.com/register?ref=AFFILIATE1&utm_medium=app_share_link", daily: 0, currency: "USDT", category: "exchange", startDate: "2017-07-14", timeMinutes: 0, description: "منصة عالمية لتداول العملات الرقمية والعقود الآجلة وشراء الكريبتو."},
   {id: 401, name: "Bybit", url: 
 "https://www.bybitglobal.com/ar-SA/sign-up?affiliate_id=118303&group_id=0&group_type=1", daily: 0, currency: "USDT", category: "exchange", startDate: "2018-03-01", timeMinutes: 0, description: "منصة تداول وتخزين العملات الرقمية وتوفر أدوات متقدمة لتداول المشتقات."},
@@ -805,10 +805,10 @@
   "https://cwallet.com/referralweb/CAzXK2qr", daily: 0, currency: "USDT", category: "wallet", startDate: "2021-01-01", timeMinutes: 1, description: "محفظة رقمية متعددة الشبكات تدعم أدوات التوزيع المجاني والبونص."},
   {id: 403, name: "OKX", url:
   "https://www.okx.com/join/MAJDWEB", daily: 0, currency: "USDT", category: "exchange", startDate: "2017-05-01", timeMinutes: 0, description: "منصة عالمية رائدة لتداول العملات الرقمية وخدمات الـ Web3."},
-{id: 402, name: "btse", url:
-  "https://www.btse.com/referral/ijSyv37p", daily: 0, currency: "USDT", category: "wallet", startDate: "2002-03-29", timeMinutes: 1, description: "محفظة رقمية متعددة الشبكات تدعم أدوات التوزيع المجاني والبونص."},
-   {id: 403, name: "Sweat", url:
-  "https://swe.at/c/BEgvxVbpo3", daily: 0, currency: "USDT", category: "exchange", startDate: "2022-01-01", timeMinutes: 0, description: "منصة عالمية رائدة لتداول العملات الرقمية وخدمات الـ Web3."}
+{id: 405, name: "btse", url:
+  "https://www.btse.com/referral/ijSyv37p", daily: 0, currency: "USDT", category: "wallet", startDate: "2002-03-29", timeMinutes: 1, description: "منصة لتداول وتخزين العملات الرقمية توفر أيضاً مكافآت ترحيبية وبرنامج إحالة."},
+   {id: 406, name: "Sweat", url:
+  "https://swe.at/c/BEgvxVbpo3", daily: 0, currency: "USDT", category: "wallet", startDate: "2022-01-01", timeMinutes: 0, description: "تطبيق يحوّل خطواتك اليومية إلى عملة SWEAT الرقمية القابلة للتحويل والسحب."}
         ]
       }
     ];

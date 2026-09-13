@@ -348,6 +348,77 @@
       color: var(--text-color);
     }
 
+    /* صندوق البحث داخل الموقع */
+    .search-section { margin-bottom: 12px; }
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0 10px;
+    }
+    .search-box .search-icon { color: var(--text-muted); flex-shrink: 0; }
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      padding: 10px 8px;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      min-width: 0;
+    }
+    .search-clear-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .search-clear-btn:hover { background: rgba(0,0,0,0.06); color: var(--text-color); }
+
+    mark.search-highlight {
+      background: #ffe066;
+      color: #2c2200;
+      padding: 0 1px;
+      border-radius: 2px;
+    }
+
+    .search-suggest-box {
+      margin-top: 10px;
+      background: var(--bg-color);
+      border: 1px dashed var(--primary);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    .search-suggest-box p { margin: 0 0 8px 0; font-size: 0.85rem; color: var(--text-muted); }
+    .search-suggest-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .search-suggest-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .search-suggest-btn:hover { filter: brightness(1.08); }
+    .search-suggest-yt-btn { background: #ff0000; }
+
+    .category-block.search-hidden { display: none; }
+
     .section-header {
       display: flex;
       align-items: center;
@@ -849,6 +920,7 @@
     <symbol id="i-bookmark" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6 2h12a1 1 0 0 1 1 1v19l-7-4-7 4V3a1 1 0 0 1 1-1Z"/></symbol>
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
   </svg>
 
   <!-- السوشيال ميديا العائمة على اليسار في المنتصف: أيقونات فقط بخلفية زجاجية، مع سهم جذاب للإظهار والإخفاء -->
@@ -910,65 +982,40 @@
     </div>
 
     <div class="filter-section">
+      <div class="search-section">
+        <div class="search-box">
+          <svg class="icon search-icon" width="18" height="18" aria-hidden="true"><use href="#i-search"></use></svg>
+          <input type="text" id="site-search-input" class="search-input" data-key-placeholder="search-placeholder" placeholder="ابحث في الموقع... (اسم الموقع، القسم، الوصف)" oninput="onSearchInput()" aria-label="بحث في الموقع" autocomplete="off">
+          <button type="button" id="search-clear-btn" class="search-clear-btn" onclick="clearSearch()" aria-label="مسح البحث" style="display:none;">
+            <svg class="icon" width="14" height="14" aria-hidden="true"><use href="#i-close"></use></svg>
+          </button>
+        </div>
+        <div id="search-suggest-box" class="search-suggest-box" style="display:none;">
+          <p id="search-suggest-text"></p>
+          <div class="search-suggest-actions">
+            <button type="button" id="search-suggest-btn" class="search-suggest-btn" onclick="goToGoogleSearch()">
+              <svg class="icon" width="14" height="14" aria-hidden="true"><use href="#i-search"></use></svg>
+              <span id="search-suggest-btn-label"></span>
+            </button>
+            <button type="button" id="search-suggest-yt-btn" class="search-suggest-btn search-suggest-yt-btn" onclick="goToYouTubeSearch()">
+              <svg class="icon icon-filled" width="14" height="14" aria-hidden="true"><use href="#i-youtube"></use></svg>
+              <span id="search-suggest-yt-btn-label"></span>
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="filter-grid">
         <div class="filter-group">
           <label for="category-select" data-key="filter-cat"> الفئة:</label>
-          <select id="category-select" onchange="applyFilters()">
+          <select id="category-select" onchange="applyFiltersAndSearch()">
             <option value="all"> كل الفئات</option>
-            <option value="faucet"> صنابير (Faucets)</option>
-            <option value="ptc"> إعلانات PTC</option>
-            <option value="tasks"> مهام وفيديوهات</option>
-            <option value="surveys"> استطلاعات رأي</option>
-            <option value="affiliate"> أفيليت والتسويق (Affiliate)</option>
-            <option value="youtube"> يوتيوب (YouTube)</option>
-            <option value="tiktok"> تيك توك (TikTok)</option>
-            <option value="social"> سوشيال ميديا (Social Media)</option>
-            <option value="exchange"> منصات تداول (Exchange)</option>
-            <option value="wallet"> محافظ رقمية (Wallet)</option>
           </select>
         </div>
 
         <div class="filter-group">
           <label for="currency-select" data-key="filter-currency"> عملة الربح:</label>
-          <select id="currency-select" onchange="applyFilters()">
+          <select id="currency-select" onchange="applyFiltersAndSearch()">
             <option value="all"> جميع العملات</option>
-            <option value="USD"> دولار أمريكي (USD)</option>
-            <option value="EUR"> يورو (EUR)</option>
-            <option value="RUB"> روبل روسي (RUB)</option>
-            <option value="EGP"> جنيه مصري (EGP)</option>
-            <option value="BTC"> Bitcoin (BTC)</option>
-            <option value="ETH"> Ethereum (ETH)</option>
-            <option value="USDT"> Tether (USDT)</option>
-            <option value="BNB"> Binance Coin (BNB)</option>
-            <option value="SOL"> Solana (SOL)</option>
-            <option value="XRP"> Ripple (XRP)</option>
-            <option value="ADA"> Cardano (ADA)</option>
-            <option value="DOGE"> Dogecoin (DOGE)</option>
-            <option value="TRX"> TRON (TRX)</option>
-            <option value="LTC"> Litecoin (LTC)</option>
-            <option value="USDC"> USD Coin (USDC)</option>
-            <option value="TON"> Toncoin (TON)</option>
-            <option value="BCH"> Bitcoin Cash (BCH)</option>
-            <option value="MATIC"> Polygon (MATIC)</option>
-            <option value="XMR"> Monero (XMR)</option>
-            <option value="XLM"> Stellar (XLM)</option>
-            <option value="ZEC"> Zcash (ZEC)</option>
-            <option value="DASH"> Dash (DASH)</option>
-            <option value="DGB"> DigiByte (DGB)</option>
-            <option value="FEY"> Feyorra (FEY)</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="earn-range-select" data-key="filter-min-earn"> الحد الأدنى للربح اليومي ($):</label>
-          <select id="earn-range-select" onchange="applyFilters()">
-            <option value="0"> الكل (بدون حد أدنى)</option>
-            <option value="0.0001"> من $0.0001 فأكثر</option>
-            <option value="0.001"> من $0.001 فأكثر</option>
-            <option value="0.01"> من $0.01 فأكثر</option>
-            <option value="0.1"> من $0.10 فأكثر</option>
-            <option value="0.5"> من $0.50 فأكثر</option>
-            <option value="1.0"> من $1.00 فأكثر</option>
           </select>
         </div>
       </div>
@@ -1059,6 +1106,7 @@
     </div>
   </footer>
 
+  <script src="withdrawal-methods.js"></script>
   <script src="sites-data.js"></script>
   <script>
 
@@ -1072,7 +1120,10 @@
         "stat-max": "الأعلى ربحاً يومياً",
         "filter-cat": "الفئة:",
         "filter-currency": "عملة الربح:",
-        "filter-min-earn": "الحد الأدنى للربح اليومي ($):",
+        "search-placeholder": "ابحث في الموقع... (اسم الموقع، القسم، الوصف)",
+        "search-no-results": "لم نعثر على هذا الطلب تماماً في موقعنا، هل تريد البحث عنه عبر محركنا الذكي؟",
+        "search-google-btn": "بحث عبر جوجل",
+        "search-youtube-btn": "بحث عبر يوتيوب",
         "chat-welcome": "أهلاً بك! 👋 كيف يمكننا مساعدتك اليوم؟",
         "chat-send-tg": "تيليجرام",
         "chat-send-wa": "واتساب",
@@ -1093,7 +1144,10 @@
         "stat-max": "Top Daily Earner",
         "filter-cat": "Category:",
         "filter-currency": "Currency:",
-        "filter-min-earn": "Min Daily Profit ($):",
+        "search-placeholder": "Search the site... (name, category, description)",
+        "search-no-results": "We couldn't find an exact match on our site. Want to search for it with our smart engine?",
+        "search-google-btn": "Search on Google",
+        "search-youtube-btn": "Search on YouTube",
         "chat-welcome": "Welcome! 👋 How can we help you today?",
         "chat-send-tg": "Telegram",
         "chat-send-wa": "WhatsApp",
@@ -1112,7 +1166,9 @@
     const SITE_URL = "https://majdfatihy.github.io/online-earning-directory/";
 
     window.onload = function() {
+      buildSiteIndex();
       renderAllSections();
+      populateDynamicFilters();
       calculateAndAnimateStats();
       setupScrollEvents();
       preventCopyEvents();
@@ -1232,11 +1288,32 @@
     let categoryExtraSites = {};
     const CARDS_THRESHOLD = 10;
 
+    // يحوّل اسم طريقة سحب مسجّلة في withdrawal-methods.js (أو رابطاً مباشراً لتوافق قديم) إلى {url, icon, label}
+    function resolvePaymentMethod(key) {
+      if (!key) return null;
+      const trimmed = String(key).trim();
+      if (typeof WITHDRAWAL_METHODS !== "undefined" && WITHDRAWAL_METHODS[trimmed]) {
+        const m = WITHDRAWAL_METHODS[trimmed];
+        return { url: m.url, icon: (m.icon || "").trim() || null, label: trimmed };
+      }
+      // توافق قديم: لو كتبت رابط كامل بدل اسم طريقة سحب مسجّلة، يشتغل تلقائياً برضه
+      if (/^https?:\/\//i.test(trimmed)) {
+        return { url: trimmed, icon: null, label: getHostname(trimmed) };
+      }
+      console.warn(`طريقة سحب غير مسجّلة في withdrawal-methods.js: "${trimmed}"`);
+      return null;
+    }
+
     function buildCardHTML(site, isWalletSection, visitedSites) {
-      const siteIconUrl = `https://www.google.com/s2/favicons?domain=${site.url}&sz=64`;
+      // لو حددت أيقونة مخصصة للموقع (site.customIcon) هتُستخدم هي، وإلا يجيبها تلقائياً من رابط الموقع
+      const siteIconUrl = (site.customIcon && site.customIcon.trim())
+        ? site.customIcon.trim()
+        : `https://www.google.com/s2/favicons?domain=${site.url}&sz=64`;
       const isVisited = visitedSites.includes(site.id);
       const ageText = getSiteAgeText(site.startDate);
-      const ytSearchUrl = `https://www.youtube.com/@MajdFatihy/search?query=${encodeURIComponent(site.name)}`;
+      // ملاحظة: رابط بحث القناة القديم (@handle/search?query=) ما كانش بينفذ البحث فعلياً على تطبيق الهاتف،
+      // بيفتح القناة بس. رابط نتائج البحث العام مع يوزر القناة يشتغل بنفس الطريقة على الديسكتوب والهاتف.
+      const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(site.name + " @majdfatihy")}`;
       const watchLabel = currentLang === 'ar' ? 'الشرح' : 'Watch Guide';
 
       if (isWalletSection) {
@@ -1271,22 +1348,23 @@
 
       let paymentIconsHTML = "";
       if (site.paymentLinks && site.paymentLinks.length > 0) {
+        const resolvedMethods = site.paymentLinks.map(resolvePaymentMethod).filter(Boolean);
         const maxVisible = 5;
-        const visibleLinks = site.paymentLinks.slice(0, maxVisible);
-        const hiddenLinks = site.paymentLinks.slice(maxVisible);
+        const visibleLinks = resolvedMethods.slice(0, maxVisible);
+        const hiddenLinks = resolvedMethods.slice(maxVisible);
 
-        visibleLinks.forEach(pUrl => {
-          const pIcon = `https://www.google.com/s2/favicons?domain=${pUrl}&sz=64`;
-          const pName = getHostname(pUrl);
-          paymentIconsHTML += `<a href="${pUrl}" target="_blank" rel="noopener noreferrer" title="طريقة السحب: ${pName}" aria-label="طريقة السحب: ${pName}"><img class="method-icon" src="${pIcon}" alt="${pName}" width="22" height="22" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/32'"></a>`;
+        visibleLinks.forEach(m => {
+          const pIcon = m.icon || `https://www.google.com/s2/favicons?domain=${m.url}&sz=64`;
+          const pName = m.label || getHostname(m.url);
+          paymentIconsHTML += `<a href="${m.url}" target="_blank" rel="noopener noreferrer" title="طريقة السحب: ${pName}" aria-label="طريقة السحب: ${pName}"><img class="method-icon" src="${pIcon}" alt="${pName}" width="22" height="22" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/32'"></a>`;
         });
 
         if (hiddenLinks.length > 0) {
           let hiddenIconsString = "";
-          hiddenLinks.forEach(pUrl => {
-            const pIcon = `https://www.google.com/s2/favicons?domain=${pUrl}&sz=64`;
-            const pName = getHostname(pUrl);
-            hiddenIconsString += `<a href="${pUrl}" target="_blank" rel="noopener noreferrer" aria-label="طريقة سحب إضافية: ${pName}"><img class="method-icon" src="${pIcon}" alt="${pName}" width="20" height="20" loading="lazy" decoding="async" style="width:20px;height:20px;"></a>`;
+          hiddenLinks.forEach(m => {
+            const pIcon = m.icon || `https://www.google.com/s2/favicons?domain=${m.url}&sz=64`;
+            const pName = m.label || getHostname(m.url);
+            hiddenIconsString += `<a href="${m.url}" target="_blank" rel="noopener noreferrer" aria-label="طريقة سحب إضافية: ${pName}"><img class="method-icon" src="${pIcon}" alt="${pName}" width="20" height="20" loading="lazy" decoding="async" style="width:20px;height:20px;"></a>`;
           });
 
           paymentIconsHTML += `
@@ -1440,37 +1518,228 @@
       element.classList.add("visited");
     }
 
-    function applyFilters() {
+    // ====== فهرس بحث سريع: id -> بيانات الموقع الأصلية (للتمييز اللوني وبناء نص البحث) ======
+    let siteIndexMap = {};
+
+    function buildSiteIndex() {
+      siteIndexMap = {};
+      dataset.forEach((cat) => {
+        const titleAr = cat.categoryTitleAr || "";
+        const titleEn = cat.categoryTitleEn || "";
+        cat.sites.forEach(site => {
+          const catLabelAr = (CATEGORY_LABELS.ar[(site.category || "").toLowerCase()]) || site.category || "";
+          const catLabelEn = (CATEGORY_LABELS.en[(site.category || "").toLowerCase()]) || site.category || "";
+          siteIndexMap[site.id] = {
+            name: site.name || "",
+            description: site.description || "",
+            searchBlob: [
+              site.name, site.description, site.category, site.currency,
+              titleAr, titleEn, catLabelAr, catLabelEn
+            ].filter(Boolean).join(" ").toLowerCase()
+          };
+        });
+      });
+    }
+
+    // ====== خرائط تسمية الفئات والعملات (تُستخدم فقط للعرض؛ أي قيمة جديدة غير موجودة هنا تُعرض كما هي تلقائياً) ======
+    const CATEGORY_LABELS = {
+      ar: {
+        faucet: "صنابير (Faucets)", ptc: "إعلانات PTC", tasks: "مهام وفيديوهات",
+        surveys: "استطلاعات رأي", affiliate: "أفيليت والتسويق (Affiliate)",
+        youtube: "يوتيوب (YouTube)", tiktok: "تيك توك (TikTok)", social: "سوشيال ميديا (Social Media)",
+        exchange: "منصات تداول (Exchange)", wallet: "محافظ رقمية (Wallet)",
+        game: "ألعاب مربحة (Games)", games: "ألعاب مربحة (Games)",
+        finance: "خدمات مالية (Finance)", investing: "استثمار (Investing)",
+        storage: "تخزين سحابي (Storage)", banking: "بنوك رقمية (Banking)"
+      },
+      en: {
+        faucet: "Faucets", ptc: "PTC Ads", tasks: "Tasks & Videos",
+        surveys: "Surveys", affiliate: "Affiliate & Marketing",
+        youtube: "YouTube", tiktok: "TikTok", social: "Social Media",
+        exchange: "Exchange", wallet: "Digital Wallets",
+        game: "Games", games: "Games",
+        finance: "Finance Services", investing: "Investing",
+        storage: "Cloud Storage", banking: "Digital Banking"
+      }
+    };
+    const CURRENCY_LABELS = {
+      ar: {
+        USD: "دولار أمريكي (USD)", EUR: "يورو (EUR)", RUB: "روبل روسي (RUB)", EGP: "جنيه مصري (EGP)",
+        BTC: "Bitcoin (BTC)", ETH: "Ethereum (ETH)", USDT: "Tether (USDT)", BNB: "Binance Coin (BNB)",
+        SOL: "Solana (SOL)", XRP: "Ripple (XRP)", ADA: "Cardano (ADA)", DOGE: "Dogecoin (DOGE)",
+        TRX: "TRON (TRX)", LTC: "Litecoin (LTC)", USDC: "USD Coin (USDC)", TON: "Toncoin (TON)",
+        BCH: "Bitcoin Cash (BCH)", MATIC: "Polygon (MATIC)", XMR: "Monero (XMR)", XLM: "Stellar (XLM)",
+        ZEC: "Zcash (ZEC)", DASH: "Dash (DASH)", DGB: "DigiByte (DGB)", FEY: "Feyorra (FEY)"
+      },
+      en: {
+        USD: "US Dollar (USD)", EUR: "Euro (EUR)", RUB: "Russian Ruble (RUB)", EGP: "Egyptian Pound (EGP)",
+        BTC: "Bitcoin (BTC)", ETH: "Ethereum (ETH)", USDT: "Tether (USDT)", BNB: "Binance Coin (BNB)",
+        SOL: "Solana (SOL)", XRP: "Ripple (XRP)", ADA: "Cardano (ADA)", DOGE: "Dogecoin (DOGE)",
+        TRX: "TRON (TRX)", LTC: "Litecoin (LTC)", USDC: "USD Coin (USDC)", TON: "Toncoin (TON)",
+        BCH: "Bitcoin Cash (BCH)", MATIC: "Polygon (MATIC)", XMR: "Monero (XMR)", XLM: "Stellar (XLM)",
+        ZEC: "Zcash (ZEC)", DASH: "Dash (DASH)", DGB: "DigiByte (DGB)", FEY: "Feyorra (FEY)"
+      }
+    };
+
+    function toTitleCase(str) {
+      return String(str).replace(/[_-]+/g, " ").replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase());
+    }
+
+    // ====== يبني قوائم الفلتر (الفئة والعملة) تلقائياً من بيانات المواقع الحالية، مرتّبة أبجدياً ومع عدد النتائج ======
+    function populateDynamicFilters() {
+      const catCounts = {};   // key(lowercase) -> {count, raw}
+      const currCounts = {};  // key(uppercase) -> {count, raw}
+
+      dataset.forEach(cat => {
+        cat.sites.forEach(site => {
+          const rawCat = (site.category || "").toString().trim();
+          if (rawCat) {
+            const key = rawCat.toLowerCase();
+            if (!catCounts[key]) catCounts[key] = { count: 0, raw: rawCat };
+            catCounts[key].count++;
+          }
+          const rawCurr = (site.currency || "").toString().trim();
+          if (rawCurr) {
+            const key = rawCurr.toUpperCase();
+            if (!currCounts[key]) currCounts[key] = { count: 0, raw: rawCurr };
+            currCounts[key].count++;
+          }
+        });
+      });
+
+      const locale = currentLang === "ar" ? "ar" : "en";
+
+      const catEntries = Object.keys(catCounts).map(key => ({
+        value: key,
+        label: (CATEGORY_LABELS[currentLang][key]) || toTitleCase(catCounts[key].raw),
+        count: catCounts[key].count
+      })).sort((a, b) => a.label.localeCompare(b.label, locale));
+
+      const currEntries = Object.keys(currCounts).map(key => ({
+        value: key,
+        label: (CURRENCY_LABELS[currentLang][key]) || `${toTitleCase(currCounts[key].raw)} (${key})`,
+        count: currCounts[key].count
+      })).sort((a, b) => a.label.localeCompare(b.label, locale));
+
+      const catSelect = document.getElementById("category-select");
+      const currSelect = document.getElementById("currency-select");
+      const prevCat = catSelect.value;
+      const prevCurr = currSelect.value;
+
+      const allCatLabel = currentLang === "ar" ? "كل الفئات" : "All Categories";
+      const allCurrLabel = currentLang === "ar" ? "جميع العملات" : "All Currencies";
+
+      catSelect.innerHTML = `<option value="all">${allCatLabel}</option>` +
+        catEntries.map(e => `<option value="${e.value}">${e.label} (${e.count})</option>`).join("");
+      currSelect.innerHTML = `<option value="all">${allCurrLabel}</option>` +
+        currEntries.map(e => `<option value="${e.value}">${e.label} (${e.count})</option>`).join("");
+
+      const catValues = catEntries.map(e => e.value);
+      const currValues = currEntries.map(e => e.value);
+      catSelect.value = catValues.includes(prevCat) ? prevCat : "all";
+      currSelect.value = currValues.includes(prevCurr) ? prevCurr : "all";
+    }
+
+    // ====== البحث داخل الموقع ======
+    let searchDebounceTimer = null;
+
+    function onSearchInput() {
+      const input = document.getElementById("site-search-input");
+      const clearBtn = document.getElementById("search-clear-btn");
+      clearBtn.style.display = input.value ? "flex" : "none";
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(applyFiltersAndSearch, 250);
+    }
+
+    function clearSearch() {
+      const input = document.getElementById("site-search-input");
+      input.value = "";
+      document.getElementById("search-clear-btn").style.display = "none";
+      input.focus();
+      applyFiltersAndSearch();
+    }
+
+    function goToGoogleSearch() {
+      const query = (document.getElementById("site-search-input").value || "").trim();
+      if (!query) return;
+      const url = `https://www.google.com/search?q=${encodeURIComponent(query + " majdfatihy")}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function goToYouTubeSearch() {
+      const query = (document.getElementById("site-search-input").value || "").trim();
+      if (!query) return;
+      // نتائج بحث عامة + يوزر القناة، تشتغل بنفس الطريقة على الديسكتوب والهاتف (بعكس رابط بحث القناة المباشر)
+      const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(query + " @majdfatihy")}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function escapeRegExp(s) {
+      return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function escapeHTML(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+
+    function highlightMatches(text, tokens) {
+      const safe = escapeHTML(text || "");
+      if (!tokens.length) return safe;
+      const pattern = new RegExp("(" + tokens.map(escapeRegExp).join("|") + ")", "gi");
+      return safe.replace(pattern, '<mark class="search-highlight">$1</mark>');
+    }
+
+    // ====== الدالة الرئيسية: تطبّق فلتر الفئة/العملة + البحث الفوري معاً على كل الكروت ======
+    function applyFiltersAndSearch() {
       const category = document.getElementById("category-select").value.toLowerCase();
       const currency = document.getElementById("currency-select").value.toLowerCase();
-      const minEarn = parseFloat(document.getElementById("earn-range-select").value) || 0;
-      const isFiltering = category !== "all" || currency !== "all" || minEarn > 0;
+      const rawQuery = (document.getElementById("site-search-input").value || "").trim();
+      const tokens = rawQuery.toLowerCase().split(/\s+/).filter(Boolean);
+      const isSearching = tokens.length > 0;
+      const isFiltering = category !== "all" || currency !== "all" || isSearching;
 
-      // عند تفعيل أي فلتر، ابنِ الكروت "الإضافية" أولاً (إن لم تكن مبنية بعد) حتى تشملها نتائج البحث
+      // عند تفعيل أي فلتر أو بحث، ابنِ الكروت "الإضافية" أولاً (إن لم تكن مبنية بعد) حتى تشملها النتائج
       if (isFiltering) {
         document.querySelectorAll(".extra-cards").forEach(wrapper => {
           ensureExtraRendered(wrapper.dataset.catIndex);
         });
       }
 
+      let totalVisible = 0;
+
       const cards = document.querySelectorAll(".card:not(.toggle-more-card)");
       cards.forEach(card => {
         const cat = (card.getAttribute("data-cat") || "").toLowerCase();
         const curr = (card.getAttribute("data-currency") || "").toLowerCase();
-        const daily = parseFloat(card.getAttribute("data-daily"));
+        const id = card.getAttribute("data-id");
+        const entry = siteIndexMap[id];
 
         const matchCat = category === "all" || cat === category;
         const matchCurr = currency === "all" || curr === currency;
-        const matchEarn = daily >= minEarn;
+        const matchSearch = !isSearching || (entry && tokens.every(t => entry.searchBlob.includes(t)));
+        const visible = matchCat && matchCurr && matchSearch;
 
-        if (matchCat && matchCurr && matchEarn) {
-          card.style.display = "flex";
-        } else {
-          card.style.display = "none";
+        card.style.display = visible ? "flex" : "none";
+        if (visible) totalVisible++;
+
+        // تمييز الكلمات المطابقة داخل عنوان ووصف الكرت
+        if (entry) {
+          const titleLink = card.querySelector(".card-title a");
+          const tooltip = card.querySelector(".tooltip-text");
+          const activeTokens = (isSearching && visible) ? tokens : [];
+          if (titleLink) titleLink.innerHTML = highlightMatches(entry.name, activeTokens);
+          if (tooltip) tooltip.innerHTML = highlightMatches(entry.description, activeTokens);
         }
       });
 
-      // لما فلتر شغال، افتح تلقائيًا أي قسم "عرض المزيد" عشان النتائج المطابقة الموجودة جوه ماتفضلش مخفية
+      // إخفاء الأقسام التي لا تحتوي على أي نتيجة ظاهرة أثناء البحث فقط
+      document.querySelectorAll(".category-block").forEach(block => {
+        const visibleCards = Array.from(block.querySelectorAll(".card:not(.toggle-more-card)"))
+          .some(c => c.style.display !== "none");
+        block.classList.toggle("search-hidden", isSearching && !visibleCards);
+      });
+
+      // لما فلتر أو بحث شغال، افتح تلقائيًا أي قسم "عرض المزيد" عشان النتائج المطابقة الموجودة جوه ماتفضلش مخفية
       document.querySelectorAll(".toggle-more-card").forEach(btn => {
         const wrapper = document.querySelector(`.extra-cards[data-cat-index="${btn.dataset.catIndex}"]`);
         if (!wrapper) return;
@@ -1491,7 +1760,21 @@
           }
         }
       });
+
+      // صندوق اقتراح البحث الذكي عبر جوجل عند عدم وجود أي نتيجة
+      const suggestBox = document.getElementById("search-suggest-box");
+      if (isSearching && totalVisible === 0) {
+        document.getElementById("search-suggest-text").textContent = translations[currentLang]["search-no-results"];
+        document.getElementById("search-suggest-btn-label").textContent = translations[currentLang]["search-google-btn"];
+        document.getElementById("search-suggest-yt-btn-label").textContent = translations[currentLang]["search-youtube-btn"];
+        suggestBox.style.display = "block";
+      } else {
+        suggestBox.style.display = "none";
+      }
     }
+
+    // إبقاء الاسم القديم يعمل لأي استدعاء متبقٍّ
+    function applyFilters() { applyFiltersAndSearch(); }
 
     // دورة الثيمات: تلقائي > مظلم > فاتح > مريح للعين > تلقائي...
     const themeLabels = {
@@ -1543,11 +1826,19 @@
         }
       });
 
+      document.querySelectorAll("[data-key-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-key-placeholder");
+        if (translations[currentLang][key]) {
+          el.setAttribute("placeholder", translations[currentLang][key]);
+        }
+      });
+
       document.getElementById("theme-btn").innerText = themeLabels[themeState][currentLang];
 
       renderAllSections();
+      populateDynamicFilters();
       calculateAndAnimateStats();
-      applyFilters();
+      applyFiltersAndSearch();
     }
 
     function toggleChat() {
