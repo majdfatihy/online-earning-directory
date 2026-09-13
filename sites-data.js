@@ -36,7 +36,7 @@
       timeMinutes: 40,
       minWithdraw: "$1.00",
       description: "تطبيق ومنصة للربح من الانترنت والمهام ومشاهدة الفيديوهات علي اليوتيوب ومنصات السوشيال ميديا وزيارة المواقع اونلاين والبحث علي المواقع ومحركات البحث  واذا سجلت من قبل اكتب هذا الكود للحصول علي نسبة ١٠٪ اكثر علي المهام cidypycysive لا تتردد في ترك استفسارك وتركت لك شروحاتي علي القناة عن المنصة" ,
-      const paymentLinks = [
+      paymentLinks = [
   "amazon",
   "aliexpress",
   "temu",
@@ -58,8 +58,8 @@
   "base",
   "bitcoin",
   "ethereum",
-  "tron"
-,],
+  "tron",],
+ "proof": "https://telegram.me/MajdEarn"},
 {"id": 2,"name": "fomoearn",
   "url": "https://fomoearn.com/r/NZvQDamq",
   "daily": 0.25,
