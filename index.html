@@ -1313,7 +1313,7 @@
       const ageText = getSiteAgeText(site.startDate);
       // ملاحظة: رابط بحث القناة القديم (@handle/search?query=) ما كانش بينفذ البحث فعلياً على تطبيق الهاتف،
       // بيفتح القناة بس. رابط نتائج البحث العام مع يوزر القناة يشتغل بنفس الطريقة على الديسكتوب والهاتف.
-      const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(site.name + " @majdfatihy")}`;
+      const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(site.name + " قناة ماجد فتحي Majd Fatihy")}`;
       const watchLabel = currentLang === 'ar' ? 'الشرح' : 'Watch Guide';
 
       if (isWalletSection) {
@@ -1670,7 +1670,7 @@
       const query = (document.getElementById("site-search-input").value || "").trim();
       if (!query) return;
       // نتائج بحث عامة + يوزر القناة، تشتغل بنفس الطريقة على الديسكتوب والهاتف (بعكس رابط بحث القناة المباشر)
-      const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(query + " @majdfatihy")}`;
+      const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(query + " قناة ماجد فتحي Majd Fatihy")}`;
       window.open(url, "_blank", "noopener,noreferrer");
     }
 
