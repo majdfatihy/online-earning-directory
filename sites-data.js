@@ -165,7 +165,7 @@
             timeMinutes: 0.3,
             minWithdraw: "$0.00",
             description: "صنبور تعدين عملة ترامب كل 3 ثواني ",
-            paymentLinks: ["faucetpay",], 
+            paymentLinks: ["faucetpay"],
             proof: "https://t.me/MajdEarn/106" 
           },
   {id: 103,name: "faucetpayz", 
@@ -177,7 +177,7 @@
             timeMinutes: 15.0,
             minWithdraw: "$0.00550",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم",
-            paymentLinks: ["faucetpay",], 
+            paymentLinks: ["faucetpay"], 
             proof: "https://t.me/MajdEarn/92" 
           },
   {id: 104,name: "kiddyearner", 
@@ -189,7 +189,7 @@
             timeMinutes: 15.0,
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
-            paymentLinks: ["faucetpay",], 
+            paymentLinks: ["faucetpay"], 
             proof: "https://t.me/MajdEarn/93" 
           },
   {id: 105,name: "limefaucet", 
@@ -688,7 +688,6 @@
 				minWithdraw: "$00.00",
 				description: "تطبيق للحصول على فيزا افتراضية للشراء والتسوق عبر الإنترنت.",
 				 paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
-				],
 				proof: "https://t.me/your_channel/301"
 			},
 				{ "id": 703, "name": "Thndr",
@@ -730,7 +729,6 @@
 				minWithdraw: "$00.00",
 				description: "حساب بنكي أمريكي وبطاقة فيزا لاستلام الأموال وتحويلها دولياً.",
 				 paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
-				],
 				proof: "https://t.me/your_channel/301"
 			}
         ]},
