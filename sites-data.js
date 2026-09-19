@@ -25,7 +25,7 @@
       minWithdraw: "$0.1",
       description: "تطبيق تلقائي لمشاهدة الفيديو والربح مع  منصة لسطح المكتب والافضل تطبيق الهاتف لامكانية التشغيل التلقائي.",
       paymentLinks: ["faucetpay", "binance", "bybit", "cwallet", "okx",], 
-      proof: "https://telegram.me/MajdEarn" 
+      proof: "https://t.me/MajdEarn/80" 
     },
     {id: 01,  name: "jumptask", 
       url: "https://www.jumptask.io/r/cidypycysive", 
@@ -38,7 +38,7 @@
       description: "تطبيق ومنصة للربح من الانترنت والمهام ومشاهدة الفيديوهات علي اليوتيوب ومنصات السوشيال ميديا وزيارة المواقع اونلاين والبحث علي المواقع ومحركات البحث  واذا سجلت من قبل اكتب هذا الكود للحصول علي نسبة ١٠٪ اكثر علي المهام cidypycysive لا تتردد في ترك استفسارك وتركت لك شروحاتي علي القناة عن المنصة" ,
   paymentLinks: ["amazon", "aliexpress", "temu", "ebay", "walmart", "target", "steam", "netflix", "shein", "apple", "doordash", "paypal", "visa", "mastercard", "wise", "revolut", "venmo", "skrill", "base", "bitcoin", "ethereum", "tron"],
 
-      proof: "https://telegram.me/MajdEarn" 
+      proof: "https://t.me/MajdEarn/103" 
     },
 {"id": 02,"name": "aviso",
   "url": "https://aviso.bz/?r=majdfatihy",
@@ -81,7 +81,7 @@
     "binance","bybit",
     "cwallet",
     "okx"],
-  "proof": "https://t.me/your_channel/3"},
+  "proof": "https://t.me/MajdEarn/100"},
 
  {"id": 4,"name": "viefaucet",
   "url": "https://viefaucet.com?r=653cd638e76a41ee3e179b5f",
@@ -95,7 +95,7 @@
   "paymentLinks": [
    "faucetpay",
     "cwallet",],
-  "proof": "https://telegram.me/MajdEarn"
+  "proof": "https://t.me/MajdEarn/67"
 },
 {id: 5,name: "SproutGigs", 
             url: "https://sproutgigs.com/?a=6d09da18", 
@@ -120,7 +120,7 @@
     minWithdraw: "$0.05",
     description: "لعبة تصويب السكاكين نحو الطعام الممتعة لجمع نقاط Bling وتحويلها مباشرة إلى بيتكوين أو إيثريوم.",
     paymentLinks: ["coinbase", "paypal"],
-    proof: "https://telegram.me/MajdEarn"},
+    proof: "https://t.me/MajdEarn/87"},
   		
 	]},
         {categoryKey: "ptc",
@@ -167,7 +167,7 @@
             minWithdraw: "$0.00",
             description: "صنبور تعدين عملة ترامب كل 3 ثواني ",
             paymentLinks: ["faucetpay",], 
-            proof: "https://t.me/MajdEarn" 
+            proof: "https://t.me/MajdEarn/106" 
           },
   {id: 103,name: "faucetpayz", 
             url: "https://faucetpayz.com/ref/MAJDFATIHY", 
@@ -179,7 +179,7 @@
             minWithdraw: "$0.00550",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم",
             paymentLinks: ["faucetpay",], 
-            proof: "https://t.me/MajdEarn" 
+            proof: "https://t.me/MajdEarn/92" 
           },
   {id: 104,name: "kiddyearner", 
             url: "https://kiddyearner.com/?r=6a9478ea0b2fa33d32218670", 
@@ -191,7 +191,7 @@
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
             paymentLinks: ["faucetpay",], 
-            proof: "https://t.me/MajdEarn" 
+            proof: "https://t.me/MajdEarn/93" 
           },
   {id: 105,name: "limefaucet", 
             url: "https://limefaucet.com/ref/tvFBxk9c4n7Rpd6X", 
@@ -203,7 +203,7 @@
             minWithdraw: "$0.00",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
             paymentLinks: ["faucetpay",], 
-            proof: "https://t.me/MajdEarn" 
+            proof: "https://t.me/MajdEarn/94" 
           },
   {id: 106,name: "btcadspace", 
             url: "https://btcadspace.com/ref/majdfatihy", 
@@ -215,7 +215,7 @@
             minWithdraw: "$0.004",
             description: "صنبور ومشاهدة اعلانات جيد في السحب من اول يوم فوري للسحب",
             paymentLinks: ["faucetpay",], 
-            proof: "https://t.me/MajdEarn" 
+            proof: "https://t.me/MajdEarn/95" 
           },
   {id: 107,name: "coinli", 
             url: "https://coinli.net/i/16020", 
@@ -483,13 +483,13 @@
 				startDate: "2020-01-13",
 				timeMinutes: 1,
 				minWithdraw: "$00.03",
-				description: "برنامج أفيليت منصات التداول والخيارات لتسويق الخدمات وجذب العملاء.",
+				description: "العاب",
 				paymentLinks: [
 				"paypal",
 				"coinbase",
 				"walletofsatoshi"
 				],
-				proof: "https://t.me/your_channel/301"
+				proof: "https://t.me/MajdEarn/87?single"
 			},
 				{ "id": 601, "name": "Ethereum Blast",
 				url: "https://bln.gg/2QM-498-XSK",
@@ -505,7 +505,7 @@
 				"coinbase",
 				"walletofsatoshi"
 				],
-				proof: "https://t.me/your_channel/301"
+				proof: "https://t.me/MajdEarn/87?single"
 			},
 				{ "id": 602, "name": "Dungeon Bitcoin Blast",
 				url: "https://bln.gg/Y7F-W7W-MJQ",
@@ -521,7 +521,7 @@
 				"coinbase",
 				"walletofsatoshi"
 				],
-				proof: "https://t.me/your_channel/301"
+				proof: "https://t.me/MajdEarn/87?single"
 			},
 				{ "id": 603, "name": "Sweet Bitcoin",
 				url: "https://bln.gg/DRW-GG9-0BX",
@@ -537,7 +537,7 @@
 				"coinbase",
 				"walletofsatoshi"
 				],
-				proof: "https://t.me/your_channel/301"
+				proof: "hhttps://t.me/MajdEarn/87?single"
 			},
 				{ "id": 604, "name": "Bitcoin Pop",
 				url: "https://bln.gg/3GM-29W-BK5",
@@ -553,7 +553,7 @@
 				"coinbase",
 				"walletofsatoshi"
 				],
-				proof: "https://t.me/your_channel/301"
+				proof: "https://t.me/MajdEarn/87?single"
 			},
 				{ "id": 605, "name": "Bitcoin Blocks",
 				url: "https://bln.gg/SD9-5XZ-H2A",
@@ -569,7 +569,7 @@
 				"coinbase",
 				"walletofsatoshi"
 				],
-				proof: "https://t.me/your_channel/301"
+				proof: "https://t.me/MajdEarn/87?single"
 			},
 				{ "id": 606, "name": "Bitcoin Blast",
 				url: "https://bln.gg/TE9-E10-EV0",
@@ -585,7 +585,7 @@
 				"coinbase",
 				"walletofsatoshi"
 				],
-				proof: "https://t.me/your_channel/301"
+				proof: "https://t.me/MajdEarn/87?single"
 			}
 			]
 		},
