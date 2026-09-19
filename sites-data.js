@@ -48,7 +48,7 @@
   "timeMinutes": 15,
   "minWithdraw": "$0.12",
   "description": "موقع وسيط للربح من المهام مثل مشاهده فيديوهات اليوتيوب والاعجابات والايكات والاشتراكات وزيارة المواقع وتثبيت التطبيقات والمهام المخصصه ومهام منصات السوشيال ميديا",
-  "paymentLinks": [
+  "paymentLinks": ["faucetpay", "binance", "bybit", "cwallet", "okx",
     "binance",
     "bybit",
     "okx",
@@ -613,7 +613,7 @@
             timeMinutes: 1,
             minWithdraw: "$1.00",
             description: "برنامج أفيليت منصات التداول والخيارات لتسويق الخدمات وجذب العملاء.",
-               paymentLinks: ["faucetpay", "binance", "bybit", "cwallet", "okx",], 
+               paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
 				proof: "https://telegram.me/MajdEarn" 
           },
           {id: 201,name: "Pocket Option", 
@@ -625,7 +625,7 @@
             timeMinutes: 1,
             minWithdraw: "$10.00",
             description: "تسويق بالعمولة لمنصة تداول شهيرة مع نسب أرباح عالية.",
-            paymentLinks: ["binance"], 
+            paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
             proof: "https://t.me/your_channel/302" 
           },
           {id: 202,name: "Olymp Trade", 
@@ -637,7 +637,7 @@
             timeMinutes: 1,
             minWithdraw: "$10.00",
             description: "برنامج شركاء أوليمب تريد لتحقيق عمولات مستمرة من المتداولين.",
-            paymentLinks: ["skrill", "visa"], 
+           paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
             proof: "https://t.me/your_channel/303" 
           },
           {id: 203,name: "Amazon Associates", 
@@ -674,9 +674,7 @@
 				timeMinutes: 1,
 				minWithdraw: "$00.00",
 				description: "بطاقة فيزا وافتراضية للتدفقات المالية والعملات الرقمية.",
-				paymentLinks: [
-				"redotpay"
-				],
+				 paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
 				proof: "https://t.me/your_channel/301"
 			},
 				{ "id": 702, "name": "Rizon",
@@ -689,8 +687,7 @@
 				timeMinutes: 1,
 				minWithdraw: "$00.00",
 				description: "تطبيق للحصول على فيزا افتراضية للشراء والتسوق عبر الإنترنت.",
-				paymentLinks: [
-				"rizon"
+				 paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
 				],
 				proof: "https://t.me/your_channel/301"
 			},
@@ -719,9 +716,7 @@
 				timeMinutes: 1,
 				minWithdraw: "$10.00",
 				description: "منصة تخزين سحابي توفر مساحات مجانية وبرامج إحالة للربح كل مستخدم رينج 12 الي 25 سنت علي حسب الدولة.",
-				paymentLinks: [
-				"terabox"
-				],
+				 paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
 				proof: "https://t.me/your_channel/301"
 			},
 				{ "id": 705, "name": "Grey",
@@ -734,8 +729,7 @@
 				timeMinutes: 1,
 				minWithdraw: "$00.00",
 				description: "حساب بنكي أمريكي وبطاقة فيزا لاستلام الأموال وتحويلها دولياً.",
-				paymentLinks: [
-				"grey"
+				 paymentLinks: ["binance","faucetpay", "binance", "bybit", "cwallet", "okx"], 
 				],
 				proof: "https://t.me/your_channel/301"
 			}
