@@ -29,14 +29,13 @@
     },
     {id: 01,  name: "jumptask", 
       url: "https://www.jumptask.io/r/cidypycysive", 
-      daily: 0.50, 
+      daily: 1.00, 
       currency: "USD", 
       category: "tasks", 
       startDate: "2022-01-03", 
       timeMinutes: 40,
-      minWithdraw: "$1.00",
-      description: "تطبيق ومنصة للربح من الانترنت والمهام ومشاهدة الفيديوهات علي اليوتيوب ومنصات السوشيال ميديا وزيارة المواقع اونلاين والبحث علي المواقع ومحركات البحث  واذا سجلت من قبل اكتب هذا الكود للحصول علي نسبة ١٠٪ اكثر علي المهام cidypycysive لا تتردد في ترك استفسارك وتركت لك شروحاتي علي القناة عن المنصة" ,
-  paymentLinks: ["amazon", "aliexpress", "temu", "ebay", "walmart", "target", "steam", "netflix", "shein", "apple", "doordash", "paypal", "visa", "mastercard", "wise", "revolut", "venmo", "skrill", "base", "bitcoin", "ethereum", "tron"],
+      minWithdraw: "$0.50",
+description: "تطبيق ومنصة للربح من الانترنت والمهام ومشاهدة الفيديوهات علي اليوتيوب ومنصات السوشيال ميديا وزيارة المواقع اونلاين والبحث علي المواقع ومحركات البحث  واذا سجلت من قبل اكتب هذا الكود للحصول علي نسبة ١٠٪ اكثر علي المهام الحد الادني لاول مره 1 دولار وثاني مره 0.5 نصف دولار cidypycysive لا تتردد في ترك استفسارك وتركت لك شروحاتي علي القناة عن المنصة" ,  paymentLinks: ["amazon", "aliexpress", "temu", "ebay", "walmart", "target", "steam", "netflix", "shein", "apple", "doordash", "paypal", "visa", "mastercard", "wise", "revolut", "venmo", "skrill", "base", "bitcoin", "ethereum", "tron"],
 
       proof: "https://t.me/MajdEarn/103" 
     },
