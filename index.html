@@ -598,10 +598,13 @@
       justify-content: center;
     }
 
-    .more-methods-badge:hover .more-methods-tooltip {
+    .more-methods-badge:hover .more-methods-tooltip,
+    .more-methods-badge.open .more-methods-tooltip {
       visibility: visible;
       opacity: 1;
     }
+    .more-methods-tooltip { pointer-events: none; }
+    .more-methods-badge.open .more-methods-tooltip { pointer-events: auto; }
 
     .earnings-info {
       background: var(--bg-color);
@@ -1397,7 +1400,7 @@
           });
 
           paymentIconsHTML += `
-                  <div class="more-methods-badge">
+                  <div class="more-methods-badge" onclick="toggleMoreMethods(event, this)">
                     +${hiddenLinks.length}
                     <div class="more-methods-tooltip">${hiddenIconsString}</div>
                   </div>
@@ -1845,6 +1848,16 @@
         }
       };
     }
+
+    function toggleMoreMethods(e, el) {
+      e.stopPropagation();
+      const wasOpen = el.classList.contains("open");
+      document.querySelectorAll(".more-methods-badge.open").forEach(b => b.classList.remove("open"));
+      if (!wasOpen) el.classList.add("open");
+    }
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".more-methods-badge.open").forEach(b => b.classList.remove("open"));
+    });
 
     function toggleSearchPanel() {
       const panel = document.getElementById("filter-section");
