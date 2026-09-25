@@ -313,7 +313,7 @@
       text-align: center;
       box-shadow: var(--shadow);
     }
-    .stat-card svg.icon { width: 1.3rem; height: 1.3rem; color: var(--primary); margin-bottom: 4px; }
+    .stat-card svg.icon { width: 1rem; height: 1rem; color: var(--primary); margin-bottom: 4px; }
     .stat-card span { font-size: 0.78rem; color: var(--text-muted); display: block; }
     .stat-card strong { font-size: 1.1rem; color: var(--text-color); margin-top: 2px; display: block; }
     .stat-card strong a { color: var(--primary); text-decoration: none; }
@@ -324,6 +324,22 @@
       unicode-bidi: isolate;
     }
 
+    .toggle-search-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow);
+    }
     .filter-section {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -946,8 +962,8 @@
     </div>
 
     <div class="header-actions">
-      <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn" aria-label="تغيير المظهر">🌗 تلقائي</button>
-      <button class="lang-btn" onclick="toggleLanguage()" id="lang-toggle-btn" aria-label="تغيير اللغة">English</button>
+      <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn" aria-label="تغيير المظهر" title="تلقائي">🌗</button>
+      <button class="lang-btn" onclick="toggleLanguage()" id="lang-toggle-btn" aria-label="تغيير اللغة" title="Switch language">EN</button>
     </div>
   </header>
 
@@ -970,18 +986,18 @@
         <strong id="stat-monthly" class="price-value"> ~$0.0000</strong>
       </div>
       <div class="stat-card">
-        <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-clock"></use></svg>
-        <span data-key="stat-total-time"> إجمالي الوقت اليومي ~</span>
-        <strong id="stat-time"> ~0 ساعة</strong>
-      </div>
-      <div class="stat-card">
         <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-trophy"></use></svg>
         <span data-key="stat-max"> الأعلى ربحاً يومياً</span>
         <strong id="stat-max-site"> -</strong>
       </div>
     </div>
 
-    <div class="filter-section">
+    <button type="button" id="toggle-search-btn" class="toggle-search-btn" onclick="toggleSearchPanel()" aria-expanded="false">
+      <svg class="icon" width="16" height="16" aria-hidden="true"><use href="#i-search"></use></svg>
+      <span data-key="toggle-search"> ابحث في المواقع</span>
+    </button>
+
+    <div class="filter-section" id="filter-section" style="display:none;">
       <div class="search-section">
         <div class="search-box">
           <svg class="icon search-icon" width="18" height="18" aria-hidden="true"><use href="#i-search"></use></svg>
@@ -1116,11 +1132,11 @@
         "stat-total": "إجمالي المواقع",
         "stat-daily": "إجمالي الربح اليومي ~",
         "stat-monthly": "إجمالي الربح الشهري ~",
-        "stat-total-time": "إجمالي الوقت اليومي ~",
         "stat-max": "الأعلى ربحاً يومياً",
         "filter-cat": "الفئة:",
         "filter-currency": "عملة الربح:",
         "search-placeholder": "ابحث في الموقع... (اسم الموقع، القسم، الوصف)",
+        "toggle-search": " ابحث في المواقع",
         "search-no-results": "لم نعثر على هذا الطلب تماماً في موقعنا، هل تريد البحث عنه عبر محركنا الذكي؟",
         "search-google-btn": "بحث عبر جوجل",
         "search-youtube-btn": "بحث عبر يوتيوب",
@@ -1140,11 +1156,11 @@
         "stat-total": "Total Platforms",
         "stat-daily": "Total Daily ~",
         "stat-monthly": "Total Monthly ~",
-        "stat-total-time": "Total Daily Time ~",
         "stat-max": "Top Daily Earner",
         "filter-cat": "Category:",
         "filter-currency": "Currency:",
         "search-placeholder": "Search the site... (name, category, description)",
+        "toggle-search": " Search Sites",
         "search-no-results": "We couldn't find an exact match on our site. Want to search for it with our smart engine?",
         "search-google-btn": "Search on Google",
         "search-youtube-btn": "Search on YouTube",
@@ -1254,7 +1270,6 @@
     function calculateAndAnimateStats() {
       let totalSites = 0;
       let totalDaily = 0;
-      let totalMinutes = 0;
       let maxDaily = -1;
       let maxSiteName = "";
       let maxSiteUrl = "";
@@ -1264,7 +1279,6 @@
           if (!cat.isWalletSection) {
             totalSites++;
             totalDaily += site.daily;
-            totalMinutes += (site.timeMinutes || 0);
             if (site.daily > maxDaily) {
               maxDaily = site.daily;
               maxSiteName = site.name;
@@ -1279,7 +1293,6 @@
       document.getElementById("stat-count").innerText = totalSites;
       document.getElementById("stat-daily").innerText = `~$${totalDaily.toFixed(4)}`;
       document.getElementById("stat-monthly").innerText = `~$${totalMonthly.toFixed(2)}`;
-      document.getElementById("stat-time").innerText = formatMinutes(totalMinutes);
       document.getElementById("stat-max-site").innerHTML = `<a href="${maxSiteUrl}" target="_blank" rel="noopener noreferrer">${maxSiteName} (<span class="price-value">~$${maxDaily.toFixed(2)}</span>)</a>`;
     }
 
@@ -1304,11 +1317,27 @@
       return null;
     }
 
+    function siteIconError(img) {
+      const fb = img.getAttribute('data-fallback');
+      if (fb && img.src !== fb) {
+        img.onerror = function () { this.onerror = null; this.src = 'https://via.placeholder.com/32'; };
+        img.src = fb;
+      } else {
+        img.onerror = null;
+        img.src = 'https://via.placeholder.com/32';
+      }
+    }
+
     function buildCardHTML(site, isWalletSection, visitedSites) {
       // لو حددت أيقونة مخصصة للموقع (site.customIcon) هتُستخدم هي، وإلا يجيبها تلقائياً من رابط الموقع
+      // ترتيب جلب الأيقونة: 1) أيقونة مخصصة (customIcon) 2) أيقونة رابط الإحالة (site.url)
+      // 3) لو فشلت، أيقونة الموقع الأصلي (site.iconUrl) 4) صورة افتراضية. رابط الكارت المعروض يبقى دايماً رابط الإحالة.
       const siteIconUrl = (site.customIcon && site.customIcon.trim())
         ? site.customIcon.trim()
         : `https://www.google.com/s2/favicons?domain=${site.url}&sz=64`;
+      const siteIconFallback = (site.iconUrl && site.iconUrl.trim())
+        ? `https://www.google.com/s2/favicons?domain=${site.iconUrl.trim()}&sz=64`
+        : '';
       const isVisited = visitedSites.includes(site.id);
       const ageText = getSiteAgeText(site.startDate);
       // ملاحظة: رابط بحث القناة القديم (@handle/search?query=) ما كانش بينفذ البحث فعلياً على تطبيق الهاتف،
@@ -1321,7 +1350,7 @@
         return `
               <div class="card" data-id="${site.id}" data-cat="${site.category}" data-currency="${site.currency}" data-daily="${site.daily}">
                 <div class="card-top">
-                  <img class="site-icon" src="${siteIconUrl}" alt="${site.name}" width="22" height="22" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/32'">
+                  <img class="site-icon" src="${siteIconUrl}" data-fallback="${siteIconFallback}" alt="${site.name}" width="22" height="22" loading="lazy" decoding="async" onerror="siteIconError(this)">
                   <h3 class="card-title no-copy"><a href="${site.url}" target="_blank" rel="noopener noreferrer" onclick="markAsVisited(${site.id}, this)">${site.name}</a></h3>
                   <div class="info-icon-wrapper">
                     <svg class="icon" width="15" height="15" aria-hidden="true"><use href="#i-info"></use></svg>
@@ -1379,7 +1408,7 @@
       return `
               <div class="card" data-id="${site.id}" data-cat="${site.category}" data-currency="${site.currency}" data-daily="${site.daily}">
                 <div class="card-top">
-                  <img class="site-icon" src="${siteIconUrl}" alt="${site.name}" width="22" height="22" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/32'">
+                  <img class="site-icon" src="${siteIconUrl}" data-fallback="${siteIconFallback}" alt="${site.name}" width="22" height="22" loading="lazy" decoding="async" onerror="siteIconError(this)">
                   <h3 class="card-title no-copy"><a href="${site.url}" target="_blank" rel="noopener noreferrer" onclick="markAsVisited(${site.id}, this)">${site.name}</a></h3>
                   <div class="info-icon-wrapper">
                     <svg class="icon" width="15" height="15" aria-hidden="true"><use href="#i-info"></use></svg>
@@ -1393,9 +1422,15 @@
                 </div>
 
                 <div class="earnings-info">
+                  ${site.category === 'affiliate' ? `
+                  <div>${currentLang === 'ar' ? 'العمولة:' : 'Commission:'} <strong class="price-value">${site.commissionType === 'fixed' ? '$' + site.commissionValue : (site.commissionValue || 0) + '%'}</strong></div>
+                  <div>${currentLang === 'ar' ? 'مستويات الإحالة:' : 'Referral Levels:'} <span class="referral-levels" title="${site.referralLevels || 1} ${currentLang === 'ar' ? 'مستوى' : 'level(s)'}">${'👤'.repeat(Math.min(Math.max(parseInt(site.referralLevels) || 1, 1), 3))}</span></div>
+                  <div>${currentLang === 'ar' ? 'الحد الأدنى للسحب:' : 'Min Withdrawal:'} <strong class="price-value">${site.minWithdraw}</strong></div>
+                  ` : `
                   <div>${currentLang === 'ar' ? 'الربح اليومي:' : 'Daily:'} <strong class="price-value">~$${site.daily.toFixed(4)}</strong></div>
                   <div>${currentLang === 'ar' ? 'الربح الشهري:' : 'Monthly:'} <strong class="price-value">~$${monthly}</strong> <span style="font-size:0.7rem; color:var(--primary); font-weight:bold;">(${site.currency})</span></div>
                   <div>${currentLang === 'ar' ? 'الحد الأدنى للسحب:' : 'Min Withdrawal:'} <strong class="price-value">${site.minWithdraw}</strong></div>
+                  `}
                 </div>
 
                 <div class="withdrawal-methods-container">
@@ -1778,10 +1813,10 @@
 
     // دورة الثيمات: تلقائي > مظلم > فاتح > مريح للعين > تلقائي...
     const themeLabels = {
-      auto:    { ar: "🌗 تلقائي", en: "🌗 Auto" },
-      dark:    { ar: "🌙 مظلم", en: "🌙 Dark" },
-      light:   { ar: "☀️ فاتح", en: "☀️ Light" },
-      comfort: { ar: "📖 مريح للعين", en: "📖 Eye Comfort" }
+      auto:    { icon: "🌗", ar: "تلقائي", en: "Auto" },
+      dark:    { icon: "🌙", ar: "مظلم", en: "Dark" },
+      light:   { icon: "☀️", ar: "فاتح", en: "Light" },
+      comfort: { icon: "📖", ar: "مريح للعين", en: "Eye Comfort" }
     };
     const themeOrder = ["auto", "dark", "light", "comfort"];
 
@@ -1791,7 +1826,8 @@
       const nextIndex = (themeOrder.indexOf(themeState) + 1) % themeOrder.length;
       themeState = themeOrder[nextIndex];
       root.setAttribute("data-theme", themeState);
-      btn.innerText = themeLabels[themeState][currentLang];
+      btn.innerText = themeLabels[themeState].icon;
+      btn.title = themeLabels[themeState][currentLang];
     }
 
     function setupScrollEvents() {
@@ -1810,6 +1846,14 @@
       };
     }
 
+    function toggleSearchPanel() {
+      const panel = document.getElementById("filter-section");
+      const btn = document.getElementById("toggle-search-btn");
+      const isOpen = panel.style.display !== "none";
+      panel.style.display = isOpen ? "none" : "block";
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    }
+
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1817,7 +1861,8 @@
     function toggleLanguage() {
       currentLang = currentLang === "ar" ? "en" : "ar";
       document.body.className = currentLang === "en" ? "lang-en" : "";
-      document.getElementById("lang-toggle-btn").innerText = currentLang === "ar" ? "English" : "العربية";
+      document.getElementById("lang-toggle-btn").innerText = currentLang === "ar" ? "EN" : "AR";
+      document.getElementById("theme-btn").title = themeLabels[themeState][currentLang];
 
       document.querySelectorAll("[data-key]").forEach(el => {
         const key = el.getAttribute("data-key");
