@@ -1189,7 +1189,31 @@
     let themeState = "auto";
     const SITE_URL = "https://majdfatihy.github.io/online-earning-directory/";
 
+    function detectInitialLang() {
+      const saved = localStorage.getItem("preferredLang");
+      if (saved === "ar" || saved === "en") return saved;
+      const nav = (navigator.language || navigator.userLanguage || "").toLowerCase();
+      return nav.startsWith("ar") ? "ar" : "en";
+    }
+
+    function applyStaticTranslations() {
+      document.body.className = currentLang === "en" ? "lang-en" : "";
+      document.getElementById("lang-toggle-btn").innerText = currentLang === "ar" ? "EN" : "AR";
+      document.getElementById("theme-btn").title = themeLabels[themeState][currentLang];
+      document.getElementById("theme-btn").innerText = themeLabels[themeState].icon;
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
+      });
+      document.querySelectorAll("[data-key-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-key-placeholder");
+        if (translations[currentLang][key]) el.setAttribute("placeholder", translations[currentLang][key]);
+      });
+    }
+
     window.onload = function() {
+      currentLang = detectInitialLang();
+      applyStaticTranslations();
       buildSiteIndex();
       renderAllSections();
       populateDynamicFilters();
@@ -1878,25 +1902,8 @@
 
     function toggleLanguage() {
       currentLang = currentLang === "ar" ? "en" : "ar";
-      document.body.className = currentLang === "en" ? "lang-en" : "";
-      document.getElementById("lang-toggle-btn").innerText = currentLang === "ar" ? "EN" : "AR";
-      document.getElementById("theme-btn").title = themeLabels[themeState][currentLang];
-
-      document.querySelectorAll("[data-key]").forEach(el => {
-        const key = el.getAttribute("data-key");
-        if (translations[currentLang][key]) {
-          el.innerText = translations[currentLang][key];
-        }
-      });
-
-      document.querySelectorAll("[data-key-placeholder]").forEach(el => {
-        const key = el.getAttribute("data-key-placeholder");
-        if (translations[currentLang][key]) {
-          el.setAttribute("placeholder", translations[currentLang][key]);
-        }
-      });
-
-      document.getElementById("theme-btn").innerText = themeLabels[themeState][currentLang];
+      localStorage.setItem("preferredLang", currentLang);
+      applyStaticTranslations();
 
       renderAllSections();
       populateDynamicFilters();
