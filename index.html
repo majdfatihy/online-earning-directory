@@ -301,14 +301,19 @@
 
     .dashboard-summary {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-bottom: 25px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .dashboard-summary .stat-card:nth-child(4) { grid-column: 1 / -1; }
+    @media (min-width: 700px) {
+      .dashboard-summary { grid-template-columns: repeat(4, 1fr); }
+      .dashboard-summary .stat-card:nth-child(4) { grid-column: auto; }
     }
     .stat-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 12px;
+      padding: 8px 6px;
       border-radius: 10px;
       text-align: center;
       box-shadow: var(--shadow);
@@ -975,22 +980,22 @@
     <div class="dashboard-summary">
       <div class="stat-card">
         <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-layers"></use></svg>
-        <span data-key="stat-total"> إجمالي المواقع</span>
+        <span data-key="stat-total"> المنصات</span>
         <strong id="stat-count"> 0</strong>
       </div>
       <div class="stat-card">
         <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-calendar-day"></use></svg>
-        <span data-key="stat-daily"> إجمالي الربح اليومي ~</span>
+        <span data-key="stat-daily"> يومياً</span>
         <strong id="stat-daily" class="price-value"> ~$0.0000</strong>
       </div>
       <div class="stat-card">
         <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-calendar-range"></use></svg>
-        <span data-key="stat-monthly"> إجمالي الربح الشهري ~</span>
+        <span data-key="stat-monthly"> شهرياً</span>
         <strong id="stat-monthly" class="price-value"> ~$0.0000</strong>
       </div>
       <div class="stat-card">
         <svg class="icon" width="21" height="21" aria-hidden="true"><use href="#i-trophy"></use></svg>
-        <span data-key="stat-max"> الأعلى ربحاً يومياً</span>
+        <span data-key="stat-max"> الأعلى ربحاً</span>
         <strong id="stat-max-site"> -</strong>
       </div>
     </div>
@@ -1132,10 +1137,10 @@
     const translations = {
       ar: {
         "site-title": "دليل أرباحي المعتمد",
-        "stat-total": "إجمالي المواقع",
-        "stat-daily": "إجمالي الربح اليومي ~",
-        "stat-monthly": "إجمالي الربح الشهري ~",
-        "stat-max": "الأعلى ربحاً يومياً",
+        "stat-total": "المنصات",
+        "stat-daily": "يومياً",
+        "stat-monthly": "شهرياً",
+        "stat-max": "الأعلى ربحاً",
         "filter-cat": "الفئة:",
         "filter-currency": "عملة الربح:",
         "search-placeholder": "ابحث في الموقع... (اسم الموقع، القسم، الوصف)",
@@ -1156,10 +1161,10 @@
       },
       en: {
         "site-title": "Verified Earn Directory",
-        "stat-total": "Total Platforms",
-        "stat-daily": "Total Daily ~",
-        "stat-monthly": "Total Monthly ~",
-        "stat-max": "Top Daily Earner",
+        "stat-total": "Platforms",
+        "stat-daily": "Daily",
+        "stat-monthly": "Monthly",
+        "stat-max": "Top Earner",
         "filter-cat": "Category:",
         "filter-currency": "Currency:",
         "search-placeholder": "Search the site... (name, category, description)",
@@ -1294,9 +1299,9 @@
       let totalMonthly = totalDaily * 30;
 
       document.getElementById("stat-count").innerText = totalSites;
-      document.getElementById("stat-daily").innerText = `~$${totalDaily.toFixed(4)}`;
-      document.getElementById("stat-monthly").innerText = `~$${totalMonthly.toFixed(2)}`;
-      document.getElementById("stat-max-site").innerHTML = `<a href="${maxSiteUrl}" target="_blank" rel="noopener noreferrer">${maxSiteName} (<span class="price-value">~$${maxDaily.toFixed(2)}</span>)</a>`;
+      document.getElementById("stat-daily").innerText = `~$${totalDaily.toFixed(1)}`;
+      document.getElementById("stat-monthly").innerText = `~$${Math.round(totalMonthly)}`;
+      document.getElementById("stat-max-site").innerHTML = `<a href="${maxSiteUrl}" target="_blank" rel="noopener noreferrer">${maxSiteName} <span class="price-value">~$${maxDaily.toFixed(1)}</span></a>`;
     }
 
     // بيانات المواقع "الإضافية" (بعد أول 10 بكل قسم) تُخزَّن هنا ولا تُبنى في الصفحة (DOM) إلا عند الحاجة فعلاً
